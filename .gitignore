@@ -11,4 +11,3 @@ $ cat .gitignore
 tmp/**/*
 VSProject/MetroTama/MetroTama/obj/**/*
 VSProject/MetroTama/MetroTama/bin/**/*
-VSProject/MetroTama/
