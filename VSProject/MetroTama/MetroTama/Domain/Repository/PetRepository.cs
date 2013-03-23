@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
+using MetroTama.Content.Graphics;
+using MetroTama.Services.Animation;
 
 namespace MetroTama.Domain.Repository
 {
@@ -25,7 +27,10 @@ namespace MetroTama.Domain.Repository
             pet.Energy = 100;
             pet.Study = 0;
             pet.Stage = temp_stage;
-            pet.animationData = new Services.Animation.AnimationData();
+            List<GraphicsEnum> animations = new List<GraphicsEnum>();
+            animations.Add(GraphicsEnum.Celebrate);
+            animations.Add(GraphicsEnum.Player);
+            pet.animations = animations;
             return pet;
         }
     }

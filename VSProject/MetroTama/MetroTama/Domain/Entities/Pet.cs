@@ -1,10 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MetroTama.Services.Animation;
+using MetroTama.Content.Graphics;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MetroTama.Domain
 {
@@ -39,8 +42,8 @@ namespace MetroTama.Domain
         public TimeSpan Energy_LastUpdateTime;
         public TimeSpan Study_LastUpdateTime;
         public TimeSpan Poop_LastUpdateTime;
-        public AnimationData animationData;
         public bool isSleeping;
+        public List<GraphicsEnum> animations;
 
         public void Update(GameTime temp_gameTime)
         {

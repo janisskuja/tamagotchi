@@ -4,6 +4,8 @@ using MetroTama.Domain;
 using MetroTama.Domain.Repository;
 using MetroTama.Services;
 using Microsoft.Xna.Framework.Input;
+using MetroTama.Content.Graphics;
+using MetroTama.Services.Animation;
 
 namespace MetroTama
 {
@@ -20,9 +22,9 @@ namespace MetroTama
         public Pet pet;
         public GamePage _gamePage;
         PetRepository petRepository;
+        AnimationDataRepository animationDataRepo;
         GameObjectService gameObjectService;
-        // the spritesheet containing our animation frames
-        Texture2D celebrateSpriteSheet;
+        private GraphicsEnum graphicsEnum;
 
         // the elapsed amount of time the frame has been shown for
         float time;
@@ -53,6 +55,7 @@ namespace MetroTama
             petRepository = new PetRepository();
             pet = petRepository.GetPet();
             gameObjectService = new GameObjectService();
+            animationDataRepo = new AnimationDataRepository();
             base.Initialize();
             
         }
@@ -67,7 +70,9 @@ namespace MetroTama
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            celebrateSpriteSheet = Content.Load<Texture2D>(pet.animationData.contentPath);
+            animationDataRepo.setSpriteSheetForAnimation(GraphicsEnum.Celebrate, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.Celebrate));
+            animationDataRepo.setSpriteSheetForAnimation(GraphicsEnum.Player, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.Player));
+            graphicsEnum = GraphicsEnum.Celebrate;
         }
 
         /// <summary>
@@ -100,23 +105,28 @@ namespace MetroTama
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            AnimationData animation = animationDataRepo.getAnimationData(graphicsEnum);
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
             time += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            while (time > pet.animationData.frameTime)
+            while (time > animation.frameTime)
             {
                 // Play the next frame in the SpriteSheet
                 frameIndex++;
                 // reset elapsedTIme
                 time = 0f;
             }
-            if (frameIndex > pet.animationData.totalFrames) frameIndex = 1;
-            Rectangle source = new Rectangle(frameIndex * pet.animationData.frameWidth, 0, pet.animationData.frameWidth, pet.animationData.frameHeight);
+            if (frameIndex > animationDataRepo.getAnimationData(graphicsEnum).totalFrames)
+            {
+                frameIndex = 1;
+                graphicsEnum = GraphicsEnum.Celebrate;
+            }
+            Rectangle source = new Rectangle(frameIndex * animation.frameWidth, 0, animation.frameWidth, animation.frameHeight);
             Vector2 position = new Vector2(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height / 2);
-            Vector2 origin = new Vector2(pet.animationData.frameWidth / 2.0f, pet.animationData.frameHeight);
+            Vector2 origin = new Vector2(animation.frameWidth / 2.0f, animation.frameHeight);
             _spriteBatch.Begin();
-            _spriteBatch.Draw(celebrateSpriteSheet, position, source, Color.White, 0.0f, origin, 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(animation.spriteSheet, position, source, Color.White, 0.0f, origin, 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.End();
             base.Draw(gameTime);
         }
@@ -124,6 +134,7 @@ namespace MetroTama
         public void Feed(int foodId)
         {
             //TODO: insert eating animation
+            graphicsEnum = GraphicsEnum.Player;
             gameObjectService.UseObject(pet, foodId);
         }
 
