@@ -45,16 +45,19 @@ namespace MetroTama
 
         private void Button_Clean_Click(object sender, RoutedEventArgs e)
         {
+            HideAllSubcategories();
             _game.Clean(CLEAN_OBJECT);
         }
 
         private void Button_First_Aid_Click(object sender, RoutedEventArgs e)
         {
+            HideAllSubcategories();
             _game.FirstAid(MEDIC_OBJECT);
         }
 
         private void Button_Light_Click(object sender, RoutedEventArgs e)
         {
+            HideAllSubcategories();
             _game.Light();
         }
 
@@ -110,6 +113,7 @@ namespace MetroTama
             TextHYG.Text = pet.Hygene.ToString();
             TextMD.Text = pet.Fun.ToString();
             TextSM.Text = pet.Study.ToString();
+            TextHUN.Text = pet.Hungry.ToString();
         }
     }
 }

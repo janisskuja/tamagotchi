@@ -151,10 +151,30 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Assets\iconsBook01.png" />
+    <Content Include="Assets\iconsClean.png" />
+    <Content Include="Assets\iconsHealth01.png" />
+    <Content Include="Assets\iconsLight01.png" />
+    <Content Include="Assets\iconsPlay01.png" />
     <Content Include="Content\Graphics\Celebrate.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Content\Graphics\player.xnb" />
+    <Content Include="Content\Graphics\iconsBook01.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\iconsClean.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\iconsHealth01.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\iconsLight01.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\iconsPlay01.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="MetroTama_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

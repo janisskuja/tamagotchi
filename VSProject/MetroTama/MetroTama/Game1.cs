@@ -128,28 +128,31 @@ namespace MetroTama
         {
             //TODO: insert light animation here
             pet.isSleeping = !pet.isSleeping;
-            throw new System.NotImplementedException();
         }
 
 
         public void Play(int gameId)
         {
-            throw new System.NotImplementedException();
+            //TODO: add ball animation
+            gameObjectService.UseObject(pet, gameId);
         }
 
         public void Read(int bookId)
         {
-            throw new System.NotImplementedException();
+            //TODO: add read animation
+            gameObjectService.UseObject(pet, bookId);
         }
 
-        internal void Clean(int CLEAN_OBJECT)
+        internal void Clean(int cleanObjectId)
         {
-            throw new System.NotImplementedException();
+            //TODO: add clean animation
+            gameObjectService.UseObject(pet, cleanObjectId);
         }
 
-        internal void FirstAid(int MEDIC_OBJECT)
+        internal void FirstAid(int medicObjectId)
         {
-            throw new System.NotImplementedException();
+            //TODO: add first aid animation
+            gameObjectService.UseObject(pet, medicObjectId);
         }
     }
 }

@@ -16,6 +16,8 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock TextWrapping="Wrap"  Text="Health: " FontSize="36"/>
                 <TextBlock x:Name="TextHP" TextWrapping="Wrap"  Text="0" FontSize="36"/>
+                <TextBlock TextWrapping="Wrap"  Text="Hunger: " FontSize="36"/>
+                <TextBlock x:Name="TextHUN" TextWrapping="Wrap"  Text="0" FontSize="36"/>
                 <TextBlock TextWrapping="Wrap"  Text="Energy: " FontSize="36"/>
                 <TextBlock x:Name="TextEN" TextWrapping="Wrap"  Text="0" FontSize="36"/>
                 <TextBlock TextWrapping="Wrap" Text="Hygene: " FontSize="36" />
