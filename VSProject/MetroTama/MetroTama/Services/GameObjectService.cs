@@ -11,7 +11,18 @@ namespace MetroTama.Services
     {
         public static void UseObject(Pet temp_pet, int gameObjectId)
         {
-            
+
+            if (temp_pet.FavoriteFoodId == gameObjectId)
+            {
+                // Encrease Fun
+            }
+            else if (temp_pet.DislikedFoodId == gameObjectId)
+            {
+                // Decrese Fun
+            }
+
+
+
         }
     }
 }

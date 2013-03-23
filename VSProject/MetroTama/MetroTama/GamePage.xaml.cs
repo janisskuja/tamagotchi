@@ -22,7 +22,7 @@ namespace MetroTama
 
         private void Button_Feed_Click(object sender, RoutedEventArgs e)
         {
-            Game1.Feed();
+            //Game1.Feed();
         }
 
         private void Button_Play_Click(object sender, RoutedEventArgs e)

@@ -77,10 +77,11 @@ namespace MetroTama
             base.Draw(gameTime);
         }
 
-        internal static void Feed()
+        internal static void Feed(int FoodId)
         {
             //TODO: write feed logic
             throw new System.NotImplementedException();
+
         }
 
         internal static void Play()
