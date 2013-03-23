@@ -43,22 +43,17 @@ namespace MetroTama
 
         private void Button_Clean_Click(object sender, RoutedEventArgs e)
         {
-            Game1.Clean();
+            _game.Clean();
         }
 
         private void Button_First_Aid_Click(object sender, RoutedEventArgs e)
         {
-            Game1.FirstAid();
+            _game.FirstAid();
         }
 
         private void Button_Light_Click(object sender, RoutedEventArgs e)
         {
-            Game1.Light();
-        }
-
-        private void Button_Read_Click(object sender, RoutedEventArgs e)
-        {
-            Game1.Read();
+            _game.Light();
         }
 
         private void ActivateSubcategory(string name)
@@ -83,27 +78,27 @@ namespace MetroTama
 
         private void BtnApple_Click(object sender, RoutedEventArgs e)
         {
-            Game1.Feed(FOOD_APPLE);
+            _game.Feed(FOOD_APPLE);
         }
 
         private void BtnBurger_Click(object sender, RoutedEventArgs e)
         {
-            Game1.Feed(FOOD_BURGER);
+            _game.Feed(FOOD_BURGER);
         }
 
         private void BtnDrink_Click(object sender, RoutedEventArgs e)
         {
-            Game1.Feed(FOOD_DRINK);
+            _game.Feed(FOOD_DRINK);
         }
 
         private void BtnBaseball_Click(object sender, RoutedEventArgs e)
         {
-            Game1.Play(ACTIVITY_BALL);
+            _game.Play(ACTIVITY_BALL);
         }
 
         private void BtnBook_Click(object sender, RoutedEventArgs e)
         {
-            Game1.Read(ACTIVITY_READ);
+            _game.Read(ACTIVITY_READ);
         }
 
         public void UpdateText(Pet pet)

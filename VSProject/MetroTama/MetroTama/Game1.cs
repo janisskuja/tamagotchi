@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MetroTama.Domain;
 using MetroTama.Domain.Repository;
+using MetroTama.Services;
 
 namespace MetroTama
 {
@@ -15,6 +16,7 @@ namespace MetroTama
         public Pet pet;
         public GamePage _gamePage;
         PetRepository petRepository;
+        GameObjectService gameObjectService;
 
         public Game1()
         {
@@ -38,6 +40,7 @@ namespace MetroTama
             // TODO: Add your initialization logic here
             petRepository = new PetRepository();
             pet = petRepository.GetPet();
+            gameObjectService = new GameObjectService();
             base.Initialize();
             
         }
@@ -94,49 +97,44 @@ namespace MetroTama
             base.Draw(gameTime);
         }
 
-        internal static void Feed(int FoodId)
+        public void Feed(int foodId)
         {
-            //TODO: write feed logic
-            throw new System.NotImplementedException();
-
+            //TODO: insert eating animation
+            gameObjectService.UseObject(pet, foodId);
         }
 
-        internal static void Play()
+        public void Play()
         {
             //TODO: add playing logic
             throw new System.NotImplementedException();
         }
 
-        internal static void Clean()
+        public void Clean()
         {
             //TODO: add clean logic
             throw new System.NotImplementedException();
         }
 
-        internal static void FirstAid()
+        public void FirstAid()
         {
             //TODO: add FirstAid logic
             throw new System.NotImplementedException();
         }
 
-        internal static void Light()
+        public void Light()
         {
-            throw new System.NotImplementedException();
-        }
-
-        internal static void Read()
-        {
-            //TODO: add read logic
+            //TODO: insert light animation here
+            pet.isSleeping = !pet.isSleeping;
             throw new System.NotImplementedException();
         }
 
 
-        internal static void Play(int p)
+        public void Play(int gameId)
         {
             throw new System.NotImplementedException();
         }
 
-        internal static void Read(int p)
+        public void Read(int bookId)
         {
             throw new System.NotImplementedException();
         }

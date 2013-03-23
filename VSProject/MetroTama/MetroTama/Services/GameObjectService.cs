@@ -10,7 +10,7 @@ namespace MetroTama.Services
 {
     class GameObjectService
     {
-        public static void UseObject(Pet temp_pet, int gameObjectId)
+        public void UseObject(Pet temp_pet, int gameObjectId)
         {
             GameObjectRepository temp_GameObjectRepository = new GameObjectRepository();
             GameObject temp_GameObject = temp_GameObjectRepository.GetGameObject(gameObjectId);
