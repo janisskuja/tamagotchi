@@ -121,6 +121,8 @@ namespace MetroTama.Services
                 // Decrese Fun
                 temp_pet.Fun -= temp_GameObject.FunEffect;
             }
+            else
+                temp_pet.Fun += temp_GameObject.FunEffect;
 
             if (temp_pet.Fun > MAX_VALUE)
             {
