@@ -12,6 +12,9 @@ namespace MetroTama
     {
         readonly Game1 _game;
 
+        private static string FOOD = "food";
+        private static string ACTIVITY = "activity";
+
         public GamePage(string launchArguments)
         {
             this.InitializeComponent();
@@ -22,12 +25,12 @@ namespace MetroTama
 
         private void Button_Feed_Click(object sender, RoutedEventArgs e)
         {
-            //Game1.Feed();
+            ActivateSubcategory(FOOD);
         }
 
         private void Button_Play_Click(object sender, RoutedEventArgs e)
         {
-            Game1.Play();
+            ActivateSubcategory(ACTIVITY);
         }
 
         private void Button_Clean_Click(object sender, RoutedEventArgs e)
@@ -48,6 +51,26 @@ namespace MetroTama
         private void Button_Read_Click(object sender, RoutedEventArgs e)
         {
             Game1.Read();
+        }
+
+        private void ActivateSubcategory(string name)
+        {
+            HideAllSubcategories();
+            switch (name)
+            {
+                case "food":
+                    GridFood.Visibility = Visibility.Visible;
+                    break;
+                case "activity":
+                    GridActivity.Visibility = Visibility.Visible;
+                    break;
+            }
+        }
+
+        private void HideAllSubcategories()
+        {
+            GridFood.Visibility = Visibility.Collapsed;
+            GridActivity.Visibility = Visibility.Collapsed;
         }
     }
 }
