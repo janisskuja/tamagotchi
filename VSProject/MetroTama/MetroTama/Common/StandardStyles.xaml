@@ -278,18 +278,18 @@
                         <Rectangle
                                 x:Name="FocusVisualWhite"
                                 IsHitTestVisible="False"
-                                Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}"
+                                Stroke="{x:Null}"
                                 StrokeEndLineCap="Square"
                                 StrokeDashArray="1,1"
-                                Opacity="0"
+                                Opacity="1"
                                 StrokeDashOffset="1.5"/>
                         <Rectangle
                                 x:Name="FocusVisualBlack"
                                 IsHitTestVisible="False"
-                                Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}"
+                                Stroke="{x:Null}"
                                 StrokeEndLineCap="Square"
                                 StrokeDashArray="1,1"
-                                Opacity="0"
+                                Opacity="1"
                                 StrokeDashOffset="0.5"/>
 
                         <VisualStateManager.VisualStateGroups>
