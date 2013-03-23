@@ -9,6 +9,7 @@ namespace MetroTama.Content.Graphics
     public enum GraphicsEnum
     {
         Player,
-        Celebrate
+        Celebrate,
+        IdleAnimation
     }
 }

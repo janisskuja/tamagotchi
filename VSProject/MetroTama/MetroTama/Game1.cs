@@ -72,7 +72,8 @@ namespace MetroTama
             // TODO: use this.Content to load your game content here
             animationDataRepo.setSpriteSheetForAnimation(GraphicsEnum.Celebrate, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.Celebrate));
             animationDataRepo.setSpriteSheetForAnimation(GraphicsEnum.Player, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.Player));
-            graphicsEnum = GraphicsEnum.Celebrate;
+            animationDataRepo.setSpriteSheetForAnimation(GraphicsEnum.IdleAnimation, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.IdleAnimation));
+            graphicsEnum = GraphicsEnum.IdleAnimation;
         }
 
         /// <summary>
@@ -120,7 +121,7 @@ namespace MetroTama
             if (frameIndex > animationDataRepo.getAnimationData(graphicsEnum).totalFrames)
             {
                 frameIndex = 1;
-                graphicsEnum = GraphicsEnum.Celebrate;
+                graphicsEnum = GraphicsEnum.IdleAnimation;
             }
             Rectangle source = new Rectangle(frameIndex * animation.frameWidth, 0, animation.frameWidth, animation.frameHeight);
             Vector2 position = new Vector2(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height / 2);
@@ -134,7 +135,7 @@ namespace MetroTama
         public void Feed(int foodId)
         {
             //TODO: insert eating animation
-            graphicsEnum = GraphicsEnum.Player;
+            graphicsEnum = GraphicsEnum.Celebrate;
             gameObjectService.UseObject(pet, foodId);
         }
 
