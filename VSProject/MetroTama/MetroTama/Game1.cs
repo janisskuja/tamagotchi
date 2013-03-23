@@ -31,7 +31,7 @@ namespace MetroTama
         // duration of time to show each frame
         // an index of the current frame being shown
         int frameIndexX;
-        int frameIndexY = 1;
+        int frameIndexY = 0;
 
         public Game1()
         {
@@ -121,15 +121,15 @@ namespace MetroTama
             }
             if (frameIndexX > animationDataRepo.getAnimationData(graphicsEnum).totalXFrames)
             {
-                frameIndexX = 1;
+                frameIndexX = 0;
                 frameIndexY++;
             }
             if (frameIndexY > animationDataRepo.getAnimationData(graphicsEnum).totalYFrames)
             {
-                frameIndexY = 1;
+                frameIndexY = 0;
                 graphicsEnum = GraphicsEnum.IdleAnimation;
             }
-            Rectangle source = new Rectangle(frameIndexX * animation.frameWidth, 0, animation.frameWidth, frameIndexY * animation.frameHeight);
+            Rectangle source = new Rectangle(frameIndexX * animation.frameWidth, frameIndexY * animation.frameHeight, animation.frameWidth, animation.frameHeight);
             Vector2 position = new Vector2(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height / 2);
             Vector2 origin = new Vector2(animation.frameWidth / 2.0f, animation.frameHeight);
             _spriteBatch.Begin();
