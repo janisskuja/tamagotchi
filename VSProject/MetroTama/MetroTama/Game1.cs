@@ -12,7 +12,7 @@ namespace MetroTama
     {
         GraphicsDeviceManager _graphics;
         SpriteBatch _spriteBatch;
-        Pet pet;
+        public Pet pet;
         PetRepository petRepository;
 
         public Game1()
@@ -122,5 +122,15 @@ namespace MetroTama
             throw new System.NotImplementedException();
         }
 
+
+        internal static void Play(int p)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        internal static void Read(int p)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

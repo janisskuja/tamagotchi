@@ -1,7 +1,8 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using MonoGame.Framework;
-
+using MetroTama.Domain;
+using MetroTama.Domain.Repository;
 
 namespace MetroTama
 {
@@ -15,12 +16,15 @@ namespace MetroTama
         private static string FOOD = "food";
         private static string ACTIVITY = "activity";
 
+        Pet pet;
         public GamePage(string launchArguments)
         {
             this.InitializeComponent();
 
             // Create the game.
             _game = XamlGame<Game1>.Create(launchArguments, Window.Current.CoreWindow, this);
+
+            pet = _game.pet;
         }
 
         private void Button_Feed_Click(object sender, RoutedEventArgs e)
@@ -75,27 +79,27 @@ namespace MetroTama
 
         private void BtnApple_Click(object sender, RoutedEventArgs e)
         {
-
+            Game1.Feed(1);
         }
 
         private void BtnBurger_Click(object sender, RoutedEventArgs e)
         {
-
+            Game1.Feed(2);
         }
 
         private void BtnDrink_Click(object sender, RoutedEventArgs e)
         {
-
+            Game1.Feed(3);
         }
 
         private void BtnBaseball_Click(object sender, RoutedEventArgs e)
         {
-
+            Game1.Play(4);
         }
 
         private void BtnBook_Click(object sender, RoutedEventArgs e)
         {
-
+            Game1.Read(5);
         }
     }
 }
