@@ -161,6 +161,10 @@
     <Content Include="Content\Graphics\Celebrate.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Graphics\idleAnimation.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Content\Graphics\player.xnb" />
     <Content Include="Content\Graphics\iconsBook01.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
