@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MetroTama.Services.Animation;
 
 namespace MetroTama.Domain
 {
@@ -38,6 +39,7 @@ namespace MetroTama.Domain
         public TimeSpan Energy_LastUpdateTime;
         public TimeSpan Study_LastUpdateTime;
         public TimeSpan Poop_LastUpdateTime;
+        public AnimationData animationData;
         public bool isSleeping;
 
         public void Update(GameTime temp_gameTime)

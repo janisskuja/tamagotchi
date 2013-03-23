@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MetroTama.Domain.Repository
 {
@@ -24,6 +25,7 @@ namespace MetroTama.Domain.Repository
             pet.Energy = 100;
             pet.Study = 100;
             pet.Stage = temp_stage;
+            pet.animationData = new Services.Animation.AnimationData();
             return pet;
         }
     }

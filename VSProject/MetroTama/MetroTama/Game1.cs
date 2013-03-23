@@ -18,20 +18,14 @@ namespace MetroTama
         public GamePage _gamePage;
         PetRepository petRepository;
         GameObjectService gameObjectService;
-
         // the spritesheet containing our animation frames
-        Texture2D spriteSheet;
+        Texture2D celebrateSpriteSheet;
+
         // the elapsed amount of time the frame has been shown for
         float time;
         // duration of time to show each frame
-        float frameTime = 0.1f;
         // an index of the current frame being shown
         int frameIndex;
-        // total number of frames in our spritesheet
-        const int totalFrames = 10;
-        // define the size of our animation frame
-        int frameHeight = 64;
-        int frameWidth = 64;
 
         public Game1()
         {
@@ -70,7 +64,7 @@ namespace MetroTama
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            spriteSheet = Content.Load<Texture2D>("Graphics/Celebrate");
+            celebrateSpriteSheet = Content.Load<Texture2D>(pet.animationData.contentPath);
         }
 
         /// <summary>
@@ -107,20 +101,19 @@ namespace MetroTama
 
             // TODO: Add your drawing code here
             time += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            while (time > frameTime)
+            while (time > pet.animationData.frameTime)
             {
-                // PLay the next frame in the SpriteSheet
+                // Play the next frame in the SpriteSheet
                 frameIndex++;
                 // reset elapsedTIme
                 time = 0f;
             }
-            if (frameIndex > totalFrames) frameIndex = 1;
-            Rectangle source = new Rectangle(frameIndex * frameWidth, 0, frameWidth, frameHeight);
-            Vector2 position = new Vector2(this.Window.ClientBounds.Width / 2,
-                                            this.Window.ClientBounds.Height / 2);
-            Vector2 origin = new Vector2(frameWidth / 2.0f, frameHeight);
+            if (frameIndex > pet.animationData.totalFrames) frameIndex = 1;
+            Rectangle source = new Rectangle(frameIndex * pet.animationData.frameWidth, 0, pet.animationData.frameWidth, pet.animationData.frameHeight);
+            Vector2 position = new Vector2(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height / 2);
+            Vector2 origin = new Vector2(pet.animationData.frameWidth / 2.0f, pet.animationData.frameHeight);
             _spriteBatch.Begin();
-            _spriteBatch.Draw(spriteSheet, position, source, Color.White, 0.0f, origin, 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(celebrateSpriteSheet, position, source, Color.White, 0.0f, origin, 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.End();
             base.Draw(gameTime);
         }
