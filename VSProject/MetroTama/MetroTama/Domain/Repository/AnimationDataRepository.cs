@@ -16,7 +16,7 @@ namespace MetroTama.Domain.Repository
             animationDataRepo = new Dictionary<GraphicsEnum,AnimationData>();
             animationDataRepo.Add(GraphicsEnum.Celebrate, getAnimationData(64, 64, 10, 0.1f, GraphicsEnum.Celebrate));
             animationDataRepo.Add(GraphicsEnum.Player, getAnimationData(64, 64, 10, 0.1f, GraphicsEnum.Player));
-            animationDataRepo.Add(GraphicsEnum.IdleAnimation, getAnimationData(130, 179, 7, 0.05f, GraphicsEnum.IdleAnimation));
+            animationDataRepo.Add(GraphicsEnum.IdleAnimation, getAnimationData(260, 360, 4, 0.1f, GraphicsEnum.IdleAnimation));
         }
 
         private static AnimationData getAnimationData(int frameHeight, int frameWidth, int totalFrames, float frameTime, GraphicsEnum graphicsEnum)
