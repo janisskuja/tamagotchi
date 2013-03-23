@@ -9,6 +9,14 @@ namespace MetroTama.Domain
 {
     public class Pet
     {
+        private static int ZERRO_VALUE = 0;
+        private static int HEALT_DECREASE = 1;
+        private static int STUDY_DECREASE = 2;
+        private static int HUNGRY_DECREASE = 4;
+        private static int HYGENE_DECREASE = 3;
+        private static int FUN_DECREASE = 5;
+        private static int ENERGY_DECREASE = 2;
+
         public int PetId;
         public string Name;
         public int UserId;
@@ -47,19 +55,26 @@ namespace MetroTama.Domain
 
         private void CheckHealth(GameTime temp_gameTime)
         {
-            if (temp_gameTime.TotalGameTime.Subtract(Healt_LastUpdateTime) < Stage.HealtTime)
+            if (temp_gameTime.TotalGameTime.Subtract(Healt_LastUpdateTime) > Stage.HealtTime)
             {
-                if ((Energy < 50) || (Hungry < 50) || (Hygene < 50) || (Fun < 50))
+                if (Healt > ZERRO_VALUE)
                 {
-                    Healt -= 5;
+                    if ((Energy < 50) || (Hungry < 50) || (Hygene < 50) || (Fun < 50))
+                    {
+                        Healt -= HEALT_DECREASE;
+                    }
+                    Healt_LastUpdateTime = temp_gameTime.TotalGameTime;
                 }
-                Healt_LastUpdateTime = temp_gameTime.TotalGameTime;
+                if (Healt < ZERRO_VALUE)
+                {
+                    Healt = 0;
+                }
             }
         }
 
         private void CheckPoop(GameTime temp_gameTime)
         {
-            if (temp_gameTime.TotalGameTime.Subtract(Poop_LastUpdateTime) < Stage.PoopTime)
+            if (temp_gameTime.TotalGameTime.Subtract(Poop_LastUpdateTime) > Stage.PoopTime)
             {
                 // Do poop
                 Poop_LastUpdateTime = temp_gameTime.TotalGameTime;
@@ -68,53 +83,88 @@ namespace MetroTama.Domain
 
         private void CheckStudy(GameTime temp_gameTime)
         {
-            if (temp_gameTime.TotalGameTime.Subtract(Study_LastUpdateTime) < Stage.StudyTime)
+            if (temp_gameTime.TotalGameTime.Subtract(Study_LastUpdateTime) > Stage.StudyTime)
             {
-                Study -= 10;
-                Study_LastUpdateTime = temp_gameTime.TotalGameTime;
+                if (Study > ZERRO_VALUE)
+                {
+                    Study -= STUDY_DECREASE;
+                    Study_LastUpdateTime = temp_gameTime.TotalGameTime;
+                }
+                if (Study < ZERRO_VALUE)
+                {
+                    Study = 0;
+                }
             }
         }
 
         private void CheckFun(GameTime temp_gameTime)
         {
-            if (temp_gameTime.TotalGameTime.Subtract(Fun_LastUpdateTime) < Stage.FunTime)
+            if (temp_gameTime.TotalGameTime.Subtract(Fun_LastUpdateTime) > Stage.FunTime)
             {
-                Fun -= 10;
-                Fun_LastUpdateTime = temp_gameTime.TotalGameTime;
+                if (Fun > ZERRO_VALUE)
+                {
+                    Fun -= FUN_DECREASE;
+                    Fun_LastUpdateTime = temp_gameTime.TotalGameTime;
+                }
+                if (Fun < ZERRO_VALUE)
+                {
+                    Fun = 0;
+                }
             }
         }
 
         private void CheckHygene(GameTime temp_gameTime)
         {
-            if (temp_gameTime.TotalGameTime.Subtract(Hygene_LastUpdateTime) < Stage.DirtyTime)
+            if (temp_gameTime.TotalGameTime.Subtract(Hygene_LastUpdateTime) > Stage.DirtyTime)
             {
-                Hygene -= 10;
-                Hygene_LastUpdateTime = temp_gameTime.TotalGameTime;
+                if (Hygene>ZERRO_VALUE)
+                {
+                    Hygene -= HYGENE_DECREASE;
+                    Hygene_LastUpdateTime = temp_gameTime.TotalGameTime;
+                }
+                if (Hygene < ZERRO_VALUE)
+                {
+                    Hygene = 0;
+                }
             }
         }
 
         private void CheckEnergy(GameTime temp_gameTime)
         {
-            if (temp_gameTime.TotalGameTime.Subtract(Energy_LastUpdateTime) < Stage.EnergyTime)
+            if (temp_gameTime.TotalGameTime.Subtract(Energy_LastUpdateTime) > Stage.EnergyTime)
             {
-                if (isSleeping)
+                if (Energy > ZERRO_VALUE)
                 {
-                    Energy += 5;
+                    if (isSleeping)
+                    {
+                        Energy += ENERGY_DECREASE;
+                    }
+                    else
+                    {
+                        Energy -= ENERGY_DECREASE;
+                    }
+                    Energy_LastUpdateTime = temp_gameTime.TotalGameTime;
                 }
-                else
+                if (Energy < ZERRO_VALUE)
                 {
-                    Energy -= 5;
+                    Energy = 0;
                 }
-                Energy_LastUpdateTime = temp_gameTime.TotalGameTime;
             }
         }
 
         private void CheckHungry(GameTime temp_gameTime)
         {
-            if (temp_gameTime.TotalGameTime.Subtract(Hungry_LastUpdateTime) < Stage.EatTime)
+            if (temp_gameTime.TotalGameTime.Subtract(Hungry_LastUpdateTime) > Stage.EatTime)
             {
-                Hungry -= 10;
-                Hungry_LastUpdateTime = temp_gameTime.TotalGameTime;
+                if (Hungry > ZERRO_VALUE)
+                {
+                    Hungry -= HUNGRY_DECREASE;
+                    Hungry_LastUpdateTime = temp_gameTime.TotalGameTime;
+                }
+                if (Hungry < ZERRO_VALUE)
+                {
+                    Hungry = 0;
+                }
             }
         }
     }
