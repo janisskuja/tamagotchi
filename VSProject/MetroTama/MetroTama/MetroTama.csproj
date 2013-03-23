@@ -131,6 +131,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Domain\GameObject.cs" />
+    <Compile Include="Domain\Pet.cs" />
+    <Compile Include="Domain\SayText.cs" />
+    <Compile Include="Domain\Stage.cs" />
+    <Compile Include="Domain\Status.cs" />
+    <Compile Include="Domain\User.cs" />
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
@@ -167,7 +173,6 @@
     <Folder Include="Content\Graphics\" />
     <Folder Include="Content\Sounds\" />
     <Folder Include="Content\Sound\" />
-    <Folder Include="Domain\" />
     <Folder Include="Internal\" />
     <Folder Include="Services\" />
   </ItemGroup>

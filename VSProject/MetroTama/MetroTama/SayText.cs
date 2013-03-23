@@ -15,9 +15,5 @@ namespace MetroTama.Domain
         public string Text;
         public int StatusId;
 
-        public void SayDefText()
-        {
-           
-        }
     }
 }
