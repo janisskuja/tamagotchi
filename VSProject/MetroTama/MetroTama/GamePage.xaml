@@ -52,23 +52,23 @@
     			<ColumnDefinition/>
     		</Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <Button x:Name="BtnFeed" Content="Feed" Width="83" Height="84" Click="Button_Feed_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}"/>
-    			<Button x:Name="BtnActivity" Width="83" Click="Button_Play_Click" Height="84">
+                <Button x:Name="BtnFeed" Content="Feed" Click="Button_Feed_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}"/>
+                <Button x:Name="BtnActivity" Click="Button_Play_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}" >
     				<Button.Background>
     					<ImageBrush ImageSource="Assets/iconsPlay01.png"/>
     				</Button.Background>
     			</Button>
-    			<Button x:Name="BtnClean" Click="Button_Clean_Click" Height="84" Width="83">
+    			<Button x:Name="BtnClean" Click="Button_Clean_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}">
     				<Button.Background>
     					<ImageBrush ImageSource="Assets/iconsClean.png"/>
     				</Button.Background>
     			</Button>
-    			<Button x:Name="BtnFirstAid" Width="83" Height="84" Click="Button_First_Aid_Click">
+    			<Button x:Name="BtnFirstAid" Style="{StaticResource ResourceKey=TamaButtonStyle}" Click="Button_First_Aid_Click">
     				<Button.Background>
     					<ImageBrush ImageSource="Assets/iconsHealth01.png"/>
     				</Button.Background>
     			</Button>
-    			<Button x:Name="BtnLight" Width="83" Height="84" Click="Button_Light_Click">
+    			<Button x:Name="BtnLight" Style="{StaticResource ResourceKey=TamaButtonStyle}" Click="Button_Light_Click">
     				<Button.Background>
     					<ImageBrush ImageSource="Assets/iconsLight01.png"/>
     				</Button.Background>
@@ -77,15 +77,15 @@
     		<StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">   
                 <Grid x:Name="GridFood" Visibility="Collapsed">
                     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-    			        <Button x:Name="BtnApple" Content="Apple" Click="BtnApple_Click" Width="83" Height="84"/>
-                        <Button x:Name="BtnBurger" Content="Burger"  Click="BtnBurger_Click" Width="83" Height="84"/>
-                        <Button x:Name="BtnDrink" Content="Drink" Click="BtnDrink_Click" Width="83" Height="84"/>
+    			        <Button x:Name="BtnApple" Content="Apple" Click="BtnApple_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}"/>
+                        <Button x:Name="BtnBurger" Content="Burger"  Click="BtnBurger_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}"/>
+                        <Button x:Name="BtnDrink" Content="Drink" Click="BtnDrink_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}"/>
                     </StackPanel>
                 </Grid>
                 <Grid x:Name="GridActivity" Visibility="Collapsed">
                     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                        <Button x:Name="BtnBaseball" Content="Ball" Click="BtnBaseball_Click" Width="83" Height="84"/>
-                        <Button x:Name="BtnBook" Click="BtnBook_Click" Width="83" Height="84">
+                        <Button x:Name="BtnBaseball" Content="Ball" Click="BtnBaseball_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}"/>
+                        <Button x:Name="BtnBook" Click="BtnBook_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}">
                         	<Button.Background>
                         		<ImageBrush ImageSource="Assets/iconsBook01.png"/>
                         	</Button.Background>
