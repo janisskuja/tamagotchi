@@ -13,12 +13,18 @@ namespace MetroTama
         GraphicsDeviceManager _graphics;
         SpriteBatch _spriteBatch;
         public Pet pet;
+        public GamePage _gamePage;
         PetRepository petRepository;
 
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+        }
+
+        public void SetXAMLPage(GamePage gamePage)
+        {
+            _gamePage = gamePage;
         }
 
         /// <summary>
@@ -65,8 +71,13 @@ namespace MetroTama
         protected override void Update(GameTime gameTime)
         {
             // TODO: Add your update logic here
+
             pet.Update(gameTime);
-           // base.Update(gameTime);
+
+            _gamePage.UpdateText(pet);
+
+           base.Update(gameTime);
+
         }
 
         /// <summary>

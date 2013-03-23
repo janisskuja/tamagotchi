@@ -15,8 +15,12 @@ namespace MetroTama
 
         private static string FOOD = "food";
         private static string ACTIVITY = "activity";
+        private static int FOOD_APPLE = 1;
+        private static int FOOD_BURGER = 2;
+        private static int FOOD_DRINK = 3;
+        private static int ACTIVITY_BALL = 4;
+        private static int ACTIVITY_READ = 5;
 
-        Pet pet;
         public GamePage(string launchArguments)
         {
             this.InitializeComponent();
@@ -24,7 +28,7 @@ namespace MetroTama
             // Create the game.
             _game = XamlGame<Game1>.Create(launchArguments, Window.Current.CoreWindow, this);
 
-            pet = _game.pet;
+            _game.SetXAMLPage(this);
         }
 
         private void Button_Feed_Click(object sender, RoutedEventArgs e)
@@ -79,27 +83,36 @@ namespace MetroTama
 
         private void BtnApple_Click(object sender, RoutedEventArgs e)
         {
-            Game1.Feed(1);
+            Game1.Feed(FOOD_APPLE);
         }
 
         private void BtnBurger_Click(object sender, RoutedEventArgs e)
         {
-            Game1.Feed(2);
+            Game1.Feed(FOOD_BURGER);
         }
 
         private void BtnDrink_Click(object sender, RoutedEventArgs e)
         {
-            Game1.Feed(3);
+            Game1.Feed(FOOD_DRINK);
         }
 
         private void BtnBaseball_Click(object sender, RoutedEventArgs e)
         {
-            Game1.Play(4);
+            Game1.Play(ACTIVITY_BALL);
         }
 
         private void BtnBook_Click(object sender, RoutedEventArgs e)
         {
-            Game1.Read(5);
+            Game1.Read(ACTIVITY_READ);
+        }
+
+        public void UpdateText(Pet pet)
+        {
+            TextHP.Text = pet.Healt.ToString();
+            TextEN.Text = pet.Energy.ToString();
+            TextHYG.Text = pet.Hygene.ToString();
+            TextMD.Text = pet.Fun.ToString();
+            TextSM.Text = pet.Study.ToString();
         }
     }
 }

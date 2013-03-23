@@ -13,8 +13,8 @@ namespace MetroTama.Domain
         public string Name;
         public int UserId;
         public int TypeId;
-        public int FavoriteFoodId;
-        public int DislikedFoodId;
+        public int FavoriteFoodId; //TODO: many favorite foods
+        public int DislikedFoodId; //TODO: many disliked foods
         public int StatsId;
         public int Hungry;
         public int Healt;

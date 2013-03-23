@@ -12,10 +12,20 @@
     	<Grid>
     		<Grid.ColumnDefinitions>
     			<ColumnDefinition/>
-    			<ColumnDefinition/>
     		</Grid.ColumnDefinitions>
-    		<StackPanel Orientation="Horizontal"/>
-    		<StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock TextWrapping="Wrap"  Text="Health: " FontSize="36"/>
+                <TextBlock x:Name="TextHP" TextWrapping="Wrap"  Text="0" FontSize="36"/>
+                <TextBlock TextWrapping="Wrap"  Text="Energy: " FontSize="36"/>
+                <TextBlock x:Name="TextEN" TextWrapping="Wrap"  Text="0" FontSize="36"/>
+                <TextBlock TextWrapping="Wrap" Text="Hygene: " FontSize="36" />
+                <TextBlock x:Name="TextHYG" TextWrapping="Wrap"  Text="0" FontSize="36"/>
+                <TextBlock TextWrapping="Wrap" Text="Mood: " FontSize="36"/>
+                <TextBlock x:Name="TextMD" TextWrapping="Wrap"  Text="0" FontSize="36"/>
+                <TextBlock TextWrapping="Wrap" Text="Smarts: " FontSize="36" />
+                <TextBlock x:Name="TextSM" TextWrapping="Wrap"  Text="0" FontSize="36"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal"/>
     	</Grid>
 	</AppBar>
     <AppBar Margin="0,700,0,0">
