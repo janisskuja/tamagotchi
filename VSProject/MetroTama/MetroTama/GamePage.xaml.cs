@@ -72,5 +72,30 @@ namespace MetroTama
             GridFood.Visibility = Visibility.Collapsed;
             GridActivity.Visibility = Visibility.Collapsed;
         }
+
+        private void BtnApple_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnBurger_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnDrink_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnBaseball_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnBook_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

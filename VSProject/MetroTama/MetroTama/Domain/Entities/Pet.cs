@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MetroTama.Domain
 {
-    class Pet
+   public class Pet
     {
         public int PetId;
         public string Name;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MetroTama.Domain
 {
-    class GameObject
+    public class GameObject
     {
         public int GameObjectId;
         public bool IsHealthy;

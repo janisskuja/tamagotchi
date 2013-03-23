@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MetroTama.Domain
 {
-    class User
+    public class User
     {
         public int UserId;
         public string UserName;

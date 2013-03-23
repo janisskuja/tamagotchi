@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MetroTama.Domain;
+using MetroTama.Domain.Repository;
 
 namespace MetroTama
 {
@@ -10,6 +12,8 @@ namespace MetroTama
     {
         GraphicsDeviceManager _graphics;
         SpriteBatch _spriteBatch;
+        Pet pet;
+        PetRepository petRepository;
 
         public Game1()
         {
@@ -26,8 +30,10 @@ namespace MetroTama
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            petRepository = new PetRepository();
+            pet = petRepository.GetPet();
             base.Initialize();
+            
         }
 
         /// <summary>

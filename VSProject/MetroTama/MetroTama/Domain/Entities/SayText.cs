@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MetroTama.Domain
 {
-    class SayText
+    public class SayText
     {
         public int SayTextId;
         public string ParamName;
