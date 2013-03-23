@@ -65,8 +65,11 @@ namespace MetroTama
         protected override void Update(GameTime gameTime)
         {
             // TODO: Add your update logic here
-
-            base.Update(gameTime);
+          //  if (gameTime - lastTime > pet.stage.eattime)
+          //  {
+           //     pet.Hungry--;
+          //  }
+           // base.Update(gameTime);
         }
 
         /// <summary>
