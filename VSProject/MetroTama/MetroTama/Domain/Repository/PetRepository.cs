@@ -14,6 +14,12 @@ namespace MetroTama.Domain.Repository
             pet.Name = "Tamo";
             pet.FavoriteFoodId = 1;
             pet.DislikedFoodId = 2;
+            pet.Hungry = 100;
+            pet.Healt = 100;
+            pet.Hygene = 100;
+            pet.Fun = 100;
+            pet.Energy = 100;
+            pet.Study = 100;
             return pet;
         }
     }

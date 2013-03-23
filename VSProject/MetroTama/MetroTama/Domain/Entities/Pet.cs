@@ -15,6 +15,12 @@ namespace MetroTama.Domain
         public int FavoriteFoodId;
         public int DislikedFoodId;
         public int StatsId;
+        public int Hungry;
+        public int Healt;
+        public int Hygene;
+        public int Fun;
+        public int Energy;
+        public int Study;
 
     }
 }
