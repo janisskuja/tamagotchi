@@ -153,11 +153,18 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <Content Include="Assets\iconsBook01.png" />
-    <Content Include="Assets\iconsClean.png" />
-    <Content Include="Assets\iconsHealth01.png" />
-    <Content Include="Assets\iconsLight01.png" />
-    <Content Include="Assets\iconsPlay01.png" />
+    <Content Include="Assets\iconsSetTamag_03.png" />
+    <Content Include="Assets\iconsSetTamag_06.png" />
+    <Content Include="Assets\iconsSetTamag_08.png" />
+    <Content Include="Assets\iconsSetTamag_11.png" />
+    <Content Include="Assets\iconsSetTamag_18.png" />
+    <Content Include="Assets\iconsSetTamag_20.png" />
+    <Content Include="Assets\iconsSetTamag_21.png" />
+    <Content Include="Assets\iconsSetTamag_22.png" />
+    <Content Include="Assets\iconsSetTamag_27.png" />
+    <Content Include="Assets\iconsSetTamag_28.png" />
+    <Content Include="Assets\iconsSetTamag_30.png" />
+    <Content Include="Assets\iconsSetTamag_31.png" />
     <Content Include="Content\Graphics\Celebrate.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -165,21 +172,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Content\Graphics\player.xnb" />
-    <Content Include="Content\Graphics\iconsBook01.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Graphics\iconsClean.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Graphics\iconsHealth01.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Graphics\iconsLight01.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Graphics\iconsPlay01.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\Graphics\player.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

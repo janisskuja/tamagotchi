@@ -20,74 +20,118 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
-                <TextBlock TextWrapping="Wrap"  Text="Health: " FontSize="36"/>
-                <TextBlock x:Name="TextHP" TextWrapping="Wrap"  Text="0" FontSize="36"/>
+				<Rectangle Stroke="Black" Width="42" Height="41.5">
+					<Rectangle.Fill>
+						<ImageBrush ImageSource="Assets/iconsSetTamag_11.png"/>
+					</Rectangle.Fill>
+				</Rectangle>
+                <TextBlock x:Name="TextHP" TextWrapping="Wrap"  Text="0" FontSize="36"/>           
             </StackPanel>
             <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
-                <TextBlock TextWrapping="Wrap"  Text="Hunger: " FontSize="36"/>
+                <Rectangle Stroke="Black" Width="42" Height="41.5">
+					<Rectangle.Fill>
+						<ImageBrush ImageSource="Assets/iconsSetTamag_11.png"/>
+					</Rectangle.Fill>
+				</Rectangle>
                 <TextBlock x:Name="TextHUN" TextWrapping="Wrap"  Text="0" FontSize="36"/>
             </StackPanel>
             <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Grid.Row="0" Grid.Column="2">
-                <TextBlock TextWrapping="Wrap"  Text="Energy: " FontSize="36"/>
+                <Rectangle Stroke="Black" Width="42" Height="41.5">
+					<Rectangle.Fill>
+						<ImageBrush ImageSource="Assets/iconsSetTamag_11.png"/>
+					</Rectangle.Fill>
+				</Rectangle>
                 <TextBlock x:Name="TextEN" TextWrapping="Wrap"  Text="0" FontSize="36"/>
             </StackPanel>
             <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
-                <TextBlock TextWrapping="Wrap" Text="Hygene: " FontSize="36" />
+                <Rectangle Stroke="Black" Width="42" Height="41.5">
+					<Rectangle.Fill>
+						<ImageBrush ImageSource="Assets/iconsSetTamag_11.png"/>
+					</Rectangle.Fill>
+				</Rectangle>
                 <TextBlock x:Name="TextHYG" TextWrapping="Wrap"  Text="0" FontSize="36"/>
             </StackPanel>
             <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
-            <TextBlock TextWrapping="Wrap" Text="Mood: " FontSize="36"/>
+				<Rectangle Stroke="Black" Width="42" Height="41.5">
+					<Rectangle.Fill>
+						<ImageBrush ImageSource="Assets/iconsSetTamag_11.png"/>
+					</Rectangle.Fill>
+				</Rectangle>
                 <TextBlock x:Name="TextMD" TextWrapping="Wrap"  Text="0" FontSize="36"/>
             </StackPanel>
             <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Grid.Row="1" Grid.Column="2">
-                <TextBlock TextWrapping="Wrap" Text="Smarts: " FontSize="36" />
+                <Rectangle Stroke="Black" Width="42" Height="41.5">
+					<Rectangle.Fill>
+						<ImageBrush ImageSource="Assets/iconsSetTamag_11.png"/>
+					</Rectangle.Fill>
+				</Rectangle>
                 <TextBlock x:Name="TextSM" TextWrapping="Wrap"  Text="0" FontSize="36"/>
             </StackPanel>
         </Grid>
 	</AppBar>
-    <AppBar Margin="0,680,0,0" Height="88">
+    <AppBar Margin="0,680,0,0" Style="{StaticResource ResourceKey=TamaAppBarStyle}">
     	<Grid>
     		<Grid.ColumnDefinitions>
     			<ColumnDefinition/>
     			<ColumnDefinition/>
     		</Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <Button x:Name="BtnFeed" Content="Feed" Click="Button_Feed_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}"/>
+                <Button x:Name="BtnFeed" Click="Button_Feed_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}">
+                	<Button.Background>
+                		<ImageBrush ImageSource="Assets/iconsSetTamag_03.png"/>
+                	</Button.Background>
+                </Button>
                 <Button x:Name="BtnActivity" Click="Button_Play_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}" >
     				<Button.Background>
-    					<ImageBrush ImageSource="Assets/iconsPlay01.png"/>
+    					<ImageBrush ImageSource="Assets/iconsSetTamag_06.png"/>
     				</Button.Background>
     			</Button>
     			<Button x:Name="BtnClean" Click="Button_Clean_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}">
     				<Button.Background>
-    					<ImageBrush ImageSource="Assets/iconsClean.png"/>
+    					<ImageBrush ImageSource="Assets/iconsSetTamag_08.png"/>
     				</Button.Background>
     			</Button>
     			<Button x:Name="BtnFirstAid" Style="{StaticResource ResourceKey=TamaButtonStyle}" Click="Button_First_Aid_Click">
     				<Button.Background>
-    					<ImageBrush ImageSource="Assets/iconsHealth01.png"/>
+    					<ImageBrush ImageSource="Assets/iconsSetTamag_11.png"/>
     				</Button.Background>
     			</Button>
     			<Button x:Name="BtnLight" Style="{StaticResource ResourceKey=TamaButtonStyle}" Click="Button_Light_Click">
     				<Button.Background>
-    					<ImageBrush ImageSource="Assets/iconsLight01.png"/>
+    					<ImageBrush ImageSource="Assets/iconsSetTamag_20.png"/>
     				</Button.Background>
     			</Button>
     		</StackPanel>
     		<StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">   
                 <Grid x:Name="GridFood" Visibility="Collapsed">
                     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-    			        <Button x:Name="BtnApple" Content="Apple" Click="BtnApple_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}"/>
-                        <Button x:Name="BtnBurger" Content="Burger"  Click="BtnBurger_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}"/>
-                        <Button x:Name="BtnDrink" Content="Drink" Click="BtnDrink_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}"/>
+    			        <Button x:Name="BtnApple" Click="BtnApple_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}">
+    			        	<Button.Background>
+    			        		<ImageBrush ImageSource="Assets/iconsSetTamag_27.png"/>
+    			        	</Button.Background>
+    			        </Button>
+                        <Button x:Name="BtnBurger" Click="BtnBurger_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}">
+                        	<Button.Background>
+                        		<ImageBrush ImageSource="Assets/iconsSetTamag_28.png"/>
+                        	</Button.Background>
+                        </Button>
+                        <Button x:Name="BtnDrink" Content="Drink" Click="BtnDrink_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}">
+                        	<Button.Background>
+                        		<ImageBrush ImageSource="Assets/iconsSetTamag_21.png"/>
+                        	</Button.Background>
+                        </Button>
                     </StackPanel>
                 </Grid>
                 <Grid x:Name="GridActivity" Visibility="Collapsed">
                     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                        <Button x:Name="BtnBaseball" Content="Ball" Click="BtnBaseball_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}"/>
+                        <Button x:Name="BtnBaseball" Click="BtnBaseball_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}">
+                        	<Button.Background>
+                        		<ImageBrush ImageSource="Assets/iconsSetTamag_22.png"/>
+                        	</Button.Background>
+                        </Button>
                         <Button x:Name="BtnBook" Click="BtnBook_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}">
                         	<Button.Background>
-                        		<ImageBrush ImageSource="Assets/iconsBook01.png"/>
+                        		<ImageBrush ImageSource="Assets/iconsSetTamag_18.png"/>
                         	</Button.Background>
                         </Button>
                     </StackPanel>
