@@ -98,7 +98,7 @@ namespace MetroTama.Domain.Repository
                     {
                         gameObject.IsHealthy = true;
                         gameObject.HungryEffect = 0;
-                        gameObject.HealthEffect = 30;
+                        gameObject.HealthEffect = 60;
                         gameObject.HygeneEffect = 0;
                         gameObject.FunEffect = 0;
                         gameObject.EnergyEffect = 0;

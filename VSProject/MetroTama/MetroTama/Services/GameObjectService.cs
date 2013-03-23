@@ -12,6 +12,7 @@ namespace MetroTama.Services
     {
         private static int MAX_VALUE = 100;
         private static int MIN_VALUE = 0;
+        private static int SICK_VALUE = 40;
 
         public void UseObject(Pet temp_pet, int gameObjectId)
         {
@@ -44,6 +45,11 @@ namespace MetroTama.Services
         private static void UpdateHygene(Pet temp_pet, GameObject temp_GameObject)
         {
             temp_pet.Hygene += temp_GameObject.HygeneEffect;
+
+            if (temp_pet.Hygene < SICK_VALUE)
+            {
+                temp_pet.isSick = true;
+            }
 
             if (temp_pet.Hygene > MAX_VALUE)
             {
@@ -89,13 +95,25 @@ namespace MetroTama.Services
         private static void UpdateHealth(Pet temp_pet, GameObject temp_GameObject)
         {
             //Update Health
-            if (temp_GameObject.IsHealthy)
+            if (temp_GameObject.GameObjectId == 7)
             {
-                temp_pet.Healt += temp_GameObject.HealthEffect;
+                temp_pet.Healt = temp_GameObject.HealthEffect;
             }
-            else if (!temp_GameObject.IsHealthy)
+            else 
             {
-                temp_pet.Healt -= temp_GameObject.HealthEffect;
+                if (temp_GameObject.IsHealthy)
+                {
+                    temp_pet.Healt += temp_GameObject.HealthEffect;
+                }
+                else if (!temp_GameObject.IsHealthy)
+                {
+                    temp_pet.Healt -= temp_GameObject.HealthEffect;
+                }
+            }
+
+            if (temp_pet.Healt < SICK_VALUE)
+            {
+                temp_pet.isSick = true;
             }
 
             if (temp_pet.Healt > MAX_VALUE)

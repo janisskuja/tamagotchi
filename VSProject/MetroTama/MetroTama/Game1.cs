@@ -134,9 +134,16 @@ namespace MetroTama
 
         public void Feed(int foodId)
         {
-            //TODO: insert eating animation
-            graphicsEnum = GraphicsEnum.Celebrate;
-            gameObjectService.UseObject(pet, foodId);
+            if (pet.Hungry < MAX_STAT)
+            {
+                //TODO: insert eating animation
+                graphicsEnum = GraphicsEnum.Player;
+                gameObjectService.UseObject(pet, foodId);
+            }
+            else
+            {
+                //Show message: "I don't want to play!"
+            }
         }
 
         public void Light()
@@ -148,7 +155,7 @@ namespace MetroTama
 
         public void Play(int gameId)
         {
-            if (pet.Fun != MAX_STAT)
+            if (pet.Fun < MAX_STAT)
             {
                 //TODO: add ball animation
 
@@ -156,14 +163,14 @@ namespace MetroTama
             }
             else
             {
-                //TODO: add NO! animation
+                //Show message: "I don't want to play!"
             }
 
         }
 
         public void Read(int bookId)
         {
-            if (pet.Study != MAX_STAT)
+            if (pet.Study < MAX_STAT)
             {
                 //TODO: add read animation
 
@@ -171,20 +178,34 @@ namespace MetroTama
             }
             else
             {
-                //TODO: add NO! animation
+                //Show message: "I don't want to study!"
             }
         }
 
-        internal void Clean(int cleanObjectId)
+        public void Clean(int cleanObjectId)
         {
-            //TODO: add clean animation
-            gameObjectService.UseObject(pet, cleanObjectId);
+            if (pet.Hygene < MAX_STAT)
+            {
+                //TODO: add clean animation
+                gameObjectService.UseObject(pet, cleanObjectId);
+            }
+            else 
+            {
+                //Show message: "Can't clean <petname>, because he is not dirty!"
+            }
         }
 
-        internal void FirstAid(int medicObjectId)
+        public void FirstAid(int medicObjectId)
         {
-            //TODO: add first aid animation
-            gameObjectService.UseObject(pet, medicObjectId);
+            if (pet.isSick)
+            {
+                //TODO: add first aid animation
+                gameObjectService.UseObject(pet, medicObjectId);
+            }
+            else
+            {
+                //Show message: "Can't use "First Aid", because <petname> is not sick!"
+            }
         }
     }
 }

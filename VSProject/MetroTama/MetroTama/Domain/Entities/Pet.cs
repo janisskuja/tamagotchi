@@ -27,7 +27,7 @@ namespace MetroTama.Domain
         public int TypeId;
         public int FavoriteFoodId; //TODO: many favorite foods
         public int DislikedFoodId; //TODO: many disliked foods
-        public int StatsId;
+        public bool isSick;
         public int Hungry;
         public int Healt;
         public int Hygene;

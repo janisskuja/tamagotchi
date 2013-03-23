@@ -27,6 +27,7 @@ namespace MetroTama.Domain.Repository
             pet.Energy = 100;
             pet.Study = 0;
             pet.Stage = temp_stage;
+            pet.isSick = false;
             List<GraphicsEnum> animations = new List<GraphicsEnum>();
             animations.Add(GraphicsEnum.Celebrate);
             animations.Add(GraphicsEnum.Player);
