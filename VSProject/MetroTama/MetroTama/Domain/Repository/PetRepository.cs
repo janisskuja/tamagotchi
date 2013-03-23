@@ -9,6 +9,9 @@ namespace MetroTama.Domain.Repository
     class PetRepository
     {
         public Pet GetPet() {
+            StageRepository temp_StageRepository = new StageRepository();
+            Stage temp_stage = temp_StageRepository.GetStage();
+
             Pet pet = new Pet();
             pet.PetId = 1;
             pet.Name = "Tamo";
@@ -20,6 +23,7 @@ namespace MetroTama.Domain.Repository
             pet.Fun = 100;
             pet.Energy = 100;
             pet.Study = 100;
+            pet.Stage = temp_stage;
             return pet;
         }
     }

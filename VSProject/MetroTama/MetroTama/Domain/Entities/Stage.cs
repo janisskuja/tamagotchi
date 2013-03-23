@@ -10,12 +10,13 @@ namespace MetroTama.Domain
     {
         public int StageId;
         public string Name;
-        public int PoopTime;
-        public int EatTime;
-        public int EnergyTime;
-        public int StudyTime;
-        public int DirtyTime;
-        public int FunTime;
+        public TimeSpan PoopTime;
+        public TimeSpan EatTime;
+        public TimeSpan EnergyTime;
+        public TimeSpan StudyTime;
+        public TimeSpan DirtyTime;
+        public TimeSpan FunTime;
+        public TimeSpan HealtTime;
         public int AgeFrom;
         public int AgeTo;
     }
