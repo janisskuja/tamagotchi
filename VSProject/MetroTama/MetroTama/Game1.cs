@@ -30,7 +30,8 @@ namespace MetroTama
         float time;
         // duration of time to show each frame
         // an index of the current frame being shown
-        int frameIndex;
+        int frameIndexX;
+        int frameIndexY = 1;
 
         public Game1()
         {
@@ -114,16 +115,21 @@ namespace MetroTama
             while (time > animation.frameTime)
             {
                 // Play the next frame in the SpriteSheet
-                frameIndex++;
+                frameIndexX++;
                 // reset elapsedTIme
                 time = 0f;
             }
-            if (frameIndex > animationDataRepo.getAnimationData(graphicsEnum).totalFrames)
+            if (frameIndexX > animationDataRepo.getAnimationData(graphicsEnum).totalXFrames)
             {
-                frameIndex = 1;
+                frameIndexX = 1;
+                frameIndexY++;
+            }
+            if (frameIndexY > animationDataRepo.getAnimationData(graphicsEnum).totalYFrames)
+            {
+                frameIndexY = 1;
                 graphicsEnum = GraphicsEnum.IdleAnimation;
             }
-            Rectangle source = new Rectangle(frameIndex * animation.frameWidth, 0, animation.frameWidth, animation.frameHeight);
+            Rectangle source = new Rectangle(frameIndexX * animation.frameWidth, 0, animation.frameWidth, frameIndexY * animation.frameHeight);
             Vector2 position = new Vector2(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height / 2);
             Vector2 origin = new Vector2(animation.frameWidth / 2.0f, animation.frameHeight);
             _spriteBatch.Begin();

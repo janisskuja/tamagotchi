@@ -14,17 +14,18 @@ namespace MetroTama.Domain.Repository
         Dictionary<GraphicsEnum, AnimationData> animationDataRepo;
         public AnimationDataRepository() { 
             animationDataRepo = new Dictionary<GraphicsEnum,AnimationData>();
-            animationDataRepo.Add(GraphicsEnum.Celebrate, getAnimationData(64, 64, 10, 0.1f, GraphicsEnum.Celebrate));
-            animationDataRepo.Add(GraphicsEnum.Player, getAnimationData(64, 64, 10, 0.1f, GraphicsEnum.Player));
-            animationDataRepo.Add(GraphicsEnum.IdleAnimation, getAnimationData(260, 360, 4, 0.1f, GraphicsEnum.IdleAnimation));
+            animationDataRepo.Add(GraphicsEnum.Celebrate, getAnimationData(64, 64, 10, 1, 0.1f, GraphicsEnum.Celebrate));
+            animationDataRepo.Add(GraphicsEnum.Player, getAnimationData(64, 64, 10, 1, 0.1f, GraphicsEnum.Player));
+            animationDataRepo.Add(GraphicsEnum.IdleAnimation, getAnimationData(260, 360, 4, 1, 0.3f, GraphicsEnum.IdleAnimation));
         }
 
-        private static AnimationData getAnimationData(int frameHeight, int frameWidth, int totalFrames, float frameTime, GraphicsEnum graphicsEnum)
+        private static AnimationData getAnimationData(int frameHeight, int frameWidth, int totalXFrames, int totalYFrames, float frameTime, GraphicsEnum graphicsEnum)
         {
             AnimationData animationData = new AnimationData();
             animationData.frameHeight = frameHeight;
             animationData.frameWidth = frameWidth;
-            animationData.totalFrames = totalFrames;
+            animationData.totalXFrames = totalXFrames;
+            animationData.totalYFrames = totalYFrames;
             animationData.frameTime = frameTime;
             animationData.graphicsEnum = graphicsEnum;
             return animationData;

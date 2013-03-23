@@ -22,7 +22,8 @@ namespace MetroTama.Services.Animation
         //public Texture2D spriteSheet;
 
         public float frameTime; // duration of time to show each frame
-        public int totalFrames; // total number of frames in our spritesheet
+        public int totalXFrames; // total number of frames in our spritesheet
+        public int totalYFrames; // total number of frames in our spritesheet
         public int frameHeight; // define the size of our animation frame
         public int frameWidth;
         public Texture2D spriteSheet;
