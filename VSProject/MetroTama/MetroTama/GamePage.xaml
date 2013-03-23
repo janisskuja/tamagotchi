@@ -52,7 +52,7 @@
     			<ColumnDefinition/>
     		</Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-    			<Button x:Name="BtnFeed" Content="Feed" Width="83" Height="84" Click="Button_Feed_Click"/>
+                <Button x:Name="BtnFeed" Content="Feed" Width="83" Height="84" Click="Button_Feed_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}"/>
     			<Button x:Name="BtnActivity" Width="83" Click="Button_Play_Click" Height="84">
     				<Button.Background>
     					<ImageBrush ImageSource="Assets/iconsPlay01.png"/>
