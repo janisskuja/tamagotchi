@@ -131,24 +131,6 @@ namespace MetroTama
             gameObjectService.UseObject(pet, foodId);
         }
 
-        public void Play()
-        {
-            //TODO: add playing logic
-            throw new System.NotImplementedException();
-        }
-
-        public void Clean()
-        {
-            //TODO: add clean logic
-            throw new System.NotImplementedException();
-        }
-
-        public void FirstAid()
-        {
-            //TODO: add FirstAid logic
-            throw new System.NotImplementedException();
-        }
-
         public void Light()
         {
             //TODO: insert light animation here
@@ -163,6 +145,16 @@ namespace MetroTama
         }
 
         public void Read(int bookId)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        internal void Clean(int CLEAN_OBJECT)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        internal void FirstAid(int MEDIC_OBJECT)
         {
             throw new System.NotImplementedException();
         }

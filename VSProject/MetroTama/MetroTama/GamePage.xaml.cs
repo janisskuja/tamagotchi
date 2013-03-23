@@ -20,6 +20,8 @@ namespace MetroTama
         private static int FOOD_DRINK = 3;
         private static int ACTIVITY_BALL = 4;
         private static int ACTIVITY_READ = 5;
+        private static int CLEAN_OBJECT = 6;
+        private static int MEDIC_OBJECT = 7;
 
         public GamePage(string launchArguments)
         {
@@ -43,12 +45,12 @@ namespace MetroTama
 
         private void Button_Clean_Click(object sender, RoutedEventArgs e)
         {
-            _game.Clean();
+            _game.Clean(CLEAN_OBJECT);
         }
 
         private void Button_First_Aid_Click(object sender, RoutedEventArgs e)
         {
-            _game.FirstAid();
+            _game.FirstAid(MEDIC_OBJECT);
         }
 
         private void Button_Light_Click(object sender, RoutedEventArgs e)
