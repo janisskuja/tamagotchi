@@ -150,6 +150,9 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Content\Graphics\Celebrate.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="MetroTama_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -173,7 +176,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\Graphics\" />
     <Folder Include="Content\Sounds\" />
     <Folder Include="Content\Sound\" />
     <Folder Include="Internal\" />
