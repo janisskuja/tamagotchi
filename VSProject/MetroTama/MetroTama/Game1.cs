@@ -73,7 +73,44 @@ namespace MetroTama
 
             // TODO: Add your drawing code here
 
+
             base.Draw(gameTime);
         }
+
+        internal static void Feed()
+        {
+            //TODO: write feed logic
+            throw new System.NotImplementedException();
+        }
+
+        internal static void Play()
+        {
+            //TODO: add playing logic
+            throw new System.NotImplementedException();
+        }
+
+        internal static void Clean()
+        {
+            //TODO: add clean logic
+            throw new System.NotImplementedException();
+        }
+
+        internal static void FirstAid()
+        {
+            //TODO: add FirstAid logic
+            throw new System.NotImplementedException();
+        }
+
+        internal static void Light()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        internal static void Read()
+        {
+            //TODO: add read logic
+            throw new System.NotImplementedException();
+        }
+
     }
 }

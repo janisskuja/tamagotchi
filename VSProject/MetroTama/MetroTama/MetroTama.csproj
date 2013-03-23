@@ -101,8 +101,9 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Reference Include="MonoGame.Framework.Windows8">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files\MonoGame\v3.0\Assemblies\Windows8\MonoGame.Framework.Windows8.dll</HintPath>
+    <Reference Include="MonoGame.Framework, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX">
       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.dll</HintPath>
@@ -165,7 +166,10 @@
   <ItemGroup>
     <Folder Include="Content\Graphics\" />
     <Folder Include="Content\Sounds\" />
+    <Folder Include="Content\Sound\" />
+    <Folder Include="Domain\" />
     <Folder Include="Internal\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>

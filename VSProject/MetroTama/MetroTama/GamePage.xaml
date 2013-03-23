@@ -9,5 +9,22 @@
 
     <Grid>
     </Grid>
-    
+    <AppBar Margin="0,700,0,0">
+    	<Grid>
+    		<Grid.ColumnDefinitions>
+    			<ColumnDefinition/>
+    			<ColumnDefinition/>
+    		</Grid.ColumnDefinitions>
+    		<StackPanel Orientation="Horizontal">
+    			<Button Content="Feed" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="80" Click="Button_Feed_Click"/>
+    			<Button Content="Play" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="80" Click="Button_Play_Click"/>
+                <Button Content="Read" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="80" Click="Button_Read_Click"/>
+    			<Button Content="Clean" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="80" Click="Button_Clean_Click"/>
+    			<Button Content="FirstAid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="80" Click="Button_First_Aid_Click"/>
+    			<Button Content="Light" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="80" Click="Button_Light_Click"/>
+    		</StackPanel>
+    		<StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal"/>
+    	</Grid>
+    </AppBar>
+
 </SwapChainBackgroundPanel>
