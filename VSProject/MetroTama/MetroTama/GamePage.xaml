@@ -12,48 +12,84 @@
     	<Grid>
     		<Grid.ColumnDefinitions>
     			<ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
     		</Grid.ColumnDefinitions>
-            <StackPanel Orientation="Horizontal">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
                 <TextBlock TextWrapping="Wrap"  Text="Health: " FontSize="36"/>
                 <TextBlock x:Name="TextHP" TextWrapping="Wrap"  Text="0" FontSize="36"/>
-                <TextBlock TextWrapping="Wrap"  Text="Hunger: " FontSize="36"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+            <TextBlock TextWrapping="Wrap"  Text="Hunger: " FontSize="36"/>
                 <TextBlock x:Name="TextHUN" TextWrapping="Wrap"  Text="0" FontSize="36"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2">
                 <TextBlock TextWrapping="Wrap"  Text="Energy: " FontSize="36"/>
                 <TextBlock x:Name="TextEN" TextWrapping="Wrap"  Text="0" FontSize="36"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
                 <TextBlock TextWrapping="Wrap" Text="Hygene: " FontSize="36" />
                 <TextBlock x:Name="TextHYG" TextWrapping="Wrap"  Text="0" FontSize="36"/>
-                <TextBlock TextWrapping="Wrap" Text="Mood: " FontSize="36"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+            <TextBlock TextWrapping="Wrap" Text="Mood: " FontSize="36"/>
                 <TextBlock x:Name="TextMD" TextWrapping="Wrap"  Text="0" FontSize="36"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2">
                 <TextBlock TextWrapping="Wrap" Text="Smarts: " FontSize="36" />
                 <TextBlock x:Name="TextSM" TextWrapping="Wrap"  Text="0" FontSize="36"/>
             </StackPanel>
         </Grid>
 	</AppBar>
-    <AppBar Margin="0,700,0,0">
+    <AppBar Margin="0,680,0,0" Height="88">
     	<Grid>
     		<Grid.ColumnDefinitions>
     			<ColumnDefinition/>
     			<ColumnDefinition/>
     		</Grid.ColumnDefinitions>
     		<StackPanel Orientation="Horizontal">
-    			<Button x:Name="BtnFeed" Content="Feed" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="80" Click="Button_Feed_Click"/>
-    			<Button x:Name="BtnActivity" Content="Activity" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="80" Click="Button_Play_Click"/>
-    			<Button x:Name="BtnClean" Content="Clean" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="80" Click="Button_Clean_Click"/>
-    			<Button x:Name="BtnFirstAid" Content="FirstAid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="80" Click="Button_First_Aid_Click"/>
-    			<Button x:Name="BtnLight" Content="Light" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="80" Click="Button_Light_Click"/>
+    			<Button x:Name="BtnFeed" Content="Feed" Width="83" Height="84" Click="Button_Feed_Click"/>
+    			<Button x:Name="BtnActivity" Width="83" Click="Button_Play_Click" Height="84">
+    				<Button.Background>
+    					<ImageBrush ImageSource="Assets/iconsPlay01.png"/>
+    				</Button.Background>
+    			</Button>
+    			<Button x:Name="BtnClean" Click="Button_Clean_Click" Height="84" Width="83">
+    				<Button.Background>
+    					<ImageBrush ImageSource="Assets/iconsClean.png"/>
+    				</Button.Background>
+    			</Button>
+    			<Button x:Name="BtnFirstAid" Width="83" Height="84" Click="Button_First_Aid_Click">
+    				<Button.Background>
+    					<ImageBrush ImageSource="Assets/iconsHealth01.png"/>
+    				</Button.Background>
+    			</Button>
+    			<Button x:Name="BtnLight" Width="83" Height="84" Click="Button_Light_Click">
+    				<Button.Background>
+    					<ImageBrush ImageSource="Assets/iconsLight01.png"/>
+    				</Button.Background>
+    			</Button>
     		</StackPanel>
     		<StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">   
                 <Grid x:Name="GridFood" Visibility="Collapsed">
                     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-    			        <Button x:Name="BtnApple" Content="Apple" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="BtnApple_Click"/>
-                        <Button x:Name="BtnBurger" Content="Burger" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="BtnBurger_Click"/>
-                        <Button x:Name="BtnDrink" Content="Drink" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="BtnDrink_Click"/>
+    			        <Button x:Name="BtnApple" Content="Apple" Click="BtnApple_Click" Width="83" Height="84"/>
+                        <Button x:Name="BtnBurger" Content="Burger"  Click="BtnBurger_Click" Width="83" Height="84"/>
+                        <Button x:Name="BtnDrink" Content="Drink" Click="BtnDrink_Click" Width="83" Height="84"/>
                     </StackPanel>
                 </Grid>
                 <Grid x:Name="GridActivity" Visibility="Collapsed">
                     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                        <Button x:Name="BtnBaseball" Content="Baseball" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="BtnBaseball_Click"/>
-                        <Button x:Name="BtnBook" Content="Book" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="BtnBook_Click"/>
+                        <Button x:Name="BtnBaseball" Content="Ball" Click="BtnBaseball_Click" Width="83" Height="84"/>
+                        <Button x:Name="BtnBook" Click="BtnBook_Click" Width="83" Height="84">
+                        	<Button.Background>
+                        		<ImageBrush ImageSource="Assets/iconsBook01.png"/>
+                        	</Button.Background>
+                        </Button>
                     </StackPanel>
                 </Grid>    
     		</StackPanel>

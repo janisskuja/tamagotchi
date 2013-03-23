@@ -10,8 +10,8 @@ namespace MetroTama.Domain
     {
         public int SayTextId;
         public string ParamName;
-        public string ParamFrom;
-        public string ParamTo;
+        public int ParamFrom;
+        public int ParamTo;
         public string Text;
         public int StatusId;
 

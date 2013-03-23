@@ -12,6 +12,9 @@ namespace MetroTama
     /// </summary>
     public class Game1 : Game
     {
+        // Maximum stat value (ex., Health)
+        private static int MAX_STAT = 100;
+
         GraphicsDeviceManager _graphics;
         SpriteBatch _spriteBatch;
         public Pet pet;
@@ -133,14 +136,31 @@ namespace MetroTama
 
         public void Play(int gameId)
         {
-            //TODO: add ball animation
-            gameObjectService.UseObject(pet, gameId);
+            if (pet.Fun != MAX_STAT)
+            {
+                //TODO: add ball animation
+
+                gameObjectService.UseObject(pet, gameId);
+            }
+            else
+            {
+                //TODO: add NO! animation
+            }
+
         }
 
         public void Read(int bookId)
         {
-            //TODO: add read animation
-            gameObjectService.UseObject(pet, bookId);
+            if (pet.Study != MAX_STAT)
+            {
+                //TODO: add read animation
+
+                gameObjectService.UseObject(pet, bookId);
+            }
+            else
+            {
+                //TODO: add NO! animation
+            }
         }
 
         internal void Clean(int cleanObjectId)
