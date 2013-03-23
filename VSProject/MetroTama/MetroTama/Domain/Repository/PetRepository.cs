@@ -23,7 +23,7 @@ namespace MetroTama.Domain.Repository
             pet.Hygene = 100;
             pet.Fun = 100;
             pet.Energy = 100;
-            pet.Study = 100;
+            pet.Study = 0;
             pet.Stage = temp_stage;
             pet.animationData = new Services.Animation.AnimationData();
             return pet;
