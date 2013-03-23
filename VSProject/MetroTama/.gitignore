@@ -5,5 +5,4 @@ $ cat .gitignore
 
 # Use wildcards as well
 *~
-*.*.suo
 MetroTama/*.csproj
