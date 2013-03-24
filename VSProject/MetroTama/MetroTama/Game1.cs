@@ -25,6 +25,7 @@ namespace MetroTama
         AnimationDataRepository animationDataRepo;
         GameObjectService gameObjectService;
         private GraphicsEnum graphicsEnum;
+        Color bgColor;
 
         // the elapsed amount of time the frame has been shown for
         float time;
@@ -57,6 +58,7 @@ namespace MetroTama
             pet = petRepository.GetPet();
             gameObjectService = new GameObjectService();
             animationDataRepo = new AnimationDataRepository();
+            bgColor = new Color(134, 185, 288);
             base.Initialize();
             
         }
@@ -108,7 +110,8 @@ namespace MetroTama
         protected override void Draw(GameTime gameTime)
         {
             AnimationData animation = animationDataRepo.getAnimationData(graphicsEnum);
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            GraphicsDevice.Clear(bgColor);
 
             // TODO: Add your drawing code here
             time += (float)gameTime.ElapsedGameTime.TotalSeconds;

@@ -31,6 +31,13 @@ namespace MetroTama
             _game = XamlGame<Game1>.Create(launchArguments, Window.Current.CoreWindow, this);
 
             _game.SetXAMLPage(this);
+
+            ProgressHP.Maximum = 100;
+            ProgressEN.Maximum = 100;
+            ProgressHYG.Maximum = 100;
+            ProgressHUN.Maximum = 100;
+            ProgressMD.Maximum = 100;
+            ProgressSM.Maximum = 100;
         }
 
         private void Button_Feed_Click(object sender, RoutedEventArgs e)
@@ -108,12 +115,20 @@ namespace MetroTama
 
         public void UpdateText(Pet pet)
         {
-            ProgressHP.Value = pet.Healt;
-            ProgressEN.Value = pet.Energy;
-            ProgressHYG.Value = pet.Hygene;
-            ProgressMD.Value = pet.Fun;
-            ProgressSM.Value = pet.Study;
-            ProgressHUN.Value = pet.Hungry;
+            
+            //ProgressHP.Value = pet.Healt;
+            //ProgressEN.Value = pet.Energy;
+            //ProgressHYG.Value = pet.Hygene;
+            //ProgressMD.Value = pet.Fun;
+            //ProgressSM.Value = pet.Study;
+            //ProgressHUN.Value = pet.Hungry;
+            TextHP.Text = pet.Healt.ToString();
+            TextEN.Text = pet.Energy.ToString();
+            TextHYG.Text = pet.Hygene.ToString();
+            TextMD.Text = pet.Fun.ToString();
+            TextSM.Text = pet.Study.ToString();
+            TextHUN.Text = pet.Hungry.ToString();
+
         }
     }
 }

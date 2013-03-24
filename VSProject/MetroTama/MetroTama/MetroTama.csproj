@@ -172,6 +172,8 @@
     <Content Include="Content\Graphics\idleAnimation.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Content\Graphics\bgDetail.xnb" />
+    <None Include="Content\Graphics\bgGradient.xnb" />
     <None Include="Content\Graphics\player.xnb" />
     <Content Include="Content\Graphics\player.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
