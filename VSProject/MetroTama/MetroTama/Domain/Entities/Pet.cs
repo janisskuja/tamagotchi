@@ -59,38 +59,55 @@ namespace MetroTama.Domain
 
         }
 
+        public void UpdateFromBackgroud()
+        {
+            UpdateEnergy();
+            UpdateHungry();
+            UpdateHygene();
+            UpdateFun();
+            UpdateStudy();
+            UpdateHealth();
+        }
+
         private void CheckHealth(GameTime temp_gameTime)
         {
             if (temp_gameTime.TotalGameTime.Subtract(Healt_LastUpdateTime) > Stage.HealtTime)
             {
-                if (Healt > ZERRO_VALUE)
+                UpdateHealth();
+                Healt_LastUpdateTime = temp_gameTime.TotalGameTime;
+            }
+           
+        }
+
+        private void UpdateHealth()
+        {
+            if (Healt > ZERRO_VALUE)
+            {
+                if (!isSleeping)
                 {
-                    if (!isSleeping)
+                    if ((Energy < 50) || (Hungry < 50) || (Hygene < 50) || (Fun < 50))
                     {
-                        if ((Energy < 50) || (Hungry < 50) || (Hygene < 50) || (Fun < 50))
-                        {
-                            Healt -= HEALT_DECREASE;
-                        }
+                        Healt -= HEALT_DECREASE;
                     }
-                    else
+                }
+                else
+                {
+                    if ((Energy < 50) || (Hungry < 50) || (Hygene < 50) || (Fun < 50))
                     {
-                        if ((Energy < 50) || (Hungry < 50) || (Hygene < 50) || (Fun < 50))
-                        {
-                            Healt -= HEALT_DECREASE/2;
-                        }
+                        Healt -= HEALT_DECREASE / 2;
                     }
-                    Healt_LastUpdateTime = temp_gameTime.TotalGameTime;
                 }
 
-                if (Healt > MAX_VALUE)
-                {
-                    Healt = MAX_VALUE;
-                }
+            }
 
-                if (Healt < ZERRO_VALUE)
-                {
-                    Healt = 0;
-                }
+            if (Healt > MAX_VALUE)
+            {
+                Healt = MAX_VALUE;
+            }
+
+            if (Healt < ZERRO_VALUE)
+            {
+                Healt = 0;
             }
         }
 
@@ -107,31 +124,36 @@ namespace MetroTama.Domain
         {
             if (temp_gameTime.TotalGameTime.Subtract(Study_LastUpdateTime) > Stage.StudyTime)
             {
-                if (!isSleeping)
-                {
-                    if (Study > ZERRO_VALUE)
-                    {
-                        Study -= STUDY_DECREASE;
-                        Study_LastUpdateTime = temp_gameTime.TotalGameTime;
-                    }
-                }
-                else
-                {
-                    if (Study > ZERRO_VALUE)
-                    {
-                        Study -= STUDY_DECREASE/2;
-                        Study_LastUpdateTime = temp_gameTime.TotalGameTime;
-                    }
-                }
+                UpdateStudy();
+                Study_LastUpdateTime = temp_gameTime.TotalGameTime;
+            }
+        }
 
-                if (Study < ZERRO_VALUE)
+        private void UpdateStudy()
+        {
+            if (!isSleeping)
+            {
+                if (Study > ZERRO_VALUE)
                 {
-                    Study = 0;
+                    Study -= STUDY_DECREASE;
+
                 }
-                if (Study > MAX_VALUE)
+            }
+            else
+            {
+                if (Study > ZERRO_VALUE)
                 {
-                    Study = MAX_VALUE;
+                    Study -= STUDY_DECREASE / 2;
                 }
+            }
+
+            if (Study < ZERRO_VALUE)
+            {
+                Study = 0;
+            }
+            if (Study > MAX_VALUE)
+            {
+                Study = MAX_VALUE;
             }
         }
 
@@ -139,31 +161,37 @@ namespace MetroTama.Domain
         {
             if (temp_gameTime.TotalGameTime.Subtract(Fun_LastUpdateTime) > Stage.FunTime)
             {
-                if (!isSleeping)
-                {
-                    if (Fun > ZERRO_VALUE)
-                    {
-                        Fun -= FUN_DECREASE;
-                        Fun_LastUpdateTime = temp_gameTime.TotalGameTime;
-                    }
-                }
-                else
-                {
-                    if (Fun > ZERRO_VALUE)
-                    {
-                        Fun -= FUN_DECREASE/2;
-                        Fun_LastUpdateTime = temp_gameTime.TotalGameTime;
-                    }
-                }
-                if (Fun < ZERRO_VALUE)
-                {
-                    Fun = 0;
-                }
+                UpdateFun();
+                Fun_LastUpdateTime = temp_gameTime.TotalGameTime;
+            }
+        }
 
-                if (Fun > MAX_VALUE)
+        private void UpdateFun()
+        {
+            if (!isSleeping)
+            {
+                if (Fun > ZERRO_VALUE)
                 {
-                    Fun = MAX_VALUE;
+                    Fun -= FUN_DECREASE;
+
                 }
+            }
+            else
+            {
+                if (Fun > ZERRO_VALUE)
+                {
+                    Fun -= FUN_DECREASE / 2;
+
+                }
+            }
+            if (Fun < ZERRO_VALUE)
+            {
+                Fun = 0;
+            }
+
+            if (Fun > MAX_VALUE)
+            {
+                Fun = MAX_VALUE;
             }
         }
 
@@ -171,30 +199,36 @@ namespace MetroTama.Domain
         {
             if (temp_gameTime.TotalGameTime.Subtract(Hygene_LastUpdateTime) > Stage.DirtyTime)
             {
-                if (!isSleeping)
+                UpdateHygene();
+                Hygene_LastUpdateTime = temp_gameTime.TotalGameTime;
+            }
+        }
+
+        private void UpdateHygene()
+        {
+            if (!isSleeping)
+            {
+                if (Hygene > ZERRO_VALUE)
                 {
-                    if (Hygene > ZERRO_VALUE)
-                    {
-                        Hygene -= HYGENE_DECREASE;
-                        Hygene_LastUpdateTime = temp_gameTime.TotalGameTime;
-                    }
+                    Hygene -= HYGENE_DECREASE;
+
                 }
-                else
+            }
+            else
+            {
+                if (Hygene > ZERRO_VALUE)
                 {
-                    if (Hygene > ZERRO_VALUE)
-                    {
-                        Hygene -= HYGENE_DECREASE/2;
-                        Hygene_LastUpdateTime = temp_gameTime.TotalGameTime;
-                    }
+                    Hygene -= HYGENE_DECREASE / 2;
+
                 }
-                if (Hygene < ZERRO_VALUE)
-                {
-                    Hygene = 0;
-                }
-                if (Hygene > MAX_VALUE)
-                {
-                    Hygene = MAX_VALUE;
-                }
+            }
+            if (Hygene < ZERRO_VALUE)
+            {
+                Hygene = 0;
+            }
+            if (Hygene > MAX_VALUE)
+            {
+                Hygene = MAX_VALUE;
             }
         }
 
@@ -202,26 +236,32 @@ namespace MetroTama.Domain
         {
             if (temp_gameTime.TotalGameTime.Subtract(Energy_LastUpdateTime) > Stage.EnergyTime)
             {
-                if (Energy > ZERRO_VALUE)
+                UpdateEnergy();
+                Energy_LastUpdateTime = temp_gameTime.TotalGameTime;
+            }
+        }
+
+        private void UpdateEnergy()
+        {
+            if (Energy > ZERRO_VALUE)
+            {
+                if (isSleeping)
                 {
-                    if (isSleeping)
-                    {
-                        Energy += ENERGY_DECREASE;
-                    }
-                    else
-                    {
-                        Energy -= ENERGY_DECREASE;
-                    }
-                    Energy_LastUpdateTime = temp_gameTime.TotalGameTime;
+                    Energy += ENERGY_DECREASE;
                 }
-                if (Energy < ZERRO_VALUE)
+                else
                 {
-                    Energy = 0;
+                    Energy -= ENERGY_DECREASE;
                 }
-                if (Energy > MAX_VALUE)
-                {
-                    Energy = MAX_VALUE;
-                }
+
+            }
+            if (Energy < ZERRO_VALUE)
+            {
+                Energy = 0;
+            }
+            if (Energy > MAX_VALUE)
+            {
+                Energy = MAX_VALUE;
             }
         }
 
@@ -229,30 +269,36 @@ namespace MetroTama.Domain
         {
             if (temp_gameTime.TotalGameTime.Subtract(Hungry_LastUpdateTime) > Stage.EatTime)
             {
-                if (!isSleeping)
+                UpdateHungry();
+                Hungry_LastUpdateTime = temp_gameTime.TotalGameTime;
+            }
+        }
+
+        private void UpdateHungry()
+        {
+            if (!isSleeping)
+            {
+                if (Hungry > ZERRO_VALUE)
                 {
-                    if (Hungry > ZERRO_VALUE)
-                    {
-                        Hungry -= HUNGRY_DECREASE;
-                        Hungry_LastUpdateTime = temp_gameTime.TotalGameTime;
-                    }
+                    Hungry -= HUNGRY_DECREASE;
+
                 }
-                else
+            }
+            else
+            {
+                if (Hungry > ZERRO_VALUE)
                 {
-                    if (Hungry > ZERRO_VALUE)
-                    {
-                        Hungry -= HUNGRY_DECREASE/2;
-                        Hungry_LastUpdateTime = temp_gameTime.TotalGameTime;
-                    }
+                    Hungry -= HUNGRY_DECREASE / 2;
+
                 }
-                if (Hungry < ZERRO_VALUE)
-                {
-                    Hungry = 0;
-                }
-                if (Hungry > MAX_VALUE)
-                {
-                    Hungry = MAX_VALUE;
-                }
+            }
+            if (Hungry < ZERRO_VALUE)
+            {
+                Hungry = 0;
+            }
+            if (Hungry > MAX_VALUE)
+            {
+                Hungry = MAX_VALUE;
             }
         }
     }

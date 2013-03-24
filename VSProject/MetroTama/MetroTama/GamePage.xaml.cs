@@ -9,6 +9,7 @@ using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI;
 using Windows.UI.Xaml.Media;
+using MetroTama.Services;
 
 namespace MetroTama
 {
@@ -30,6 +31,8 @@ namespace MetroTama
         private static int MEDIC_OBJECT = 7;
 
         public static string TimeTriggeredTaskProgress = "";
+
+        private SayTextService sayTextService = new SayTextService();
 
         public GamePage(string launchArguments)
         {
@@ -216,7 +219,11 @@ namespace MetroTama
                 //UnregisterButton.IsEnabled = BackgroundTaskSample.TimeTriggeredTaskRegistered;
                 //Progress.Text = BackgroundTaskSample.TimeTriggeredTaskProgress;
                 //Status.Text = BackgroundTaskSample.GetBackgroundTaskStatus(BackgroundTaskSample.TimeTriggeredTaskName);
-                TriggerTest.Text = TimeTriggeredTaskProgress;
+               
+                //TODO: update pet in background
+                _game.pet.UpdateFromBackgroud();
+                //TODO: output text on live tile
+                //TriggerTest.Text = sayTextService.GetText(_game.pet);
             });
         }
 
