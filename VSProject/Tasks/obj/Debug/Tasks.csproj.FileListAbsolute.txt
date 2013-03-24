@@ -30,3 +30,15 @@ C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\Tasks\obj\Debug\layout.
 C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\Tasks\obj\Debug\resources.resfiles
 C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\Tasks\obj\Debug\pri.resfiles
 C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\Tasks\obj\Debug\LanguageQualifiers.txt
+C:\Users\BlooKe\Documents\GitHub\tamagotchi\VSProject\Tasks\bin\Debug\Tasks.winmd
+C:\Users\BlooKe\Documents\GitHub\tamagotchi\VSProject\Tasks\bin\Debug\Tasks.pdb
+C:\Users\BlooKe\Documents\GitHub\tamagotchi\VSProject\Tasks\bin\Debug\Tasks.pri
+C:\Users\BlooKe\Documents\GitHub\tamagotchi\VSProject\Tasks\obj\Debug\Tasks.winmd
+C:\Users\BlooKe\Documents\GitHub\tamagotchi\VSProject\Tasks\obj\Debug\Tasks.pdb
+C:\Users\BlooKe\Documents\GitHub\tamagotchi\VSProject\Tasks\obj\Debug\Tasks.winmdobj
+C:\Users\BlooKe\Documents\GitHub\tamagotchi\VSProject\Tasks\obj\Debug\Tasks.compile.pdb
+C:\Users\BlooKe\Documents\GitHub\tamagotchi\VSProject\Tasks\obj\Debug\priconfig.xml
+C:\Users\BlooKe\Documents\GitHub\tamagotchi\VSProject\Tasks\obj\Debug\layout.resfiles
+C:\Users\BlooKe\Documents\GitHub\tamagotchi\VSProject\Tasks\obj\Debug\resources.resfiles
+C:\Users\BlooKe\Documents\GitHub\tamagotchi\VSProject\Tasks\obj\Debug\pri.resfiles
+C:\Users\BlooKe\Documents\GitHub\tamagotchi\VSProject\Tasks\obj\Debug\LanguageQualifiers.txt

@@ -206,6 +206,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\eatinganim.xnb">
+    </Content>
     <Content Include="Content\Graphics\comicBubble.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
