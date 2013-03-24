@@ -199,7 +199,7 @@ namespace MetroTama
             manageFrameIndexes();
 
             _spriteBatch.Begin();
-            DrawBackgroundDetail(bgDetail, bgGradientNight, bgGradient);
+
             if (pet.isSleeping)
             {
                 foreach (KeyValuePair<int, float> item in stars1)
@@ -212,16 +212,17 @@ namespace MetroTama
                     _spriteBatch.Draw(star2.spriteSheet, new Vector2(item.Key, item.Value), star2.getSourceRectangle(), Color.White, (float)sunRingRotation, star2.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
                 }
             }
+
             int sunRad = 700;
             Vector2 positionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult, sunRad);
             Vector2 moonPositionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult + Math.PI, sunRad);
             _spriteBatch.Draw(sunCore.spriteSheet, positionInCircleRadius, sunCore.getSourceRectangle(), Color.White, 0.0f, sunCore.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.Draw(sunRing.spriteSheet, positionInCircleRadius, sunRing.getSourceRectangle(), Color.White, (float)sunRingRotation, sunRing.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.Draw(moon.spriteSheet, moonPositionInCircleRadius, moon.getSourceRectangle(), Color.White, 0.0f, moon.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            DrawBackgroundDetail(bgDetail, bgGradientNight, bgGradient);
+            
             DrawClouds(cloudOne, cloudTwo, cloudThree, star1, star2);
             DrawTamogochiAnimation(animation);
-
-
 
             if (showMessage)
             {
