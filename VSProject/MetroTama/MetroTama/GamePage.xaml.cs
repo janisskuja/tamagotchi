@@ -50,7 +50,8 @@ namespace MetroTama
             ProgressMD.Maximum = 100;
             ProgressSM.Maximum = 100;
             // TODO: fix this method
-            //   RegisterBackgroundTask();
+
+           // RegisterBackgroundTask();
         }
 
         private void Button_Feed_Click(object sender, RoutedEventArgs e)
@@ -219,13 +220,14 @@ namespace MetroTama
                 //UnregisterButton.IsEnabled = BackgroundTaskSample.TimeTriggeredTaskRegistered;
                 //Progress.Text = BackgroundTaskSample.TimeTriggeredTaskProgress;
                 //Status.Text = BackgroundTaskSample.GetBackgroundTaskStatus(BackgroundTaskSample.TimeTriggeredTaskName);
-               
+
                 //TODO: update pet in background
                 _game.pet.UpdateFromBackgroud();
                 //TODO: output text on live tile
-                //TriggerTest.Text = sayTextService.GetText(_game.pet);
+                TriggerTest.Text = sayTextService.GetText(_game.pet);
             });
-        }
 
+
+        }
     }
 }
