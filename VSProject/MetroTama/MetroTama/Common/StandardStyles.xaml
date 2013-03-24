@@ -51,6 +51,8 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    
 
     <Style x:Key="ItemRichTextStyle" TargetType="RichTextBlock" BasedOn="{StaticResource BaselineRichTextStyle}"/>
 
@@ -142,7 +144,7 @@
     </Style>
 
     <!-- Button styles -->
-    
+
     <!--
         TextButtonStyle is used to style a Button using subheader-styled text with no other adornment.  There
         are two styles that are based on TextButtonStyle (TextPrimaryButtonStyle and TextSecondaryButtonStyle)
@@ -1826,22 +1828,22 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-    
+
+
     <!-- CUSTOM STYLES -->
     <Style x:Key="TamaButtonStyle" TargetType="Button">
         <Setter Property="Width" Value="42"/>
-        <Setter Property="Height" Value="41.5"/>        
+        <Setter Property="Height" Value="41.5"/>
         <Setter Property="Foreground" Value="{StaticResource ButtonForegroundThemeBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ButtonDisabledBorderThemeBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="12,4,12,4"/>
-        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
         <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}"/>
-        
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -1898,32 +1900,45 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style x:Key="TamaAppBarStyle" TargetType="AppBar">
         <Setter Property="Width" Value="Auto"/>
-        <Setter Property="Height" Value="70"/>
+        <Setter Property="Height" Value="80"/>
         <Setter Property="Background" Value="Black"/>
     </Style>
 
     <Style x:Key="TamaInfoAppBarStyle" TargetType="AppBar">
         <Setter Property="Width" Value="Auto"/>
-        <Setter Property="Height" Value="100"/>
+        <Setter Property="Height" Value="70"/>
         <Setter Property="Background" Value="Black"/>
+        <!--<Setter Property="HorizontalAlignment" Value="Center"/>-->
     </Style>
 
     <Style x:Key="TamaProgressStyle" TargetType="ProgressBar">
         <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Width" Value="100"/>
         <Setter Property="Height" Value="40"/>
     </Style>
 
     <Style x:Key="TamaTextBoxStyle" TargetType="TextBlock">
         <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="FontSize" Value="36"/>
+        <Setter Property="FontSize" Value="24"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Text" Value="0"/>
     </Style>
+
+    <Style x:Key="TamaTextBoxBtnStyle" TargetType="TextBlock">
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Width" Value="Auto" />
+    </Style>
     
+    <Style x:Key="TamaButtonGridStyle" TargetType="Grid">
+        <Setter Property="Margin" Value="15,5,15,0"/>
+        <!--<Setter Property="Width" Value="70"/>-->
+    </Style>
 </ResourceDictionary>

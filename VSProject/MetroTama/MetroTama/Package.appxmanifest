@@ -32,7 +32,7 @@
             ForegroundText="light"
             BackgroundColor="#000000">
             <DefaultTile ShowName="allLogos" />
-            <SplashScreen Image="Assets\SplashScreen.png" />
+            <SplashScreen Image="Assets\SplashScreen.png"/>
         </VisualElements>
     </Application>
   </Applications>
