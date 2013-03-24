@@ -10,6 +10,11 @@ namespace MetroTama.Content.Graphics
     {
         Player,
         Celebrate,
-        IdleAnimation
+        IdleAnimation,
+        CloudOne,
+        CloudTwo,
+        CloudThree,
+        SunCore,
+        SunRing
     }
 }

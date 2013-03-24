@@ -29,5 +29,8 @@ namespace MetroTama.Services.Animation
         public Texture2D spriteSheet;
         public GraphicsEnum graphicsEnum;
 
+        public Rectangle getSourceRectangle(int frameIndexX, int frameIndexY) {
+            return new Rectangle(frameIndexX * frameWidth, frameIndexY * frameHeight, frameWidth, frameHeight);
+        }
     }
 }

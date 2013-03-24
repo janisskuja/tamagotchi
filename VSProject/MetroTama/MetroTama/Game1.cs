@@ -6,6 +6,8 @@ using MetroTama.Services;
 using Microsoft.Xna.Framework.Input;
 using MetroTama.Content.Graphics;
 using MetroTama.Services.Animation;
+using System;
+using MetroTama.Domain.Entities;
 
 namespace MetroTama
 {
@@ -22,10 +24,15 @@ namespace MetroTama
         public Pet pet;
         public GamePage _gamePage;
         PetRepository petRepository;
-        AnimationDataRepository animationDataRepo;
+        ContentRepository contentRepo;
         GameObjectService gameObjectService;
         private GraphicsEnum graphicsEnum;
+<<<<<<< HEAD
         Color bgColor;
+=======
+        private double mult = 3;
+        private double destRotationPos = 2.5;
+>>>>>>> Added several animations
 
         // the elapsed amount of time the frame has been shown for
         float time;
@@ -57,8 +64,12 @@ namespace MetroTama
             petRepository = new PetRepository();
             pet = petRepository.GetPet();
             gameObjectService = new GameObjectService();
+<<<<<<< HEAD
             animationDataRepo = new AnimationDataRepository();
             bgColor = new Color(134, 185, 288);
+=======
+            contentRepo = new ContentRepository();
+>>>>>>> Added several animations
             base.Initialize();
             
         }
@@ -73,9 +84,15 @@ namespace MetroTama
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            animationDataRepo.setSpriteSheetForAnimation(GraphicsEnum.Celebrate, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.Celebrate));
-            animationDataRepo.setSpriteSheetForAnimation(GraphicsEnum.Player, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.Player));
-            animationDataRepo.setSpriteSheetForAnimation(GraphicsEnum.IdleAnimation, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.IdleAnimation));
+            contentRepo.setSpriteSheetForAnimation(GraphicsEnum.Celebrate, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.Celebrate));
+            contentRepo.setSpriteSheetForAnimation(GraphicsEnum.Player, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.Player));
+            contentRepo.setSpriteSheetForAnimation(GraphicsEnum.IdleAnimation, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.IdleAnimation));
+
+            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.SunCore, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.SunCore));
+            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.SunRing, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.SunRing));
+            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.CloudOne, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.CloudOne));
+            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.CloudTwo, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.CloudTwo));
+            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.CloudThree, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.CloudThree));
             graphicsEnum = GraphicsEnum.IdleAnimation;
         }
 
@@ -109,10 +126,20 @@ namespace MetroTama
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+<<<<<<< HEAD
             AnimationData animation = animationDataRepo.getAnimationData(graphicsEnum);
 
             GraphicsDevice.Clear(bgColor);
 
+=======
+            AnimationData animation = contentRepo.getAnimationData(graphicsEnum);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+            StaticImageData sunCore = contentRepo.getStaticImage(GraphicsEnum.SunCore);
+            StaticImageData sunRing = contentRepo.getStaticImage(GraphicsEnum.SunRing);
+            StaticImageData cloudOne = contentRepo.getStaticImage(GraphicsEnum.CloudOne);
+            StaticImageData cloudTwo = contentRepo.getStaticImage(GraphicsEnum.CloudTwo);
+            StaticImageData cloudThree = contentRepo.getStaticImage(GraphicsEnum.CloudThree);
+>>>>>>> Added several animations
             // TODO: Add your drawing code here
             time += (float)gameTime.ElapsedGameTime.TotalSeconds;
             while (time > animation.frameTime)
@@ -122,23 +149,72 @@ namespace MetroTama
                 // reset elapsedTIme
                 time = 0f;
             }
-            if (frameIndexX > animationDataRepo.getAnimationData(graphicsEnum).totalXFrames)
+            manageFrameIndexes();
+            Vector2 position = new Vector2(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height / 2);
+            Vector2 origin = new Vector2(animation.frameWidth / 2.0f, animation.frameHeight / 2.0f);
+            _spriteBatch.Begin();
+            int sunRad = 700;
+            calculateObjectPositionX(cloudOne);
+            calculateObjectPositionX(cloudTwo);
+            calculateObjectPositionX(cloudThree);
+
+            Vector2 positionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult, sunRad);
+            _spriteBatch.Draw(animation.spriteSheet, position, animation.getSourceRectangle(frameIndexX, frameIndexY), Color.White, 0.0f, origin, 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(sunCore.spriteSheet, positionInCircleRadius, sunCore.getSourceRectangle(), Color.White, 0.0f, sunCore.getOriginVector(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(sunRing.spriteSheet, positionInCircleRadius, sunRing.getSourceRectangle(), Color.White, (float)mult * 2, sunRing.getOriginVector(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(cloudOne.spriteSheet, getCloudPosition(cloudOne), cloudOne.getSourceRectangle(), Color.White, 0.0f, cloudOne.getOriginVector(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(cloudTwo.spriteSheet, getCloudPosition(cloudTwo), cloudTwo.getSourceRectangle(), Color.White, 0.0f, cloudTwo.getOriginVector(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(cloudThree.spriteSheet, getCloudPosition(cloudThree), cloudThree.getSourceRectangle(), Color.White, 0.0f, cloudThree.getOriginVector(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.End();
+
+            manageBigCircleRotationSpeed();
+            base.Draw(gameTime);
+        }
+
+        private void calculateObjectPositionX(StaticImageData Object) {
+            Object.xPosition = Object.xPosition + Object.movementSpeed;
+            if (this.Window.ClientBounds.Width + 250 < Object.xPosition)
+            {
+                Object.xPosition = -250;
+            }
+        }
+
+        private void manageBigCircleRotationSpeed()
+        {
+            if (Math.Abs(mult) >= 2 * Math.PI)
+            {
+                mult = 0;
+            }
+            if (mult != destRotationPos)
+            {
+                mult = mult - 0.01;
+            }
+        }
+
+        private void manageFrameIndexes()
+        {
+            if (frameIndexX > contentRepo.getAnimationData(graphicsEnum).totalXFrames)
             {
                 frameIndexX = 0;
                 frameIndexY++;
             }
-            if (frameIndexY > animationDataRepo.getAnimationData(graphicsEnum).totalYFrames)
+            if (frameIndexY > contentRepo.getAnimationData(graphicsEnum).totalYFrames)
             {
                 frameIndexY = 0;
                 graphicsEnum = GraphicsEnum.IdleAnimation;
             }
-            Rectangle source = new Rectangle(frameIndexX * animation.frameWidth, frameIndexY * animation.frameHeight, animation.frameWidth, animation.frameHeight);
-            Vector2 position = new Vector2(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height / 2);
-            Vector2 origin = new Vector2(animation.frameWidth / 2.0f, animation.frameHeight / 2.0f);
-            _spriteBatch.Begin();
-            _spriteBatch.Draw(animation.spriteSheet, position, source, Color.White, 0.0f, origin, 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.End();
-            base.Draw(gameTime);
+        }
+
+        public Vector2 getCirclePosition(float cx, float cy, double mult, int rad) {
+            double x = cx + Math.Sin(mult)*rad;
+            double y = cy + Math.Cos(mult)*rad;
+            return new Vector2((float)x, (float)y);
+        }
+
+        public Vector2 getCloudPosition(StaticImageData cloud)
+        {
+            Vector2 vector = new Vector2((float)cloud.xPosition, (float)cloud.yPosition);
+            return vector;
         }
 
         public void Feed(int foodId)
