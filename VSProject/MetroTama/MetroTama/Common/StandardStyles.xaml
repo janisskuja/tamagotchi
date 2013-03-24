@@ -1914,8 +1914,16 @@
     <Style x:Key="TamaProgressStyle" TargetType="ProgressBar">
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Stretch"/>
-        <Setter Property="Width" Value="500"/>
+        <Setter Property="Width" Value="100"/>
         <Setter Property="Height" Value="40"/>
-        <Setter Property="Visibility" Value="Collapsed"/>
     </Style>
+
+    <Style x:Key="TamaTextBoxStyle" TargetType="TextBlock">
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="FontSize" Value="36"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Text" Value="0"/>
+    </Style>
+    
 </ResourceDictionary>

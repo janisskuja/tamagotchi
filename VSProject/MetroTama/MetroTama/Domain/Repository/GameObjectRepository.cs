@@ -78,8 +78,8 @@ namespace MetroTama.Domain.Repository
                         gameObject.HungryEffect = 0;
                         gameObject.HealthEffect = 0;
                         gameObject.HygeneEffect = 0;
-                        gameObject.FunEffect = 5;
-                        gameObject.EnergyEffect = 0;
+                        gameObject.FunEffect = -5;
+                        gameObject.EnergyEffect = -10;
                         gameObject.StudyEffect = 20;
                     }
                     break;
