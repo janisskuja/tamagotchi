@@ -15,6 +15,7 @@ namespace MetroTama.Content.Graphics
         CloudTwo,
         CloudThree,
         SunCore,
-        SunRing
+        SunRing,
+        Moon
     }
 }

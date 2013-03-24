@@ -29,7 +29,7 @@ namespace MetroTama
         private GraphicsEnum graphicsEnum;
         Color bgColor;
         private double mult = 3;
-        private double destRotationPos = 2.5;
+        private double sunDestRotationPos = 2.5;
 
         // the elapsed amount of time the frame has been shown for
         float time;
@@ -80,12 +80,13 @@ namespace MetroTama
             contentRepo.setSpriteSheetForAnimation(GraphicsEnum.Celebrate, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.Celebrate));
             contentRepo.setSpriteSheetForAnimation(GraphicsEnum.Player, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.Player));
             contentRepo.setSpriteSheetForAnimation(GraphicsEnum.IdleAnimation, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.IdleAnimation));
-
+            
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.SunCore, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.SunCore));
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.SunRing, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.SunRing));
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.CloudOne, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.CloudOne));
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.CloudTwo, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.CloudTwo));
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.CloudThree, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.CloudThree));
+            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.Moon, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.Moon));
             graphicsEnum = GraphicsEnum.IdleAnimation;
         }
 
@@ -127,6 +128,7 @@ namespace MetroTama
             StaticImageData cloudOne = contentRepo.getStaticImage(GraphicsEnum.CloudOne);
             StaticImageData cloudTwo = contentRepo.getStaticImage(GraphicsEnum.CloudTwo);
             StaticImageData cloudThree = contentRepo.getStaticImage(GraphicsEnum.CloudThree);
+            StaticImageData moon = contentRepo.getStaticImage(GraphicsEnum.Moon);
             // TODO: Add your drawing code here
             time += (float)gameTime.ElapsedGameTime.TotalSeconds;
             while (time > animation.frameTime)
@@ -146,12 +148,14 @@ namespace MetroTama
             calculateObjectPositionX(cloudThree);
 
             Vector2 positionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult, sunRad);
+            Vector2 moonPositionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult + Math.PI, sunRad);
             _spriteBatch.Draw(animation.spriteSheet, position, animation.getSourceRectangle(frameIndexX, frameIndexY), Color.White, 0.0f, origin, 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.Draw(sunCore.spriteSheet, positionInCircleRadius, sunCore.getSourceRectangle(), Color.White, 0.0f, sunCore.getOriginVector(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.Draw(sunRing.spriteSheet, positionInCircleRadius, sunRing.getSourceRectangle(), Color.White, (float)mult * 2, sunRing.getOriginVector(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.Draw(cloudOne.spriteSheet, getCloudPosition(cloudOne), cloudOne.getSourceRectangle(), Color.White, 0.0f, cloudOne.getOriginVector(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.Draw(cloudTwo.spriteSheet, getCloudPosition(cloudTwo), cloudTwo.getSourceRectangle(), Color.White, 0.0f, cloudTwo.getOriginVector(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.Draw(cloudThree.spriteSheet, getCloudPosition(cloudThree), cloudThree.getSourceRectangle(), Color.White, 0.0f, cloudThree.getOriginVector(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(moon.spriteSheet, moonPositionInCircleRadius, moon.getSourceRectangle(), Color.White, 0.0f, moon.getOriginVector(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.End();
 
             manageBigCircleRotationSpeed();
@@ -172,7 +176,7 @@ namespace MetroTama
             {
                 mult = 0;
             }
-            if (mult != destRotationPos)
+            if (Math.Abs(Math.Round(mult, 1)) != Math.Abs(Math.Round(sunDestRotationPos,1)))
             {
                 mult = mult - 0.01;
             }
@@ -227,8 +231,14 @@ namespace MetroTama
 
         public void Light()
         {
-            //TODO: insert light animation here
             pet.isSleeping = !pet.isSleeping;
+            if (pet.isSleeping)
+            {
+                sunDestRotationPos = sunDestRotationPos - Math.PI;
+            }
+            else {
+                sunDestRotationPos = 2.5;
+            }
         }
 
 

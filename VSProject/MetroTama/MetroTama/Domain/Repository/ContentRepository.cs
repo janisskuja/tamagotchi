@@ -26,6 +26,7 @@ namespace MetroTama.Domain.Repository
             staticImageData.Add(GraphicsEnum.CloudOne, getStaticImageData(77, 120, 0, 40, 3, GraphicsEnum.CloudOne));
             staticImageData.Add(GraphicsEnum.CloudTwo, getStaticImageData(170, 267, 0, 100, 1, GraphicsEnum.CloudThree));
             staticImageData.Add(GraphicsEnum.CloudThree, getStaticImageData(105, 167, 0, 95, 2, GraphicsEnum.CloudTwo));
+            staticImageData.Add(GraphicsEnum.Moon, getStaticImageData(188, 187, 0, 0, 0, GraphicsEnum.Moon));
         }
 
         private static StaticImageData getStaticImageData(int height, int width, int xPosition, int yPosition, int movementSpeed, GraphicsEnum graphicsEnum)
