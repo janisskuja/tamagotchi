@@ -131,6 +131,7 @@
                             <TextBlock Text="Light" Style="{StaticResource ResourceKey= TamaTextBoxBtnStyle}"/>
                         </StackPanel>
                     </Grid>
+                    <TextBlock x:Name="TriggerTest" Style="{StaticResource ResourceKey= TamaTextBoxBtnStyle}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
                     <Grid x:Name="GridFood" Visibility="Collapsed">

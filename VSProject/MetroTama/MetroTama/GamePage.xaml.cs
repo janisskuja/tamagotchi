@@ -1,8 +1,12 @@
-﻿using Windows.UI.Xaml;
+﻿using System;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using MonoGame.Framework;
 using MetroTama.Domain;
 using MetroTama.Domain.Repository;
+using Windows.ApplicationModel.Background;
+using Windows.Storage;
+using Windows.UI.Core;
 
 namespace MetroTama
 {
@@ -23,6 +27,8 @@ namespace MetroTama
         private static int CLEAN_OBJECT = 6;
         private static int MEDIC_OBJECT = 7;
 
+        public static string TimeTriggeredTaskProgress = "";
+
         public GamePage(string launchArguments)
         {
             this.InitializeComponent();
@@ -38,6 +44,8 @@ namespace MetroTama
             ProgressHUN.Maximum = 100;
             ProgressMD.Maximum = 100;
             ProgressSM.Maximum = 100;
+            // TODO: fix this method
+            //   RegisterBackgroundTask();
         }
 
         private void Button_Feed_Click(object sender, RoutedEventArgs e)
@@ -130,5 +138,73 @@ namespace MetroTama
             TextHUN.Text = pet.Hungry.ToString();
 
         }
+
+        /// <summary>
+        /// Register a TimeTriggeredTask.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void RegisterBackgroundTask()
+        {
+            //
+            // Time triggered tasks can only run when the application is on the lock screen.
+            // Time triggered tasks can be registered even if the application is not on the lockscreen.
+            // 
+            await BackgroundExecutionManager.RequestAccessAsync();
+
+            var task = BackgroundTask.RegisterBackgroundTask(BackgroundTask.BackgroundTaskEntryPoint,
+                                                                   BackgroundTask.TimeTriggeredTaskName,
+                                                                   new TimeTrigger(15, false),
+                                                                   null);
+            AttachProgressAndCompletedHandlers(task);
+            UpdateUI();
+        }
+
+        /// <summary>
+        /// Attach progress and completed handers to a background task.
+        /// </summary>
+        /// <param name="task">The task to attach progress and completed handlers to.</param>
+        private void AttachProgressAndCompletedHandlers(IBackgroundTaskRegistration task)
+        {
+            task.Progress += new BackgroundTaskProgressEventHandler(OnProgress);
+            task.Completed += new BackgroundTaskCompletedEventHandler(OnCompleted);
+        }
+        /// <summary>
+        /// Handle background task progress.
+        /// </summary>
+        /// <param name="task">The task that is reporting progress.</param>
+        /// <param name="e">Arguments of the progress report.</param>
+        private void OnProgress(IBackgroundTaskRegistration task, BackgroundTaskProgressEventArgs args)
+        {
+            var progress = "Progress: " + args.Progress + "%";
+            TimeTriggeredTaskProgress = progress;
+            UpdateUI();
+        }
+        /// <summary>
+        /// Handle background task completion.
+        /// </summary>
+        /// <param name="task">The task that is reporting completion.</param>
+        /// <param name="e">Arguments of the completion report.</param>
+        private void OnCompleted(IBackgroundTaskRegistration task, BackgroundTaskCompletedEventArgs args)
+        {
+            UpdateUI();
+        }
+
+        /// <summary>
+        /// Update the scenario UI.
+        /// </summary>
+        private async void UpdateUI()
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
+            () =>
+            {
+                //RegisterButton.IsEnabled = !BackgroundTaskSample.TimeTriggeredTaskRegistered;
+                //UnregisterButton.IsEnabled = BackgroundTaskSample.TimeTriggeredTaskRegistered;
+                //Progress.Text = BackgroundTaskSample.TimeTriggeredTaskProgress;
+                //Status.Text = BackgroundTaskSample.GetBackgroundTaskStatus(BackgroundTaskSample.TimeTriggeredTaskName);
+                TriggerTest.Text = TimeTriggeredTaskProgress;
+            });
+        }
+
     }
 }

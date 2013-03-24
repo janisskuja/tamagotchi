@@ -130,6 +130,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BackgroundTask.cs" />
     <Compile Include="Content\Graphics\GraphicsEnum.cs" />
     <Compile Include="Domain\Entities\AnimationData.cs" />
     <Compile Include="Domain\Entities\GameObject.cs" />
@@ -155,6 +156,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Assets\BadgeLogo.png" />
     <Content Include="Assets\iconsSetTamag_03.png" />
     <Content Include="Assets\iconsSetTamag_06.png" />
     <Content Include="Assets\iconsSetTamag_08.png" />
@@ -167,6 +169,7 @@
     <Content Include="Assets\iconsSetTamag_28.png" />
     <Content Include="Assets\iconsSetTamag_30.png" />
     <Content Include="Assets\iconsSetTamag_31.png" />
+    <Content Include="Assets\WideLogo.png" />
     <Content Include="Content\Graphics\Celebrate.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
