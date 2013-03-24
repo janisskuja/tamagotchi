@@ -17,6 +17,8 @@ namespace MetroTama.Content.Graphics
         SunCore,
         SunRing,
         Moon,
-        BgDetail
+        BgDetail,
+        BgGradient,
+        BgGradientNight
     }
 }

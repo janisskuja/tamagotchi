@@ -182,6 +182,9 @@
     <None Include="Content\Font\gameFont.spritefont" />
     <None Include="Content\Graphics\bgDetail.xnb" />
     <None Include="Content\Graphics\bgGradient.xnb" />
+    <Content Include="Content\Graphics\bgGradient.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Graphics\cloudOne.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -192,6 +195,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\moon.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\bgGradientNight.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Content\Graphics\player.xnb" />

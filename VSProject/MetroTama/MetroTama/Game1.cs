@@ -96,6 +96,8 @@ namespace MetroTama
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.CloudThree, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.CloudThree));
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.Moon, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.Moon));
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.BgDetail, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.BgDetail));
+            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.BgGradient, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.BgGradient));
+            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.BgGradientNight, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.BgGradientNight));
             graphicsEnum = GraphicsEnum.IdleAnimation;
         }
 
@@ -136,7 +138,7 @@ namespace MetroTama
         {
             GraphicsDevice.Clear(bgColor);
             AnimationData animation = contentRepo.getAnimationData(graphicsEnum);
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            //GraphicsDevice.Clear(Color.CornflowerBlue);
             StaticImageData sunCore = contentRepo.getStaticImage(GraphicsEnum.SunCore);
             StaticImageData sunRing = contentRepo.getStaticImage(GraphicsEnum.SunRing);
             StaticImageData cloudOne = contentRepo.getStaticImage(GraphicsEnum.CloudOne);
@@ -144,7 +146,9 @@ namespace MetroTama
             StaticImageData cloudThree = contentRepo.getStaticImage(GraphicsEnum.CloudThree);
             StaticImageData moon = contentRepo.getStaticImage(GraphicsEnum.Moon);
             StaticImageData bgDetail = contentRepo.getStaticImage(GraphicsEnum.BgDetail);
-            
+            StaticImageData bgGradient = contentRepo.getStaticImage(GraphicsEnum.BgGradient);
+            StaticImageData bgGradientNight = contentRepo.getStaticImage(GraphicsEnum.BgGradientNight);
+
             // TODO: Add your drawing code here
             time += (float)gameTime.ElapsedGameTime.TotalSeconds;
             while (time > animation.frameTime)
@@ -156,12 +160,21 @@ namespace MetroTama
             }
             manageFrameIndexes();
             Vector2 position = new Vector2(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height / 2);
-            Vector2 origin = new Vector2(animation.frameWidth / 2.0f, 250);
+            Vector2 origin = new Vector2(animation.frameWidth / 2.0f, 13);
             _spriteBatch.Begin();
             int sunRad = 700;
             calculateObjectPositionX(cloudOne);
             calculateObjectPositionX(cloudTwo);
             calculateObjectPositionX(cloudThree);
+            
+            for (int i = 0; i <= this.Window.ClientBounds.Width; i++) {
+                if (pet.isSleeping) {
+                    
+                    _spriteBatch.Draw(bgGradientNight.spriteSheet, new Vector2(i, 0), bgGradientNight.getSourceRectangle(), Color.White, 0.0f, bgGradientNight.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
+                }else{
+                    _spriteBatch.Draw(bgGradient.spriteSheet, new Vector2(i, 0), bgGradient.getSourceRectangle(), Color.White, 0.0f, bgGradient.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
+                }
+            }
 
             Vector2 positionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult, sunRad);
             Vector2 moonPositionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult + Math.PI, sunRad);
@@ -171,10 +184,13 @@ namespace MetroTama
             _spriteBatch.Draw(bgDetail.spriteSheet, new Vector2(0, this.Window.ClientBounds.Height), bgDetail.getSourceRectangle(), Color.White, 0.0f, bgDetail.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.Draw(bgDetail.spriteSheet, new Vector2(bgDetail.width, this.Window.ClientBounds.Height), bgDetail.getSourceRectangle(), Color.White, 0.0f, bgDetail.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.Draw(bgDetail.spriteSheet, new Vector2(bgDetail.width * 2, this.Window.ClientBounds.Height), bgDetail.getSourceRectangle(), Color.White, 0.0f, bgDetail.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
+            Color cloudColor = (pet.isSleeping) ? new Color(15, 24, 28) : Color.White;
+            _spriteBatch.Draw(cloudOne.spriteSheet, getCloudPosition(cloudOne), cloudOne.getSourceRectangle(), cloudColor, 0.0f, cloudOne.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(cloudTwo.spriteSheet, getCloudPosition(cloudTwo), cloudTwo.getSourceRectangle(), cloudColor, 0.0f, cloudTwo.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(cloudThree.spriteSheet, getCloudPosition(cloudThree), cloudThree.getSourceRectangle(), cloudColor, 0.0f, cloudThree.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            
             _spriteBatch.Draw(animation.spriteSheet, position, animation.getSourceRectangle(frameIndexX, frameIndexY), Color.White, 0.0f, origin, 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(cloudOne.spriteSheet, getCloudPosition(cloudOne), cloudOne.getSourceRectangle(), Color.White, 0.0f, cloudOne.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(cloudTwo.spriteSheet, getCloudPosition(cloudTwo), cloudTwo.getSourceRectangle(), Color.White, 0.0f, cloudTwo.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(cloudThree.spriteSheet, getCloudPosition(cloudThree), cloudThree.getSourceRectangle(), Color.White, 0.0f, cloudThree.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+
             _spriteBatch.End();
             sunRingRotation = sunRingRotation + 0.01f;
             manageBigCircleRotationSpeed();
@@ -260,9 +276,11 @@ namespace MetroTama
             if (pet.isSleeping)
             {
                 sunDestRotationPos = sunDestRotationPos - Math.PI;
+                bgColor = new Color(15,24,28);
             }
             else {
                 sunDestRotationPos = 2.5;
+                bgColor = new Color(134, 185, 288);
             }
         }
 
