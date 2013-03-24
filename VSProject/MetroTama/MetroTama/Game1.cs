@@ -143,15 +143,22 @@ namespace MetroTama
 
         public void Feed(int foodId)
         {
-            if (pet.Hungry < MAX_STAT)
+            if (pet.isSleeping)
             {
-                //TODO: insert eating animation
-                graphicsEnum = GraphicsEnum.Player;
-                gameObjectService.UseObject(pet, foodId);
+                //Show message: "I'm sleeping!"
             }
             else
             {
-                //Show message: "I don't want to play!"
+                if (pet.Hungry < MAX_STAT)
+                {
+                    //TODO: insert eating animation
+                    graphicsEnum = GraphicsEnum.Player;
+                    gameObjectService.UseObject(pet, foodId);
+                }
+                else
+                {
+                    //Show message: "I don't want to play!"
+                }
             }
         }
 
@@ -164,56 +171,84 @@ namespace MetroTama
 
         public void Play(int gameId)
         {
-            if (pet.Fun < MAX_STAT)
+            if (pet.isSleeping)
             {
-                //TODO: add ball animation
-
-                gameObjectService.UseObject(pet, gameId);
+                //Show message: "I'm sleeping!"
             }
             else
             {
-                //Show message: "I don't want to play!"
+                if (pet.Fun < MAX_STAT)
+                {
+                    //TODO: add ball animation
+
+                    gameObjectService.UseObject(pet, gameId);
+                }
+                else
+                {
+                    //Show message: "I don't want to play!"
+                }
             }
 
         }
 
         public void Read(int bookId)
         {
-            if (pet.Study < MAX_STAT)
+            if (pet.isSleeping)
             {
-                //TODO: add read animation
-
-                gameObjectService.UseObject(pet, bookId);
+                //Show message: "I'm sleeping!"
             }
             else
             {
-                //Show message: "I don't want to study!"
+                if (pet.Study < MAX_STAT)
+                {
+                    //TODO: add read animation
+
+                    gameObjectService.UseObject(pet, bookId);
+                }
+                else
+                {
+                    //Show message: "I don't want to study!"
+                }
             }
         }
 
         public void Clean(int cleanObjectId)
         {
-            if (pet.Hygene < MAX_STAT)
+            if (pet.isSleeping)
             {
-                //TODO: add clean animation
-                gameObjectService.UseObject(pet, cleanObjectId);
+                //Show message: "I'm sleeping!"
             }
-            else 
+            else
             {
-                //Show message: "Can't clean <petname>, because he is not dirty!"
+                if (pet.Hygene < MAX_STAT)
+                {
+                    //TODO: add clean animation
+                    gameObjectService.UseObject(pet, cleanObjectId);
+                }
+                else
+                {
+                    //Show message: "Can't clean <petname>, because he is not dirty!"
+                }
             }
         }
 
         public void FirstAid(int medicObjectId)
         {
-            if (pet.isSick)
+            if (pet.isSleeping)
             {
-                //TODO: add first aid animation
-                gameObjectService.UseObject(pet, medicObjectId);
+                //Show message: "I'm sleeping!"
             }
             else
             {
-                //Show message: "Can't use "First Aid", because <petname> is not sick!"
+                if (pet.isSick)
+                {
+                    //TODO: add first aid animation
+                    gameObjectService.UseObject(pet, medicObjectId);
+                }
+                else
+                {
+                    //Show message: "Can't use "First Aid", because <petname> is not sick!"
+                }
             }
         }
     }
