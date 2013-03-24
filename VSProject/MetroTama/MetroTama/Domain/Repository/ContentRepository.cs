@@ -19,6 +19,7 @@ namespace MetroTama.Domain.Repository
             animationDataRepo.Add(GraphicsEnum.Celebrate, getAnimationData(64, 64, 10, 1, 0.1f, GraphicsEnum.Celebrate));
             animationDataRepo.Add(GraphicsEnum.Player, getAnimationData(64, 64, 10, 1, 0.1f, GraphicsEnum.Player));
             animationDataRepo.Add(GraphicsEnum.IdleAnimation, getAnimationData(260, 360, 4, 1, 0.2f, GraphicsEnum.IdleAnimation));
+            animationDataRepo.Add(GraphicsEnum.EatingAnim, getAnimationData(260, 360, 4, 1, 0.2f, GraphicsEnum.EatingAnim));
 
             staticImageData = new Dictionary<GraphicsEnum, StaticImageData>();
             staticImageData.Add(GraphicsEnum.SunCore, getStaticImageData(175, 175, 0, 0, 0, GraphicsEnum.SunCore));
@@ -30,6 +31,7 @@ namespace MetroTama.Domain.Repository
             staticImageData.Add(GraphicsEnum.BgDetail, getStaticImageData(331, 612, 0, 0, 0, GraphicsEnum.BgDetail));
             staticImageData.Add(GraphicsEnum.BgGradient, getStaticImageData(396, 1, 0, 0, 0, GraphicsEnum.BgGradient));
             staticImageData.Add(GraphicsEnum.BgGradientNight, getStaticImageData(396, 1, 0, 0, 0, GraphicsEnum.BgGradientNight));
+            
         }
 
         private static StaticImageData getStaticImageData(int height, int width, int xPosition, int yPosition, int movementSpeed, GraphicsEnum graphicsEnum)

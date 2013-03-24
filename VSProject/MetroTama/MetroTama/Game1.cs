@@ -88,6 +88,7 @@ namespace MetroTama
             contentRepo.setSpriteSheetForAnimation(GraphicsEnum.Celebrate, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.Celebrate));
             contentRepo.setSpriteSheetForAnimation(GraphicsEnum.Player, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.Player));
             contentRepo.setSpriteSheetForAnimation(GraphicsEnum.IdleAnimation, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.IdleAnimation));
+            contentRepo.setSpriteSheetForAnimation(GraphicsEnum.EatingAnim, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.EatingAnim));
             
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.SunCore, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.SunCore));
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.SunRing, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.SunRing));
@@ -138,7 +139,7 @@ namespace MetroTama
         {
             GraphicsDevice.Clear(bgColor);
             AnimationData animation = contentRepo.getAnimationData(graphicsEnum);
-            //GraphicsDevice.Clear(Color.CornflowerBlue);
+
             StaticImageData sunCore = contentRepo.getStaticImage(GraphicsEnum.SunCore);
             StaticImageData sunRing = contentRepo.getStaticImage(GraphicsEnum.SunRing);
             StaticImageData cloudOne = contentRepo.getStaticImage(GraphicsEnum.CloudOne);
@@ -162,7 +163,7 @@ namespace MetroTama
             Vector2 position = new Vector2(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height / 2);
             Vector2 origin = new Vector2(animation.frameWidth / 2.0f, 13);
             _spriteBatch.Begin();
-            int sunRad = 700;
+            
             calculateObjectPositionX(cloudOne);
             calculateObjectPositionX(cloudTwo);
             calculateObjectPositionX(cloudThree);
@@ -176,6 +177,7 @@ namespace MetroTama
                 }
             }
 
+            int sunRad = 700;
             Vector2 positionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult, sunRad);
             Vector2 moonPositionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult + Math.PI, sunRad);
             _spriteBatch.Draw(sunCore.spriteSheet, positionInCircleRadius, sunCore.getSourceRectangle(), Color.White, 0.0f, sunCore.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
@@ -260,7 +262,7 @@ namespace MetroTama
                 if (pet.Hungry < MAX_STAT)
                 {
                     //TODO: insert eating animation
-                    graphicsEnum = GraphicsEnum.Player;
+                    graphicsEnum = GraphicsEnum.EatingAnim;
                     gameObjectService.UseObject(pet, foodId);
                 }
                 else

@@ -19,6 +19,7 @@ namespace MetroTama.Content.Graphics
         Moon,
         BgDetail,
         BgGradient,
-        BgGradientNight
+        BgGradientNight,
+        EatingAnim
     }
 }
