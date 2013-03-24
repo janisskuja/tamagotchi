@@ -32,6 +32,8 @@ namespace MetroTama.Domain.Repository
             staticImageData.Add(GraphicsEnum.BgGradient, getStaticImageData(396, 1, 0, 0, 0, GraphicsEnum.BgGradient));
             staticImageData.Add(GraphicsEnum.BgGradientNight, getStaticImageData(396, 1, 0, 0, 0, GraphicsEnum.BgGradientNight));
             staticImageData.Add(GraphicsEnum.ComicBubble, getStaticImageData(229, 331, 0, 0, 0, GraphicsEnum.ComicBubble));
+            staticImageData.Add(GraphicsEnum.Star1, getStaticImageData(26, 27, 0, 0, 0, GraphicsEnum.Star1));
+            staticImageData.Add(GraphicsEnum.Star2, getStaticImageData(18, 19, 0, 0, 0, GraphicsEnum.Star2));
         }
 
         private static StaticImageData getStaticImageData(int height, int width, int xPosition, int yPosition, int movementSpeed, GraphicsEnum graphicsEnum)

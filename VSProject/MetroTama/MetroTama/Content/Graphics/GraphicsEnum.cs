@@ -21,6 +21,8 @@ namespace MetroTama.Content.Graphics
         BgGradient,
         BgGradientNight,
         EatingAnim,
-        ComicBubble
+        ComicBubble,
+        Star1,
+        Star2
     }
 }

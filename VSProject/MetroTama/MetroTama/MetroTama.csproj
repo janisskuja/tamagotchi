@@ -133,6 +133,7 @@
     </Compile>
     <Compile Include="BackgroundTask.cs" />
     <Compile Include="Content\Graphics\GraphicsEnum.cs" />
+    <Compile Include="Dictionary.cs" />
     <Compile Include="Domain\Entities\AnimationData.cs" />
     <Compile Include="Domain\Entities\GameObject.cs" />
     <Compile Include="Domain\Entities\Pet.cs" />
@@ -216,6 +217,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\sunRing.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\Stars\star1.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\Stars\star2.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="MetroTama_TemporaryKey.pfx" />
