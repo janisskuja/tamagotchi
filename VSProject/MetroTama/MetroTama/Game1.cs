@@ -198,58 +198,42 @@ namespace MetroTama
             }
             manageFrameIndexes();
 
-            
-
-            calculateObjectPositionX(cloudOne);
-            calculateObjectPositionX(cloudTwo);
-            calculateObjectPositionX(cloudThree);
             _spriteBatch.Begin();
-            for (int i = 0; i <= this.Window.ClientBounds.Width; i++)
+            DrawBackgroundDetail(bgDetail, bgGradientNight, bgGradient);
+            if (pet.isSleeping)
             {
-                if (pet.isSleeping)
+                foreach (KeyValuePair<int, float> item in stars1)
                 {
-                    _spriteBatch.Draw(bgGradientNight.spriteSheet, new Vector2(i, 0), bgGradientNight.getSourceRectangle(), Color.White, 0.0f, bgGradientNight.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
+                    _spriteBatch.Draw(star1.spriteSheet, new Vector2(item.Key, item.Value), star1.getSourceRectangle(), Color.White, (float)sunRingRotation, star1.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
                 }
-                else
-                {
-                    _spriteBatch.Draw(bgGradient.spriteSheet, new Vector2(i, 0), bgGradient.getSourceRectangle(), Color.White, 0.0f, bgGradient.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
-                    DrawBackgroundDetail(bgDetail, bgGradientNight, bgGradient);
-                    if (pet.isSleeping)
-                    {
-                        foreach (KeyValuePair<int, float> item in stars1)
-                        {
-                            _spriteBatch.Draw(star1.spriteSheet, new Vector2(item.Key, item.Value), star1.getSourceRectangle(), Color.White, (float)sunRingRotation, star1.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-                        }
 
-                        foreach (KeyValuePair<int, float> item in stars2)
-                        {
-                            _spriteBatch.Draw(star2.spriteSheet, new Vector2(item.Key, item.Value), star2.getSourceRectangle(), Color.White, (float)sunRingRotation, star2.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-                        }
-                    }
+                foreach (KeyValuePair<int, float> item in stars2)
+                {
+                    _spriteBatch.Draw(star2.spriteSheet, new Vector2(item.Key, item.Value), star2.getSourceRectangle(), Color.White, (float)sunRingRotation, star2.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
                 }
             }
-                    int sunRad = 700;
-                    Vector2 positionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult, sunRad);
-                    Vector2 moonPositionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult + Math.PI, sunRad);
-                    _spriteBatch.Draw(sunCore.spriteSheet, positionInCircleRadius, sunCore.getSourceRectangle(), Color.White, 0.0f, sunCore.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-                    _spriteBatch.Draw(sunRing.spriteSheet, positionInCircleRadius, sunRing.getSourceRectangle(), Color.White, (float)sunRingRotation, sunRing.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-                    _spriteBatch.Draw(moon.spriteSheet, moonPositionInCircleRadius, moon.getSourceRectangle(), Color.White, 0.0f, moon.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-                    DrawClouds(cloudOne, cloudTwo, cloudThree, star1, star2);
-                    DrawTamogochiAnimation(animation);
+            int sunRad = 700;
+            Vector2 positionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult, sunRad);
+            Vector2 moonPositionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult + Math.PI, sunRad);
+            _spriteBatch.Draw(sunCore.spriteSheet, positionInCircleRadius, sunCore.getSourceRectangle(), Color.White, 0.0f, sunCore.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(sunRing.spriteSheet, positionInCircleRadius, sunRing.getSourceRectangle(), Color.White, (float)sunRingRotation, sunRing.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(moon.spriteSheet, moonPositionInCircleRadius, moon.getSourceRectangle(), Color.White, 0.0f, moon.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            DrawClouds(cloudOne, cloudTwo, cloudThree, star1, star2);
+            DrawTamogochiAnimation(animation);
 
 
 
-                    if (showMessage)
-                    {
-                        _spriteBatch.Draw(comicBubble.spriteSheet, new Vector2(this.Window.ClientBounds.Width / 2 + 130, this.Window.ClientBounds.Height / 2 + 10), comicBubble.getSourceRectangle(), Color.White, 0.0f, comicBubble.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
-                        _spriteBatch.DrawString(font, sayText, new Vector2(this.Window.ClientBounds.Width / 2 + 190, this.Window.ClientBounds.Height / 2 - 145), Color.Black);
-                    }
+            if (showMessage)
+            {
+                _spriteBatch.Draw(comicBubble.spriteSheet, new Vector2(this.Window.ClientBounds.Width / 2 + 130, this.Window.ClientBounds.Height / 2 + 10), comicBubble.getSourceRectangle(), Color.White, 0.0f, comicBubble.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
+                _spriteBatch.DrawString(font, sayText, new Vector2(this.Window.ClientBounds.Width / 2 + 190, this.Window.ClientBounds.Height / 2 - 145), Color.Black);
+            }
 
-                    _spriteBatch.End();
-                    sunRingRotation = sunRingRotation + 0.01f;
-                    manageBigCircleRotationSpeed();
-                    base.Draw(gameTime);
-                }
+            _spriteBatch.End();
+            sunRingRotation = sunRingRotation + 0.01f;
+            manageBigCircleRotationSpeed();
+            base.Draw(gameTime);
+        }
             
         
 
