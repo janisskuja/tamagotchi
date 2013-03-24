@@ -108,12 +108,12 @@ namespace MetroTama
 
         public void UpdateText(Pet pet)
         {
-            TextHP.Text = pet.Healt.ToString();
-            TextEN.Text = pet.Energy.ToString();
-            TextHYG.Text = pet.Hygene.ToString();
-            TextMD.Text = pet.Fun.ToString();
-            TextSM.Text = pet.Study.ToString();
-            TextHUN.Text = pet.Hungry.ToString();
+            ProgressHP.Value = pet.Healt;
+            ProgressEN.Value = pet.Energy;
+            ProgressHYG.Value = pet.Hygene;
+            ProgressMD.Value = pet.Fun;
+            ProgressSM.Value = pet.Study;
+            ProgressHUN.Value = pet.Hungry;
         }
     }
 }

@@ -30,7 +30,7 @@
             SmallLogo="Assets\SmallLogo.png"
             Description="MetroTama"
             ForegroundText="light"
-            BackgroundColor="#464646">
+            BackgroundColor="#000000">
             <DefaultTile ShowName="allLogos" />
             <SplashScreen Image="Assets\SplashScreen.png" />
         </VisualElements>
