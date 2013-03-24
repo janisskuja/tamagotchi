@@ -131,7 +131,7 @@ namespace MetroTama
             }
             Rectangle source = new Rectangle(frameIndexX * animation.frameWidth, frameIndexY * animation.frameHeight, animation.frameWidth, animation.frameHeight);
             Vector2 position = new Vector2(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height / 2);
-            Vector2 origin = new Vector2(animation.frameWidth / 2.0f, animation.frameHeight);
+            Vector2 origin = new Vector2(animation.frameWidth / 2.0f, animation.frameHeight / 2.0f);
             _spriteBatch.Begin();
             _spriteBatch.Draw(animation.spriteSheet, position, source, Color.White, 0.0f, origin, 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.End();
