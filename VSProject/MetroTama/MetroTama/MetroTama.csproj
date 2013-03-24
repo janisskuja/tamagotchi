@@ -173,7 +173,9 @@
     <Content Include="Content\Graphics\idleAnimation.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Content\Graphics\bgDetail.xnb" />
+    <Content Include="Content\Graphics\bgDetail.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Content\Graphics\bgGradient.xnb" />
     <Content Include="Content\Graphics\cloudOne.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

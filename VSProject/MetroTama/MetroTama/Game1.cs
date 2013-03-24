@@ -29,6 +29,7 @@ namespace MetroTama
         private GraphicsEnum graphicsEnum;
         Color bgColor;
         private double mult = 3;
+        private double sunRingRotation;
         private double sunDestRotationPos = 2.5;
 
         // the elapsed amount of time the frame has been shown for
@@ -87,6 +88,7 @@ namespace MetroTama
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.CloudTwo, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.CloudTwo));
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.CloudThree, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.CloudThree));
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.Moon, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.Moon));
+            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.BgDetail, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.BgDetail));
             graphicsEnum = GraphicsEnum.IdleAnimation;
         }
 
@@ -129,6 +131,8 @@ namespace MetroTama
             StaticImageData cloudTwo = contentRepo.getStaticImage(GraphicsEnum.CloudTwo);
             StaticImageData cloudThree = contentRepo.getStaticImage(GraphicsEnum.CloudThree);
             StaticImageData moon = contentRepo.getStaticImage(GraphicsEnum.Moon);
+            StaticImageData bgDetail = contentRepo.getStaticImage(GraphicsEnum.BgDetail);
+            
             // TODO: Add your drawing code here
             time += (float)gameTime.ElapsedGameTime.TotalSeconds;
             while (time > animation.frameTime)
@@ -140,7 +144,7 @@ namespace MetroTama
             }
             manageFrameIndexes();
             Vector2 position = new Vector2(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height / 2);
-            Vector2 origin = new Vector2(animation.frameWidth / 2.0f, animation.frameHeight / 2.0f);
+            Vector2 origin = new Vector2(animation.frameWidth / 2.0f, 250);
             _spriteBatch.Begin();
             int sunRad = 700;
             calculateObjectPositionX(cloudOne);
@@ -149,15 +153,17 @@ namespace MetroTama
 
             Vector2 positionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult, sunRad);
             Vector2 moonPositionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult + Math.PI, sunRad);
+            _spriteBatch.Draw(sunCore.spriteSheet, positionInCircleRadius, sunCore.getSourceRectangle(), Color.White, 0.0f, sunCore.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(sunRing.spriteSheet, positionInCircleRadius, sunRing.getSourceRectangle(), Color.White, (float) sunRingRotation, sunRing.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(moon.spriteSheet, moonPositionInCircleRadius, moon.getSourceRectangle(), Color.White, 0.0f, moon.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(bgDetail.spriteSheet, new Vector2(0, this.Window.ClientBounds.Height), bgDetail.getSourceRectangle(), Color.White, 0.0f, bgDetail.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(bgDetail.spriteSheet, new Vector2(bgDetail.width, this.Window.ClientBounds.Height), bgDetail.getSourceRectangle(), Color.White, 0.0f, bgDetail.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.Draw(animation.spriteSheet, position, animation.getSourceRectangle(frameIndexX, frameIndexY), Color.White, 0.0f, origin, 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(sunCore.spriteSheet, positionInCircleRadius, sunCore.getSourceRectangle(), Color.White, 0.0f, sunCore.getOriginVector(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(sunRing.spriteSheet, positionInCircleRadius, sunRing.getSourceRectangle(), Color.White, (float)mult * 2, sunRing.getOriginVector(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(cloudOne.spriteSheet, getCloudPosition(cloudOne), cloudOne.getSourceRectangle(), Color.White, 0.0f, cloudOne.getOriginVector(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(cloudTwo.spriteSheet, getCloudPosition(cloudTwo), cloudTwo.getSourceRectangle(), Color.White, 0.0f, cloudTwo.getOriginVector(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(cloudThree.spriteSheet, getCloudPosition(cloudThree), cloudThree.getSourceRectangle(), Color.White, 0.0f, cloudThree.getOriginVector(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(moon.spriteSheet, moonPositionInCircleRadius, moon.getSourceRectangle(), Color.White, 0.0f, moon.getOriginVector(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(cloudOne.spriteSheet, getCloudPosition(cloudOne), cloudOne.getSourceRectangle(), Color.White, 0.0f, cloudOne.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(cloudTwo.spriteSheet, getCloudPosition(cloudTwo), cloudTwo.getSourceRectangle(), Color.White, 0.0f, cloudTwo.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(cloudThree.spriteSheet, getCloudPosition(cloudThree), cloudThree.getSourceRectangle(), Color.White, 0.0f, cloudThree.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.End();
-
+            sunRingRotation = sunRingRotation + 0.01f;
             manageBigCircleRotationSpeed();
             base.Draw(gameTime);
         }

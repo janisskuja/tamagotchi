@@ -24,8 +24,18 @@ namespace MetroTama.Domain.Entities
             return new Rectangle(0, 0, width, height);
         }
 
-        public Vector2 getOriginVector() {
+        public Vector2 getOriginVectorCenter() {
             return new Vector2(width / 2.0f, height / 2.0f);
+        }
+
+        public Vector2 getOriginVectorBottom()
+        {
+            return new Vector2(width / 2.0f, height);
+        }
+
+        public Vector2 getOriginVectorLeftBottom()
+        {
+            return new Vector2(0, height);
         }
     }
 }
