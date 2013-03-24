@@ -99,6 +99,7 @@ namespace MetroTama
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.BgDetail, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.BgDetail));
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.BgGradient, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.BgGradient));
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.BgGradientNight, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.BgGradientNight));
+            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.ComicBubble, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.ComicBubble));
             graphicsEnum = GraphicsEnum.IdleAnimation;
         }
 
@@ -149,6 +150,7 @@ namespace MetroTama
             StaticImageData bgDetail = contentRepo.getStaticImage(GraphicsEnum.BgDetail);
             StaticImageData bgGradient = contentRepo.getStaticImage(GraphicsEnum.BgGradient);
             StaticImageData bgGradientNight = contentRepo.getStaticImage(GraphicsEnum.BgGradientNight);
+            StaticImageData comicBubble = contentRepo.getStaticImage(GraphicsEnum.ComicBubble);
 
             // TODO: Add your drawing code here
             time += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -170,7 +172,6 @@ namespace MetroTama
             
             for (int i = 0; i <= this.Window.ClientBounds.Width; i++) {
                 if (pet.isSleeping) {
-                    
                     _spriteBatch.Draw(bgGradientNight.spriteSheet, new Vector2(i, 0), bgGradientNight.getSourceRectangle(), Color.White, 0.0f, bgGradientNight.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
                 }else{
                     _spriteBatch.Draw(bgGradient.spriteSheet, new Vector2(i, 0), bgGradient.getSourceRectangle(), Color.White, 0.0f, bgGradient.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
@@ -187,6 +188,12 @@ namespace MetroTama
             DrawClouds(cloudOne, cloudTwo, cloudThree);
             
             _spriteBatch.Draw(animation.spriteSheet, position, animation.getSourceRectangle(frameIndexX, frameIndexY), Color.White, 0.0f, origin, 1.0f, SpriteEffects.None, 0.0f);
+
+            if (showMessage)
+            {
+                _spriteBatch.Draw(comicBubble.spriteSheet, new Vector2(this.Window.ClientBounds.Width / 2 + 130, this.Window.ClientBounds.Height / 2 + 10), comicBubble.getSourceRectangle(), Color.White, 0.0f, comicBubble.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
+                _spriteBatch.DrawString(font, sayText, new Vector2(this.Window.ClientBounds.Width / 2 + 190, this.Window.ClientBounds.Height / 2 - 145), Color.Black);
+            }
 
             _spriteBatch.End();
             sunRingRotation = sunRingRotation + 0.01f;

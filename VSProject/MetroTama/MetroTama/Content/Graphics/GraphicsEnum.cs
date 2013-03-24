@@ -20,6 +20,7 @@ namespace MetroTama.Content.Graphics
         BgDetail,
         BgGradient,
         BgGradientNight,
-        EatingAnim
+        EatingAnim,
+        ComicBubble
     }
 }

@@ -60,7 +60,7 @@ namespace MetroTama.Domain.Repository
                     break;
                 case 4:
                     {
-                        saytext.Text = "I don't want to eat!";
+                        saytext.Text = "I don't want \nto eat!";
                     }
                     break;
                 case 5:
@@ -75,7 +75,7 @@ namespace MetroTama.Domain.Repository
                     break;
                 case 7:
                     {
-                        saytext.Text = "You can heal somebody else!";
+                        saytext.Text = "You can heal \nsomebody else!";
                     }
                     break;
                 case 8:
@@ -85,12 +85,12 @@ namespace MetroTama.Domain.Repository
                     break;
                 case 9:
                     {
-                        saytext.Text = "Can we go to shower?";
+                        saytext.Text = "Can we go to \nshower?";
                     }
                     break;
                 case 10:
                     {
-                        saytext.Text = "Go to shower alone!";
+                        saytext.Text = "Go to shower \nalone!";
                     }
                     break;
                 case 11:
@@ -120,22 +120,22 @@ namespace MetroTama.Domain.Repository
                     break;
                 case 16:
                     {
-                        saytext.Text = "Let's go to the party!";
+                        saytext.Text = "Let's go to \nthe party!";
                     }
                     break;
                 case 17:
                     {
-                        saytext.Text = "I'm stupid, help me!";
+                        saytext.Text = "I'm stupid,\nhelp me!";
                     }
                     break;
                 case 18:
                     {
-                        saytext.Text = "I want to learn something new!";
+                        saytext.Text = "I want to learn \nsomething new!";
                     }
                     break;
                 case 19:
                     {
-                        saytext.Text = "I think I'm smarter than you!";
+                        saytext.Text = "I think I'm \nsmarter than you!";
                     }
                     break;
                 case 20:
