@@ -140,7 +140,7 @@ namespace MetroTama.Domain.Repository
                     break;
                 case 20:
                     {
-                        saytext.Text = "I think I'm smarter than you!";
+                        saytext.Text = "I'm feeling grate!";
                     }
                     break;
                 default:

@@ -11,9 +11,8 @@ namespace MetroTama.Services
     class SayTextService
     {
         private static Random r = new Random();
-        private static int LOW_VALUE = 0;
-        private static int MEDIUM_VALUE = 50;
-        private static int HIGH_VALUE = 80;
+        private static int LOW_VALUE = 50;
+        private static int MEDIUM_VALUE = 80;
         public string GetText(Pet temp_pet)
         {
             int sw = r.Next(1, 7);

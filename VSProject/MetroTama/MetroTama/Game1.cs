@@ -18,9 +18,15 @@ namespace MetroTama
     {
         // Maximum stat value (ex., Health)
         private static int MAX_STAT = 100;
+        private static bool showMessage = false;
+        private static SpriteFont font;
+        private static string sayText;
+        private static TimeSpan lastMessageUpdate;
+        private static TimeSpan messageShowTime = new TimeSpan(0, 0, 0, 3, 0);
 
         GraphicsDeviceManager _graphics;
         SpriteBatch _spriteBatch;
+        
         public Pet pet;
         public GamePage _gamePage;
         PetRepository petRepository;
@@ -76,6 +82,7 @@ namespace MetroTama
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            font = Content.Load<SpriteFont>("gameFont");
 
             // TODO: use this.Content to load your game content here
             contentRepo.setSpriteSheetForAnimation(GraphicsEnum.Celebrate, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.Celebrate));
@@ -113,6 +120,11 @@ namespace MetroTama
             _gamePage.UpdateText(pet);
            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+           if (gameTime.TotalGameTime.Subtract(lastMessageUpdate) > messageShowTime)
+           {
+               showMessage = false;
+               lastMessageUpdate = gameTime.TotalGameTime;
+           }
            base.Update(gameTime);
         }
 
@@ -217,6 +229,12 @@ namespace MetroTama
 
         public void Feed(int foodId)
         {
+            //Just for testing: must be deleted!
+            SayTextService sayTextSrv = new SayTextService();
+            sayText = sayTextSrv.GetText(pet);
+            showMessage = true;
+            // end of tests
+
             if (pet.isSleeping)
             {
                 //Show message: "I'm sleeping!"

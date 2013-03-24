@@ -176,6 +176,11 @@
     <Content Include="Content\Graphics\bgDetail.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\gameFont.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Content\Font\gameFont.spritefont" />
+    <None Include="Content\Graphics\bgDetail.xnb" />
     <None Include="Content\Graphics\bgGradient.xnb" />
     <Content Include="Content\Graphics\cloudOne.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
