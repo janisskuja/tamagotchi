@@ -104,12 +104,9 @@ namespace MetroTama
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.BgDetail, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.BgDetail));
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.BgGradient, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.BgGradient));
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.BgGradientNight, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.BgGradientNight));
-<<<<<<< HEAD
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.ComicBubble, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.ComicBubble));
-=======
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.Star1, Content.Load<Texture2D>("Graphics/Stars/" + GraphicsEnum.Star1));
             contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.Star2, Content.Load<Texture2D>("Graphics/Stars/" + GraphicsEnum.Star2));
->>>>>>> Added stars
             graphicsEnum = GraphicsEnum.IdleAnimation;
 
             int previousX = 0;
@@ -170,6 +167,7 @@ namespace MetroTama
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(bgColor);
+            
             AnimationData animation = contentRepo.getAnimationData(graphicsEnum);
 
             StaticImageData sunCore = contentRepo.getStaticImage(GraphicsEnum.SunCore);
@@ -181,14 +179,15 @@ namespace MetroTama
             StaticImageData bgDetail = contentRepo.getStaticImage(GraphicsEnum.BgDetail);
             StaticImageData bgGradient = contentRepo.getStaticImage(GraphicsEnum.BgGradient);
             StaticImageData bgGradientNight = contentRepo.getStaticImage(GraphicsEnum.BgGradientNight);
-<<<<<<< HEAD
+
             StaticImageData comicBubble = contentRepo.getStaticImage(GraphicsEnum.ComicBubble);
-=======
+
             StaticImageData star1 = contentRepo.getStaticImage(GraphicsEnum.Star1);
             StaticImageData star2 = contentRepo.getStaticImage(GraphicsEnum.Star2);
->>>>>>> Added stars
+          
 
             // TODO: Add your drawing code here
+         
             time += (float)gameTime.ElapsedGameTime.TotalSeconds;
             while (time > animation.frameTime)
             {
@@ -199,55 +198,60 @@ namespace MetroTama
             }
             manageFrameIndexes();
 
-            _spriteBatch.Begin();
-<<<<<<< HEAD
             
+
             calculateObjectPositionX(cloudOne);
             calculateObjectPositionX(cloudTwo);
             calculateObjectPositionX(cloudThree);
-            
-            for (int i = 0; i <= this.Window.ClientBounds.Width; i++) {
-                if (pet.isSleeping) {
+            _spriteBatch.Begin();
+            for (int i = 0; i <= this.Window.ClientBounds.Width; i++)
+            {
+                if (pet.isSleeping)
+                {
                     _spriteBatch.Draw(bgGradientNight.spriteSheet, new Vector2(i, 0), bgGradientNight.getSourceRectangle(), Color.White, 0.0f, bgGradientNight.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
-                }else{
+                }
+                else
+                {
                     _spriteBatch.Draw(bgGradient.spriteSheet, new Vector2(i, 0), bgGradient.getSourceRectangle(), Color.White, 0.0f, bgGradient.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
-=======
-            DrawBackgroundDetail(bgDetail, bgGradientNight, bgGradient);
-            if (pet.isSleeping)
-            {
-                foreach (KeyValuePair<int, float> item in stars1)
-                {
-                    _spriteBatch.Draw(star1.spriteSheet, new Vector2(item.Key, item.Value), star1.getSourceRectangle(), Color.White, (float)sunRingRotation, star1.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
->>>>>>> Added stars
-                }
+                    DrawBackgroundDetail(bgDetail, bgGradientNight, bgGradient);
+                    if (pet.isSleeping)
+                    {
+                        foreach (KeyValuePair<int, float> item in stars1)
+                        {
+                            _spriteBatch.Draw(star1.spriteSheet, new Vector2(item.Key, item.Value), star1.getSourceRectangle(), Color.White, (float)sunRingRotation, star1.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+                        }
 
-                foreach (KeyValuePair<int, float> item in stars2)
-                {
-                    _spriteBatch.Draw(star2.spriteSheet, new Vector2(item.Key, item.Value), star2.getSourceRectangle(), Color.White, (float)sunRingRotation, star2.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+                        foreach (KeyValuePair<int, float> item in stars2)
+                        {
+                            _spriteBatch.Draw(star2.spriteSheet, new Vector2(item.Key, item.Value), star2.getSourceRectangle(), Color.White, (float)sunRingRotation, star2.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+                        }
+                    }
                 }
             }
-            int sunRad = 700;
-            Vector2 positionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult, sunRad);
-            Vector2 moonPositionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult + Math.PI, sunRad);
-            _spriteBatch.Draw(sunCore.spriteSheet, positionInCircleRadius, sunCore.getSourceRectangle(), Color.White, 0.0f, sunCore.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(sunRing.spriteSheet, positionInCircleRadius, sunRing.getSourceRectangle(), Color.White, (float)sunRingRotation, sunRing.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(moon.spriteSheet, moonPositionInCircleRadius, moon.getSourceRectangle(), Color.White, 0.0f, moon.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-            DrawClouds(cloudOne, cloudTwo, cloudThree, star1, star2);
-            DrawTamogochiAnimation(animation);
+                    int sunRad = 700;
+                    Vector2 positionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult, sunRad);
+                    Vector2 moonPositionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult + Math.PI, sunRad);
+                    _spriteBatch.Draw(sunCore.spriteSheet, positionInCircleRadius, sunCore.getSourceRectangle(), Color.White, 0.0f, sunCore.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+                    _spriteBatch.Draw(sunRing.spriteSheet, positionInCircleRadius, sunRing.getSourceRectangle(), Color.White, (float)sunRingRotation, sunRing.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+                    _spriteBatch.Draw(moon.spriteSheet, moonPositionInCircleRadius, moon.getSourceRectangle(), Color.White, 0.0f, moon.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+                    DrawClouds(cloudOne, cloudTwo, cloudThree, star1, star2);
+                    DrawTamogochiAnimation(animation);
 
 
 
-            if (showMessage)
-            {
-                _spriteBatch.Draw(comicBubble.spriteSheet, new Vector2(this.Window.ClientBounds.Width / 2 + 130, this.Window.ClientBounds.Height / 2 + 10), comicBubble.getSourceRectangle(), Color.White, 0.0f, comicBubble.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
-                _spriteBatch.DrawString(font, sayText, new Vector2(this.Window.ClientBounds.Width / 2 + 190, this.Window.ClientBounds.Height / 2 - 145), Color.Black);
-            }
+                    if (showMessage)
+                    {
+                        _spriteBatch.Draw(comicBubble.spriteSheet, new Vector2(this.Window.ClientBounds.Width / 2 + 130, this.Window.ClientBounds.Height / 2 + 10), comicBubble.getSourceRectangle(), Color.White, 0.0f, comicBubble.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
+                        _spriteBatch.DrawString(font, sayText, new Vector2(this.Window.ClientBounds.Width / 2 + 190, this.Window.ClientBounds.Height / 2 - 145), Color.Black);
+                    }
 
-            _spriteBatch.End();
-            sunRingRotation = sunRingRotation + 0.01f;
-            manageBigCircleRotationSpeed();
-            base.Draw(gameTime);
-        }
+                    _spriteBatch.End();
+                    sunRingRotation = sunRingRotation + 0.01f;
+                    manageBigCircleRotationSpeed();
+                    base.Draw(gameTime);
+                }
+            
+        
 
         private void DrawTamogochiAnimation(AnimationData animation)
         {
