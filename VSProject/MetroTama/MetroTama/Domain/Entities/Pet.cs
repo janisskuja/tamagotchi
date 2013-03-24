@@ -14,6 +14,7 @@ namespace MetroTama.Domain
     public class Pet
     {
         private static int ZERRO_VALUE = 0;
+        private static int MAX_VALUE = 100;
         private static int HEALT_DECREASE = 1;
         private static int STUDY_DECREASE = 2;
         private static int HUNGRY_DECREASE = 4;
@@ -70,6 +71,12 @@ namespace MetroTama.Domain
                     }
                     Healt_LastUpdateTime = temp_gameTime.TotalGameTime;
                 }
+
+                if (Healt > MAX_VALUE)
+                {
+                    Healt = MAX_VALUE;
+                }
+
                 if (Healt < ZERRO_VALUE)
                 {
                     Healt = 0;
@@ -99,6 +106,10 @@ namespace MetroTama.Domain
                 {
                     Study = 0;
                 }
+                if (Study > MAX_VALUE)
+                {
+                    Study = MAX_VALUE;
+                }
             }
         }
 
@@ -115,6 +126,11 @@ namespace MetroTama.Domain
                 {
                     Fun = 0;
                 }
+
+                if (Fun > MAX_VALUE)
+                {
+                    Fun = MAX_VALUE;
+                }
             }
         }
 
@@ -130,6 +146,10 @@ namespace MetroTama.Domain
                 if (Hygene < ZERRO_VALUE)
                 {
                     Hygene = 0;
+                }
+                if (Hygene > MAX_VALUE)
+                {
+                    Hygene = MAX_VALUE;
                 }
             }
         }
@@ -154,6 +174,10 @@ namespace MetroTama.Domain
                 {
                     Energy = 0;
                 }
+                if (Energy > MAX_VALUE)
+                {
+                    Energy = MAX_VALUE;
+                }
             }
         }
 
@@ -169,6 +193,10 @@ namespace MetroTama.Domain
                 if (Hungry < ZERRO_VALUE)
                 {
                     Hungry = 0;
+                }
+                if (Hungry > MAX_VALUE)
+                {
+                    Hungry = MAX_VALUE;
                 }
             }
         }
