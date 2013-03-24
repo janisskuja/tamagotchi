@@ -7,6 +7,8 @@ using MetroTama.Domain.Repository;
 using Windows.ApplicationModel.Background;
 using Windows.Storage;
 using Windows.UI.Core;
+using Windows.UI;
+using Windows.UI.Xaml.Media;
 
 namespace MetroTama
 {
@@ -125,6 +127,7 @@ namespace MetroTama
         {
 
             ProgressHP.Value = pet.Healt;
+            CheckProgressHp();
             ProgressEN.Value = pet.Energy;
             ProgressHYG.Value = pet.Hygene;
             ProgressMD.Value = pet.Fun;
@@ -137,6 +140,17 @@ namespace MetroTama
             TextSM.Text = pet.Study.ToString();
             TextHUN.Text = pet.Hungry.ToString();
 
+        }
+
+        private void CheckProgressHp()
+        {
+            // TODO: fix progress bars
+            //SolidColorBrush colorBrush = new SolidColorBrush(Color.FromArgb(0, 242, 34, 12));
+
+            //if (ProgressHP.Value > 25)
+            //{
+            //    ProgressHP.Foreground = colorBrush;
+            //}
         }
 
         /// <summary>
