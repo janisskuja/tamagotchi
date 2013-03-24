@@ -65,9 +65,19 @@ namespace MetroTama.Domain
             {
                 if (Healt > ZERRO_VALUE)
                 {
-                    if ((Energy < 50) || (Hungry < 50) || (Hygene < 50) || (Fun < 50))
+                    if (!isSleeping)
                     {
-                        Healt -= HEALT_DECREASE;
+                        if ((Energy < 50) || (Hungry < 50) || (Hygene < 50) || (Fun < 50))
+                        {
+                            Healt -= HEALT_DECREASE;
+                        }
+                    }
+                    else
+                    {
+                        if ((Energy < 50) || (Hungry < 50) || (Hygene < 50) || (Fun < 50))
+                        {
+                            Healt -= HEALT_DECREASE/2;
+                        }
                     }
                     Healt_LastUpdateTime = temp_gameTime.TotalGameTime;
                 }
@@ -97,11 +107,23 @@ namespace MetroTama.Domain
         {
             if (temp_gameTime.TotalGameTime.Subtract(Study_LastUpdateTime) > Stage.StudyTime)
             {
-                if (Study > ZERRO_VALUE)
+                if (!isSleeping)
                 {
-                    Study -= STUDY_DECREASE;
-                    Study_LastUpdateTime = temp_gameTime.TotalGameTime;
+                    if (Study > ZERRO_VALUE)
+                    {
+                        Study -= STUDY_DECREASE;
+                        Study_LastUpdateTime = temp_gameTime.TotalGameTime;
+                    }
                 }
+                else
+                {
+                    if (Study > ZERRO_VALUE)
+                    {
+                        Study -= STUDY_DECREASE/2;
+                        Study_LastUpdateTime = temp_gameTime.TotalGameTime;
+                    }
+                }
+
                 if (Study < ZERRO_VALUE)
                 {
                     Study = 0;
@@ -117,10 +139,21 @@ namespace MetroTama.Domain
         {
             if (temp_gameTime.TotalGameTime.Subtract(Fun_LastUpdateTime) > Stage.FunTime)
             {
-                if (Fun > ZERRO_VALUE)
+                if (!isSleeping)
                 {
-                    Fun -= FUN_DECREASE;
-                    Fun_LastUpdateTime = temp_gameTime.TotalGameTime;
+                    if (Fun > ZERRO_VALUE)
+                    {
+                        Fun -= FUN_DECREASE;
+                        Fun_LastUpdateTime = temp_gameTime.TotalGameTime;
+                    }
+                }
+                else
+                {
+                    if (Fun > ZERRO_VALUE)
+                    {
+                        Fun -= FUN_DECREASE/2;
+                        Fun_LastUpdateTime = temp_gameTime.TotalGameTime;
+                    }
                 }
                 if (Fun < ZERRO_VALUE)
                 {
@@ -138,10 +171,21 @@ namespace MetroTama.Domain
         {
             if (temp_gameTime.TotalGameTime.Subtract(Hygene_LastUpdateTime) > Stage.DirtyTime)
             {
-                if (Hygene>ZERRO_VALUE)
+                if (!isSleeping)
                 {
-                    Hygene -= HYGENE_DECREASE;
-                    Hygene_LastUpdateTime = temp_gameTime.TotalGameTime;
+                    if (Hygene > ZERRO_VALUE)
+                    {
+                        Hygene -= HYGENE_DECREASE;
+                        Hygene_LastUpdateTime = temp_gameTime.TotalGameTime;
+                    }
+                }
+                else
+                {
+                    if (Hygene > ZERRO_VALUE)
+                    {
+                        Hygene -= HYGENE_DECREASE/2;
+                        Hygene_LastUpdateTime = temp_gameTime.TotalGameTime;
+                    }
                 }
                 if (Hygene < ZERRO_VALUE)
                 {
@@ -185,10 +229,21 @@ namespace MetroTama.Domain
         {
             if (temp_gameTime.TotalGameTime.Subtract(Hungry_LastUpdateTime) > Stage.EatTime)
             {
-                if (Hungry > ZERRO_VALUE)
+                if (!isSleeping)
                 {
-                    Hungry -= HUNGRY_DECREASE;
-                    Hungry_LastUpdateTime = temp_gameTime.TotalGameTime;
+                    if (Hungry > ZERRO_VALUE)
+                    {
+                        Hungry -= HUNGRY_DECREASE;
+                        Hungry_LastUpdateTime = temp_gameTime.TotalGameTime;
+                    }
+                }
+                else
+                {
+                    if (Hungry > ZERRO_VALUE)
+                    {
+                        Hungry -= HUNGRY_DECREASE/2;
+                        Hungry_LastUpdateTime = temp_gameTime.TotalGameTime;
+                    }
                 }
                 if (Hungry < ZERRO_VALUE)
                 {
