@@ -183,13 +183,8 @@ namespace MetroTama
             _spriteBatch.Draw(sunCore.spriteSheet, positionInCircleRadius, sunCore.getSourceRectangle(), Color.White, 0.0f, sunCore.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.Draw(sunRing.spriteSheet, positionInCircleRadius, sunRing.getSourceRectangle(), Color.White, (float) sunRingRotation, sunRing.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.Draw(moon.spriteSheet, moonPositionInCircleRadius, moon.getSourceRectangle(), Color.White, 0.0f, moon.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(bgDetail.spriteSheet, new Vector2(0, this.Window.ClientBounds.Height), bgDetail.getSourceRectangle(), Color.White, 0.0f, bgDetail.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(bgDetail.spriteSheet, new Vector2(bgDetail.width, this.Window.ClientBounds.Height), bgDetail.getSourceRectangle(), Color.White, 0.0f, bgDetail.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(bgDetail.spriteSheet, new Vector2(bgDetail.width * 2, this.Window.ClientBounds.Height), bgDetail.getSourceRectangle(), Color.White, 0.0f, bgDetail.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
-            Color cloudColor = (pet.isSleeping) ? new Color(15, 24, 28) : Color.White;
-            _spriteBatch.Draw(cloudOne.spriteSheet, getCloudPosition(cloudOne), cloudOne.getSourceRectangle(), cloudColor, 0.0f, cloudOne.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(cloudTwo.spriteSheet, getCloudPosition(cloudTwo), cloudTwo.getSourceRectangle(), cloudColor, 0.0f, cloudTwo.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(cloudThree.spriteSheet, getCloudPosition(cloudThree), cloudThree.getSourceRectangle(), cloudColor, 0.0f, cloudThree.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            DrawBackgroundDetail(bgDetail);
+            DrawClouds(cloudOne, cloudTwo, cloudThree);
             
             _spriteBatch.Draw(animation.spriteSheet, position, animation.getSourceRectangle(frameIndexX, frameIndexY), Color.White, 0.0f, origin, 1.0f, SpriteEffects.None, 0.0f);
 
@@ -197,6 +192,21 @@ namespace MetroTama
             sunRingRotation = sunRingRotation + 0.01f;
             manageBigCircleRotationSpeed();
             base.Draw(gameTime);
+        }
+
+        private void DrawBackgroundDetail(StaticImageData bgDetail)
+        {
+            _spriteBatch.Draw(bgDetail.spriteSheet, new Vector2(0, this.Window.ClientBounds.Height), bgDetail.getSourceRectangle(), Color.White, 0.0f, bgDetail.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(bgDetail.spriteSheet, new Vector2(bgDetail.width, this.Window.ClientBounds.Height), bgDetail.getSourceRectangle(), Color.White, 0.0f, bgDetail.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(bgDetail.spriteSheet, new Vector2(bgDetail.width * 2, this.Window.ClientBounds.Height), bgDetail.getSourceRectangle(), Color.White, 0.0f, bgDetail.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
+        }
+
+        private void DrawClouds(StaticImageData cloudOne, StaticImageData cloudTwo, StaticImageData cloudThree)
+        {
+            Color cloudColor = (pet.isSleeping) ? new Color(15, 24, 28) : Color.White;
+            _spriteBatch.Draw(cloudOne.spriteSheet, getCloudPosition(cloudOne), cloudOne.getSourceRectangle(), cloudColor, 0.0f, cloudOne.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(cloudTwo.spriteSheet, getCloudPosition(cloudTwo), cloudTwo.getSourceRectangle(), cloudColor, 0.0f, cloudTwo.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(cloudThree.spriteSheet, getCloudPosition(cloudThree), cloudThree.getSourceRectangle(), cloudColor, 0.0f, cloudThree.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
         }
 
         private void calculateObjectPositionX(StaticImageData Object) {
