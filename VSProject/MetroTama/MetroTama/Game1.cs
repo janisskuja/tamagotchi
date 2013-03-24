@@ -27,12 +27,9 @@ namespace MetroTama
         ContentRepository contentRepo;
         GameObjectService gameObjectService;
         private GraphicsEnum graphicsEnum;
-<<<<<<< HEAD
         Color bgColor;
-=======
         private double mult = 3;
         private double destRotationPos = 2.5;
->>>>>>> Added several animations
 
         // the elapsed amount of time the frame has been shown for
         float time;
@@ -64,12 +61,8 @@ namespace MetroTama
             petRepository = new PetRepository();
             pet = petRepository.GetPet();
             gameObjectService = new GameObjectService();
-<<<<<<< HEAD
-            animationDataRepo = new AnimationDataRepository();
             bgColor = new Color(134, 185, 288);
-=======
             contentRepo = new ContentRepository();
->>>>>>> Added several animations
             base.Initialize();
             
         }
@@ -126,12 +119,7 @@ namespace MetroTama
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-<<<<<<< HEAD
-            AnimationData animation = animationDataRepo.getAnimationData(graphicsEnum);
-
             GraphicsDevice.Clear(bgColor);
-
-=======
             AnimationData animation = contentRepo.getAnimationData(graphicsEnum);
             GraphicsDevice.Clear(Color.CornflowerBlue);
             StaticImageData sunCore = contentRepo.getStaticImage(GraphicsEnum.SunCore);
@@ -139,7 +127,6 @@ namespace MetroTama
             StaticImageData cloudOne = contentRepo.getStaticImage(GraphicsEnum.CloudOne);
             StaticImageData cloudTwo = contentRepo.getStaticImage(GraphicsEnum.CloudTwo);
             StaticImageData cloudThree = contentRepo.getStaticImage(GraphicsEnum.CloudThree);
->>>>>>> Added several animations
             // TODO: Add your drawing code here
             time += (float)gameTime.ElapsedGameTime.TotalSeconds;
             while (time > animation.frameTime)

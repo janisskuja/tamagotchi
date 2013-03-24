@@ -137,7 +137,6 @@
     <Compile Include="Domain\Entities\SayText.cs" />
     <Compile Include="Domain\Entities\Stage.cs" />
     <Compile Include="Domain\Entities\StaticImageData.cs" />
-    <Compile Include="Domain\Entities\Status.cs" />
     <Compile Include="Domain\Entities\User.cs" />
     <Compile Include="Domain\Repository\ContentRepository.cs" />
     <Compile Include="Domain\Repository\GameObjectRepository.cs" />
