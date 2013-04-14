@@ -74,7 +74,7 @@ namespace MetroTama
             pet = petRepository.GetPet();
             gameObjectService = new GameObjectService();
             bgColor = new Color(134, 185, 288);
-            contentRepo = new ContentRepository();
+            
             base.Initialize();
             
         }
@@ -85,28 +85,12 @@ namespace MetroTama
         /// </summary>
         protected override void LoadContent()
         {
+            contentRepo = new ContentRepository(Content);
             // Create a new SpriteBatch, which can be used to draw textures.
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>("gameFont");
 
-            // TODO: use this.Content to load your game content here
-            contentRepo.setSpriteSheetForAnimation(GraphicsEnum.Celebrate, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.Celebrate));
-            contentRepo.setSpriteSheetForAnimation(GraphicsEnum.Player, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.Player));
-            contentRepo.setSpriteSheetForAnimation(GraphicsEnum.IdleAnimation, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.IdleAnimation));
-            contentRepo.setSpriteSheetForAnimation(GraphicsEnum.EatingAnim, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.EatingAnim));
-            
-            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.SunCore, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.SunCore));
-            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.SunRing, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.SunRing));
-            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.CloudOne, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.CloudOne));
-            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.CloudTwo, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.CloudTwo));
-            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.CloudThree, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.CloudThree));
-            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.Moon, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.Moon));
-            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.BgDetail, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.BgDetail));
-            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.BgGradient, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.BgGradient));
-            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.BgGradientNight, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.BgGradientNight));
-            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.ComicBubble, Content.Load<Texture2D>("Graphics/" + GraphicsEnum.ComicBubble));
-            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.Star1, Content.Load<Texture2D>("Graphics/Stars/" + GraphicsEnum.Star1));
-            contentRepo.setSpriteSheetForStaticImage(GraphicsEnum.Star2, Content.Load<Texture2D>("Graphics/Stars/" + GraphicsEnum.Star2));
+
             graphicsEnum = GraphicsEnum.IdleAnimation;
 
             int previousX = 0;
