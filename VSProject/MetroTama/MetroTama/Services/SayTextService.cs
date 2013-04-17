@@ -1,4 +1,5 @@
 ﻿using MetroTama.Domain;
+using MetroTama.Domain.Entities;
 using MetroTama.Domain.Repository;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace MetroTama.Services
             {
                 case 1:
                     {
-                        if (temp_pet.isSick)
+                        if (temp_pet.IsSick)
                             temp_say_text = temp_saytext_rep.GetSayText(1);
                         else
                             temp_say_text = temp_saytext_rep.GetSayText(20);

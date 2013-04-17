@@ -11,31 +11,31 @@ namespace MetroTama.Domain.Entities
 {
     public class StaticImageData
     {
-        public int height; // define the size of our animation frame
-        public int width;
-        public int movementSpeed;
-        public int xPosition;
-        public int yPosition;
-        public Texture2D spriteSheet;
-        public GraphicsEnum graphicsEnum;
+        public int Height; // define the size of our animation frame
+        public int Width;
+        public int MovementSpeed;
+        public int XPosition;
+        public int YPosition;
+        public Texture2D SpriteSheet;
+        public GraphicsEnum GraphicsEnum;
 
-        public Rectangle getSourceRectangle()
+        public Rectangle GetSourceRectangle()
         {
-            return new Rectangle(0, 0, width, height);
+            return new Rectangle(0, 0, Width, Height);
         }
 
-        public Vector2 getOriginVectorCenter() {
-            return new Vector2(width / 2.0f, height / 2.0f);
+        public Vector2 GetOriginVectorCenter() {
+            return new Vector2(Width / 2.0f, Height / 2.0f);
         }
 
-        public Vector2 getOriginVectorBottom()
+        public Vector2 GetOriginVectorBottom()
         {
-            return new Vector2(width / 2.0f, height);
+            return new Vector2(Width / 2.0f, Height);
         }
 
-        public Vector2 getOriginVectorLeftBottom()
+        public Vector2 GetOriginVectorLeftBottom()
         {
-            return new Vector2(0, height);
+            return new Vector2(0, Height);
         }
     }
 }

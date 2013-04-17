@@ -5,74 +5,77 @@ using System.Text;
 using System.Threading.Tasks;
 using MetroTama.Content.Graphics;
 using MetroTama.Domain.Entities;
-using MetroTama.Services.Animation;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MetroTama.Domain.Repository
 {
     class ContentRepository
     {
-        Dictionary<GraphicsEnum, AnimationData> animationDataRepo;
-        Dictionary<GraphicsEnum, StaticImageData> staticImageData;
-        private Microsoft.Xna.Framework.Content.ContentManager Content;
+        readonly Dictionary<GraphicsEnum, AnimationData> _animationDataRepo;
+        readonly Dictionary<GraphicsEnum, StaticImageData> _staticImageData;
+        private readonly Microsoft.Xna.Framework.Content.ContentManager _content;
 
-        public ContentRepository(Microsoft.Xna.Framework.Content.ContentManager Content)
+        public ContentRepository(Microsoft.Xna.Framework.Content.ContentManager content)
         {
-            this.Content = Content;
-            animationDataRepo = new Dictionary<GraphicsEnum, AnimationData>();
-            animationDataRepo.Add(GraphicsEnum.Celebrate, getAnimationData(64, 64, 10, 1, 0.1f, "Graphics/", GraphicsEnum.Celebrate));
-            animationDataRepo.Add(GraphicsEnum.Player, getAnimationData(64, 64, 10, 1, 0.1f, "Graphics/", GraphicsEnum.Player));
-            animationDataRepo.Add(GraphicsEnum.IdleAnimation, getAnimationData(260, 360, 4, 1, 0.2f, "Graphics/", GraphicsEnum.IdleAnimation));
-            animationDataRepo.Add(GraphicsEnum.EatingAnim, getAnimationData(260, 360, 4, 1, 0.06f, "Graphics/", GraphicsEnum.EatingAnim));
+            _content = content;
+            _animationDataRepo = new Dictionary<GraphicsEnum, AnimationData>
+                {
+                    {GraphicsEnum.Celebrate, GetAnimationData(64, 64, 10, 1, 0.1f, "Graphics/", GraphicsEnum.Celebrate)},
+                    {GraphicsEnum.Player, GetAnimationData(64, 64, 10, 1, 0.1f, "Graphics/", GraphicsEnum.Player)},
+                    {GraphicsEnum.IdleAnimation, GetAnimationData(260, 360, 4, 1, 0.2f, "Graphics/", GraphicsEnum.IdleAnimation)},
+                    {GraphicsEnum.EatingAnim, GetAnimationData(260, 360, 4, 1, 0.06f, "Graphics/", GraphicsEnum.EatingAnim)}
+                };
 
-            staticImageData = new Dictionary<GraphicsEnum, StaticImageData>();
-            staticImageData.Add(GraphicsEnum.SunCore, getStaticImageData(175, 175, 0, 0, 0, "Graphics/", GraphicsEnum.SunCore));
-            staticImageData.Add(GraphicsEnum.SunRing, getStaticImageData(213, 213, 0, 0, 0, "Graphics/", GraphicsEnum.SunRing));
-            staticImageData.Add(GraphicsEnum.CloudOne, getStaticImageData(77, 120, 0, 40, 3, "Graphics/", GraphicsEnum.CloudOne));
-            staticImageData.Add(GraphicsEnum.CloudTwo, getStaticImageData(170, 267, 0, 100, 1, "Graphics/", GraphicsEnum.CloudThree));
-            staticImageData.Add(GraphicsEnum.CloudThree, getStaticImageData(105, 167, 0, 95, 2, "Graphics/", GraphicsEnum.CloudTwo));
-            staticImageData.Add(GraphicsEnum.Moon, getStaticImageData(188, 187, 0, 0, 0, "Graphics/", GraphicsEnum.Moon));
-            staticImageData.Add(GraphicsEnum.BgDetail, getStaticImageData(331, 612, 0, 0, 0, "Graphics/", GraphicsEnum.BgDetail));
-            staticImageData.Add(GraphicsEnum.BgGradient, getStaticImageData(396, 1, 0, 0, 0, "Graphics/", GraphicsEnum.BgGradient));
-            staticImageData.Add(GraphicsEnum.BgGradientNight, getStaticImageData(396, 1, 0, 0, 0, "Graphics/", GraphicsEnum.BgGradientNight));
-            staticImageData.Add(GraphicsEnum.ComicBubble, getStaticImageData(229, 331, 0, 0, 0, "Graphics/", GraphicsEnum.ComicBubble));
-            staticImageData.Add(GraphicsEnum.Star1, getStaticImageData(26, 27, 0, 0, 0, "Graphics/Stars/", GraphicsEnum.Star1));
-            staticImageData.Add(GraphicsEnum.Star2, getStaticImageData(18, 19, 0, 0, 0, "Graphics/Stars/", GraphicsEnum.Star2));
+            _staticImageData = new Dictionary<GraphicsEnum, StaticImageData>
+                {
+                    {GraphicsEnum.SunCore, GetStaticImageData(175, 175, 0, 0, 0, "Graphics/", GraphicsEnum.SunCore)},
+                    {GraphicsEnum.SunRing, GetStaticImageData(213, 213, 0, 0, 0, "Graphics/", GraphicsEnum.SunRing)},
+                    {GraphicsEnum.CloudOne, GetStaticImageData(77, 120, 0, 40, 3, "Graphics/", GraphicsEnum.CloudOne)},
+                    {GraphicsEnum.CloudTwo, GetStaticImageData(170, 267, 0, 100, 1, "Graphics/", GraphicsEnum.CloudThree)},
+                    {GraphicsEnum.CloudThree, GetStaticImageData(105, 167, 0, 95, 2, "Graphics/", GraphicsEnum.CloudTwo)},
+                    {GraphicsEnum.Moon, GetStaticImageData(188, 187, 0, 0, 0, "Graphics/", GraphicsEnum.Moon)},
+                    {GraphicsEnum.BgDetail, GetStaticImageData(331, 612, 0, 0, 0, "Graphics/", GraphicsEnum.BgDetail)},
+                    {GraphicsEnum.BgGradient, GetStaticImageData(396, 1, 0, 0, 0, "Graphics/", GraphicsEnum.BgGradient)},
+                    {GraphicsEnum.BgGradientNight, GetStaticImageData(396, 1, 0, 0, 0, "Graphics/", GraphicsEnum.BgGradientNight)},
+                    {GraphicsEnum.ComicBubble, GetStaticImageData(229, 331, 0, 0, 0, "Graphics/", GraphicsEnum.ComicBubble)},
+                    {GraphicsEnum.Star1, GetStaticImageData(26, 27, 0, 0, 0, "Graphics/Stars/", GraphicsEnum.Star1)},
+                    {GraphicsEnum.Star2, GetStaticImageData(18, 19, 0, 0, 0, "Graphics/Stars/", GraphicsEnum.Star2)}
+                };
         }
 
-        private StaticImageData getStaticImageData(int height, int width, int xPosition, int yPosition, int movementSpeed, String spriteDir, GraphicsEnum graphicsEnum)
+        private StaticImageData GetStaticImageData(int height, int width, int xPosition, int yPosition, int movementSpeed, String spriteDir, GraphicsEnum graphicsEnum)
         {
-            StaticImageData data = new StaticImageData();
-            data.graphicsEnum = graphicsEnum;
-            data.height = height;
-            data.width = width;
-            data.xPosition = xPosition;
-            data.movementSpeed = movementSpeed;
-            data.yPosition = yPosition;
-            data.spriteSheet = Content.Load<Texture2D>(spriteDir + graphicsEnum);
+            var data = new StaticImageData();
+            data.GraphicsEnum = graphicsEnum;
+            data.Height = height;
+            data.Width = width;
+            data.XPosition = xPosition;
+            data.MovementSpeed = movementSpeed;
+            data.YPosition = yPosition;
+            data.SpriteSheet = _content.Load<Texture2D>(spriteDir + graphicsEnum);
             return data;
         }
 
-        private AnimationData getAnimationData(int frameHeight, int frameWidth, int totalXFrames, int totalYFrames, float frameTime, String spriteDir, GraphicsEnum graphicsEnum)
+        private AnimationData GetAnimationData(int frameHeight, int frameWidth, int totalXFrames, int totalYFrames, float frameTime, String spriteDir, GraphicsEnum graphicsEnum)
         {
-            AnimationData animationData = new AnimationData();
-            animationData.frameHeight = frameHeight;
-            animationData.frameWidth = frameWidth;
-            animationData.totalXFrames = totalXFrames;
-            animationData.totalYFrames = totalYFrames;
-            animationData.frameTime = frameTime;
-            animationData.graphicsEnum = graphicsEnum;
-            animationData.spriteSheet = Content.Load<Texture2D>(spriteDir + graphicsEnum);
+            var animationData = new AnimationData();
+            animationData.FrameHeight = frameHeight;
+            animationData.FrameWidth = frameWidth;
+            animationData.TotalXFrames = totalXFrames;
+            animationData.TotalYFrames = totalYFrames;
+            animationData.FrameTime = frameTime;
+            animationData.GraphicsEnum = graphicsEnum;
+            animationData.SpriteSheet = _content.Load<Texture2D>(spriteDir + graphicsEnum);
             return animationData;
         }
 
-        public AnimationData getAnimationData(GraphicsEnum graphicsEnum) {
-            return animationDataRepo[graphicsEnum];
+        public AnimationData GetAnimationData(GraphicsEnum graphicsEnum) {
+            return _animationDataRepo[graphicsEnum];
         }
 
-        public StaticImageData getStaticImage(GraphicsEnum graphicsEnum)
+        public StaticImageData GetStaticImage(GraphicsEnum graphicsEnum)
         {
-            return staticImageData[graphicsEnum];
+            return _staticImageData[graphicsEnum];
         }
 
     }

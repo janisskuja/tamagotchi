@@ -1,11 +1,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MetroTama.Domain;
 using MetroTama.Domain.Repository;
 using MetroTama.Services;
 using Microsoft.Xna.Framework.Input;
 using MetroTama.Content.Graphics;
-using MetroTama.Services.Animation;
 using System;
 using MetroTama.Domain.Entities;
 using System.Collections.Generic;
@@ -18,47 +16,46 @@ namespace MetroTama
     public class Game1 : Game
     {
         // Maximum stat value (ex., Health)
-        private static int MAX_STAT = 100;
-        private static bool showMessage = false;
-        private static SpriteFont font;
-        private static string sayText;
-        private static TimeSpan lastMessageUpdate;
-        private static TimeSpan messageShowTime = new TimeSpan(0, 0, 0, 3, 0);
-        private static readonly Random random = new Random();
-        private static readonly object syncLock = new object();
+        private const int MaxStat = 100;
+        private static bool _showMessage;
+        private static SpriteFont _font;
+        private static string _sayText;
+        private static TimeSpan _lastMessageUpdate;
+        private static readonly TimeSpan MessageShowTime = new TimeSpan(0, 0, 0, 3, 0);
+        private static readonly Random Random = new Random();
+        private static readonly object SyncLock = new object();
 
-        GraphicsDeviceManager _graphics;
         SpriteBatch _spriteBatch;
         
-        public Pet pet;
-        public GamePage _gamePage;
-        PetRepository petRepository;
-        ContentRepository contentRepo;
-        GameObjectService gameObjectService;
-        private GraphicsEnum graphicsEnum;
-        Color bgColor;
-        private double mult = 3;
-        private double sunRingRotation;
-        private double sunDestRotationPos = 2.5;
-        Dictionary<int, float> stars1;
-        Dictionary<int, float> stars2;
+        public Pet Pet;
+        public GamePage GamePage;
+        PetRepository _petRepository;
+        ContentRepository _contentRepo;
+        GameObjectService _gameObjectService;
+        private GraphicsEnum _graphicsEnum;
+        Color _bgColor;
+        private double _mult = 3;
+        private double _sunRingRotation;
+        private double _sunDestRotationPos = 2.5;
+        Dictionary<int, float> _stars1;
+        Dictionary<int, float> _stars2;
 
         // the elapsed amount of time the frame has been shown for
-        float time;
+        float _time;
         // duration of time to show each frame
         // an index of the current frame being shown
-        int frameIndexX;
-        int frameIndexY = 0;
+        int _frameIndexX;
+        int _frameIndexY = 0;
 
         public Game1()
         {
-            _graphics = new GraphicsDeviceManager(this);
+            new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
 
-        public void SetXAMLPage(GamePage gamePage)
+        public void SetXamlPage(GamePage gamePage)
         {
-            _gamePage = gamePage;
+            GamePage = gamePage;
         }
 
         /// <summary>
@@ -70,10 +67,10 @@ namespace MetroTama
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            petRepository = new PetRepository();
-            pet = petRepository.GetPet();
-            gameObjectService = new GameObjectService();
-            bgColor = new Color(134, 185, 288);
+            _petRepository = new PetRepository();
+            Pet = _petRepository.GetPet();
+            _gameObjectService = new GameObjectService();
+            _bgColor = new Color(134, 185, 288);
             
             base.Initialize();
             
@@ -85,33 +82,33 @@ namespace MetroTama
         /// </summary>
         protected override void LoadContent()
         {
-            contentRepo = new ContentRepository(Content);
+            _contentRepo = new ContentRepository(Content);
             // Create a new SpriteBatch, which can be used to draw textures.
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            font = Content.Load<SpriteFont>("gameFont");
+            _font = Content.Load<SpriteFont>("gameFont");
 
 
-            graphicsEnum = GraphicsEnum.IdleAnimation;
+            _graphicsEnum = GraphicsEnum.IdleAnimation;
 
             int previousX = 0;
-            stars1 = new Dictionary<int, float>();
-            stars2 = new Dictionary<int, float>();
-            for(int i = 1; i < 11; i++) {
-                lock (syncLock)
+            _stars1 = new Dictionary<int, float>();
+            _stars2 = new Dictionary<int, float>();
+            for(var i = 1; i < 11; i++) {
+                lock (SyncLock)
                 { // synchronize
-                    previousX = random.Next(100) * i + previousX;
+                    previousX = Random.Next(100) * i + previousX;
                 }
-                stars1.Add(previousX, (float)GetRandomNumber(10, 400));
-                stars2.Add(20 * i, (float)GetRandomNumber(10, 400));
+                _stars1.Add(previousX, (float)GetRandomNumber(10, 400));
+                _stars2.Add(20 * i, (float)GetRandomNumber(10, 400));
             }
             
         }
 
         private double GetRandomNumber(double minimum, double maximum)
         {
-            lock (syncLock)
+            lock (SyncLock)
             { // synchronize
-                return random.NextDouble() * (maximum - minimum) + minimum;
+                return Random.NextDouble() * (maximum - minimum) + minimum;
             }
         }
 
@@ -132,14 +129,14 @@ namespace MetroTama
         protected override void Update(GameTime gameTime)
         {
             // TODO: Add your update logic here
-            pet.Update(gameTime);
-            _gamePage.UpdateText(pet);
+            Pet.Update(gameTime);
+            GamePage.UpdateText(Pet);
            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-           if (gameTime.TotalGameTime.Subtract(lastMessageUpdate) > messageShowTime)
+           if (gameTime.TotalGameTime.Subtract(_lastMessageUpdate) > MessageShowTime)
            {
-               showMessage = false;
-               lastMessageUpdate = gameTime.TotalGameTime;
+               _showMessage = false;
+               _lastMessageUpdate = gameTime.TotalGameTime;
            }
            base.Update(gameTime);
         }
@@ -150,73 +147,69 @@ namespace MetroTama
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(bgColor);
+            GraphicsDevice.Clear(_bgColor);
             
-            AnimationData animation = contentRepo.getAnimationData(graphicsEnum);
+            var animation = _contentRepo.GetAnimationData(_graphicsEnum);
 
-            StaticImageData sunCore = contentRepo.getStaticImage(GraphicsEnum.SunCore);
-            StaticImageData sunRing = contentRepo.getStaticImage(GraphicsEnum.SunRing);
-            StaticImageData cloudOne = contentRepo.getStaticImage(GraphicsEnum.CloudOne);
-            StaticImageData cloudTwo = contentRepo.getStaticImage(GraphicsEnum.CloudTwo);
-            StaticImageData cloudThree = contentRepo.getStaticImage(GraphicsEnum.CloudThree);
-            StaticImageData moon = contentRepo.getStaticImage(GraphicsEnum.Moon);
-            StaticImageData bgDetail = contentRepo.getStaticImage(GraphicsEnum.BgDetail);
-            StaticImageData bgGradient = contentRepo.getStaticImage(GraphicsEnum.BgGradient);
-            StaticImageData bgGradientNight = contentRepo.getStaticImage(GraphicsEnum.BgGradientNight);
-
-            StaticImageData comicBubble = contentRepo.getStaticImage(GraphicsEnum.ComicBubble);
-
-            StaticImageData star1 = contentRepo.getStaticImage(GraphicsEnum.Star1);
-            StaticImageData star2 = contentRepo.getStaticImage(GraphicsEnum.Star2);
-          
-
+            var sunCore = _contentRepo.GetStaticImage(GraphicsEnum.SunCore);
+            var sunRing = _contentRepo.GetStaticImage(GraphicsEnum.SunRing);
+            var cloudOne = _contentRepo.GetStaticImage(GraphicsEnum.CloudOne);
+            var cloudTwo = _contentRepo.GetStaticImage(GraphicsEnum.CloudTwo);
+            var cloudThree = _contentRepo.GetStaticImage(GraphicsEnum.CloudThree);
+            var moon = _contentRepo.GetStaticImage(GraphicsEnum.Moon);
+            var bgDetail = _contentRepo.GetStaticImage(GraphicsEnum.BgDetail);
+            var bgGradient = _contentRepo.GetStaticImage(GraphicsEnum.BgGradient);
+            var bgGradientNight = _contentRepo.GetStaticImage(GraphicsEnum.BgGradientNight);
+            var comicBubble = _contentRepo.GetStaticImage(GraphicsEnum.ComicBubble);
+            var star1 = _contentRepo.GetStaticImage(GraphicsEnum.Star1);
+            var star2 = _contentRepo.GetStaticImage(GraphicsEnum.Star2);
             // TODO: Add your drawing code here
          
-            time += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            while (time > animation.frameTime)
+            _time += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            while (_time > animation.FrameTime)
             {
                 // Play the next frame in the SpriteSheet
-                frameIndexX++;
+                _frameIndexX++;
                 // reset elapsedTIme
-                time = 0f;
+                _time = 0f;
             }
-            manageFrameIndexes();
+            ManageFrameIndexes();
 
             _spriteBatch.Begin();
 
-            if (pet.isSleeping)
+            if (Pet.IsSleeping)
             {
-                foreach (KeyValuePair<int, float> item in stars1)
+                foreach (KeyValuePair<int, float> item in _stars1)
                 {
-                    _spriteBatch.Draw(star1.spriteSheet, new Vector2(item.Key, item.Value), star1.getSourceRectangle(), Color.White, (float)sunRingRotation, star1.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+                    _spriteBatch.Draw(star1.SpriteSheet, new Vector2(item.Key, item.Value), star1.GetSourceRectangle(), Color.White, (float)_sunRingRotation, star1.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
                 }
 
-                foreach (KeyValuePair<int, float> item in stars2)
+                foreach (KeyValuePair<int, float> item in _stars2)
                 {
-                    _spriteBatch.Draw(star2.spriteSheet, new Vector2(item.Key, item.Value), star2.getSourceRectangle(), Color.White, (float)sunRingRotation, star2.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+                    _spriteBatch.Draw(star2.SpriteSheet, new Vector2(item.Key, item.Value), star2.GetSourceRectangle(), Color.White, (float)_sunRingRotation, star2.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
                 }
             }
 
-            int sunRad = 700;
-            Vector2 positionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult, sunRad);
-            Vector2 moonPositionInCircleRadius = getCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, mult + Math.PI, sunRad);
-            _spriteBatch.Draw(sunCore.spriteSheet, positionInCircleRadius, sunCore.getSourceRectangle(), Color.White, 0.0f, sunCore.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(sunRing.spriteSheet, positionInCircleRadius, sunRing.getSourceRectangle(), Color.White, (float)sunRingRotation, sunRing.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(moon.spriteSheet, moonPositionInCircleRadius, moon.getSourceRectangle(), Color.White, 0.0f, moon.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            const int sunRad = 700;
+            Vector2 positionInCircleRadius = GetCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, _mult, sunRad);
+            Vector2 moonPositionInCircleRadius = GetCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, _mult + Math.PI, sunRad);
+            _spriteBatch.Draw(sunCore.SpriteSheet, positionInCircleRadius, sunCore.GetSourceRectangle(), Color.White, 0.0f, sunCore.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(sunRing.SpriteSheet, positionInCircleRadius, sunRing.GetSourceRectangle(), Color.White, (float)_sunRingRotation, sunRing.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(moon.SpriteSheet, moonPositionInCircleRadius, moon.GetSourceRectangle(), Color.White, 0.0f, moon.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
             DrawBackgroundDetail(bgDetail, bgGradientNight, bgGradient);
             
             DrawClouds(cloudOne, cloudTwo, cloudThree, star1, star2);
             DrawTamogochiAnimation(animation);
 
-            if (showMessage)
+            if (_showMessage)
             {
-                _spriteBatch.Draw(comicBubble.spriteSheet, new Vector2(this.Window.ClientBounds.Width / 2 + 130, this.Window.ClientBounds.Height / 2 + 10), comicBubble.getSourceRectangle(), Color.White, 0.0f, comicBubble.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
-                _spriteBatch.DrawString(font, sayText, new Vector2(this.Window.ClientBounds.Width / 2 + 190, this.Window.ClientBounds.Height / 2 - 145), Color.Black);
+                _spriteBatch.Draw(comicBubble.SpriteSheet, new Vector2(this.Window.ClientBounds.Width / 2 + 130, this.Window.ClientBounds.Height / 2 + 10), comicBubble.GetSourceRectangle(), Color.White, 0.0f, comicBubble.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
+                _spriteBatch.DrawString(_font, _sayText, new Vector2(this.Window.ClientBounds.Width / 2 + 190, this.Window.ClientBounds.Height / 2 - 145), Color.Black);
             }
 
             _spriteBatch.End();
-            sunRingRotation = sunRingRotation + 0.01f;
-            manageBigCircleRotationSpeed();
+            _sunRingRotation = _sunRingRotation + 0.01f;
+            ManageBigCircleRotationSpeed();
             base.Draw(gameTime);
         }
             
@@ -224,107 +217,104 @@ namespace MetroTama
 
         private void DrawTamogochiAnimation(AnimationData animation)
         {
-            Vector2 position = new Vector2(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height / 2);
-            Vector2 origin = new Vector2(animation.frameWidth / 2.0f, 13);
-            _spriteBatch.Draw(animation.spriteSheet, position, animation.getSourceRectangle(frameIndexX, frameIndexY), Color.White, 0.0f, origin, 1.0f, SpriteEffects.None, 0.0f);
+            var position = new Vector2(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height / 2);
+            var origin = new Vector2(animation.FrameWidth / 2.0f, 13);
+            _spriteBatch.Draw(animation.SpriteSheet, position, animation.GetSourceRectangle(_frameIndexX, _frameIndexY), Color.White, 0.0f, origin, 1.0f, SpriteEffects.None, 0.0f);
         }
 
         private void DrawBackgroundDetail(StaticImageData bgDetail, StaticImageData bgGradientNight, StaticImageData bgGradient)
         {
             for (int i = 0; i <= this.Window.ClientBounds.Width; i++)
             {
-                if (pet.isSleeping)
+                if (Pet.IsSleeping)
                 {
-                    _spriteBatch.Draw(bgGradientNight.spriteSheet, new Vector2(i, 0), bgGradientNight.getSourceRectangle(), Color.White, 0.0f, bgGradientNight.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
+                    _spriteBatch.Draw(bgGradientNight.SpriteSheet, new Vector2(i, 0), bgGradientNight.GetSourceRectangle(), Color.White, 0.0f, bgGradientNight.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
                 }
                 else
                 {
-                    _spriteBatch.Draw(bgGradient.spriteSheet, new Vector2(i, 0), bgGradient.getSourceRectangle(), Color.White, 0.0f, bgGradient.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
+                    _spriteBatch.Draw(bgGradient.SpriteSheet, new Vector2(i, 0), bgGradient.GetSourceRectangle(), Color.White, 0.0f, bgGradient.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
                 }
             }
-            _spriteBatch.Draw(bgDetail.spriteSheet, new Vector2(0, this.Window.ClientBounds.Height), bgDetail.getSourceRectangle(), Color.White, 0.0f, bgDetail.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(bgDetail.spriteSheet, new Vector2(bgDetail.width, this.Window.ClientBounds.Height), bgDetail.getSourceRectangle(), Color.White, 0.0f, bgDetail.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(bgDetail.spriteSheet, new Vector2(bgDetail.width * 2, this.Window.ClientBounds.Height), bgDetail.getSourceRectangle(), Color.White, 0.0f, bgDetail.getOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(bgDetail.SpriteSheet, new Vector2(0, this.Window.ClientBounds.Height), bgDetail.GetSourceRectangle(), Color.White, 0.0f, bgDetail.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(bgDetail.SpriteSheet, new Vector2(bgDetail.Width, this.Window.ClientBounds.Height), bgDetail.GetSourceRectangle(), Color.White, 0.0f, bgDetail.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(bgDetail.SpriteSheet, new Vector2(bgDetail.Width * 2, this.Window.ClientBounds.Height), bgDetail.GetSourceRectangle(), Color.White, 0.0f, bgDetail.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
         }
 
         private void DrawClouds(StaticImageData cloudOne, StaticImageData cloudTwo, StaticImageData cloudThree, StaticImageData star1, StaticImageData star2)
         {
-            calculateObjectPositionX(cloudOne);
-            calculateObjectPositionX(cloudTwo);
-            calculateObjectPositionX(cloudThree);
-            Color cloudColor = (pet.isSleeping) ? new Color(15, 24, 28) : Color.White;
-            Random random = new Random();
-            _spriteBatch.Draw(cloudOne.spriteSheet, getCloudPosition(cloudOne), cloudOne.getSourceRectangle(), cloudColor, 0.0f, cloudOne.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(cloudTwo.spriteSheet, getCloudPosition(cloudTwo), cloudTwo.getSourceRectangle(), cloudColor, 0.0f, cloudTwo.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-            _spriteBatch.Draw(cloudThree.spriteSheet, getCloudPosition(cloudThree), cloudThree.getSourceRectangle(), cloudColor, 0.0f, cloudThree.getOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            CalculateObjectPositionX(cloudOne);
+            CalculateObjectPositionX(cloudTwo);
+            CalculateObjectPositionX(cloudThree);
+            Color cloudColor = (Pet.IsSleeping) ? new Color(15, 24, 28) : Color.White;
+            var random = new Random();
+            _spriteBatch.Draw(cloudOne.SpriteSheet, GetCloudPosition(cloudOne), cloudOne.GetSourceRectangle(), cloudColor, 0.0f, cloudOne.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(cloudTwo.SpriteSheet, GetCloudPosition(cloudTwo), cloudTwo.GetSourceRectangle(), cloudColor, 0.0f, cloudTwo.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(cloudThree.SpriteSheet, GetCloudPosition(cloudThree), cloudThree.GetSourceRectangle(), cloudColor, 0.0f, cloudThree.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
 
         }
 
-        private void calculateObjectPositionX(StaticImageData Object) {
-            Object.xPosition = Object.xPosition + Object.movementSpeed;
-            if (this.Window.ClientBounds.Width + 250 < Object.xPosition)
+        private void CalculateObjectPositionX(StaticImageData Object) {
+            Object.XPosition = Object.XPosition + Object.MovementSpeed;
+            if (this.Window.ClientBounds.Width + 250 < Object.XPosition)
             {
-                Object.xPosition = -250;
+                Object.XPosition = -250;
             }
         }
 
-        private void manageBigCircleRotationSpeed()
+        private void ManageBigCircleRotationSpeed()
         {
-            if (Math.Abs(mult) >= 2 * Math.PI)
+            if (Math.Abs(_mult) >= 2 * Math.PI)
             {
-                mult = 0;
+                _mult = 0;
             }
-            if (Math.Abs(Math.Round(mult, 1)) != Math.Abs(Math.Round(sunDestRotationPos,1)))
+            if (Math.Abs(Math.Round(_mult, 1)) != Math.Abs(Math.Round(_sunDestRotationPos,1)))
             {
-                mult = mult - 0.01;
+                _mult = _mult - 0.01;
             }
         }
 
-        private void manageFrameIndexes()
+        private void ManageFrameIndexes()
         {
-            if (frameIndexX > contentRepo.getAnimationData(graphicsEnum).totalXFrames)
+            if (_frameIndexX > _contentRepo.GetAnimationData(_graphicsEnum).TotalXFrames)
             {
-                frameIndexX = 0;
-                frameIndexY++;
+                _frameIndexX = 0;
+                _frameIndexY++;
             }
-            if (frameIndexY > contentRepo.getAnimationData(graphicsEnum).totalYFrames)
-            {
-                frameIndexY = 0;
-                graphicsEnum = GraphicsEnum.IdleAnimation;
-            }
+            if (_frameIndexY <= _contentRepo.GetAnimationData(_graphicsEnum).TotalYFrames) return;
+            _frameIndexY = 0;
+            _graphicsEnum = GraphicsEnum.IdleAnimation;
         }
 
-        public Vector2 getCirclePosition(float cx, float cy, double mult, int rad) {
-            double x = cx + Math.Sin(mult)*rad;
-            double y = cy + Math.Cos(mult)*rad;
+        public Vector2 GetCirclePosition(float cx, float cy, double mult, int rad) {
+            var x = cx + Math.Sin(mult)*rad;
+            var y = cy + Math.Cos(mult)*rad;
             return new Vector2((float)x, (float)y);
         }
 
-        public Vector2 getCloudPosition(StaticImageData cloud)
+        public Vector2 GetCloudPosition(StaticImageData cloud)
         {
-            Vector2 vector = new Vector2((float)cloud.xPosition, (float)cloud.yPosition);
-            return vector;
+            return new Vector2((float)cloud.XPosition, (float)cloud.YPosition);
         }
 
         public void Feed(int foodId)
         {
             //Just for testing: must be deleted!
-            SayTextService sayTextSrv = new SayTextService();
-            sayText = sayTextSrv.GetText(pet);
-            showMessage = true;
+            var sayTextSrv = new SayTextService();
+            _sayText = sayTextSrv.GetText(Pet);
+            _showMessage = true;
             // end of tests
 
-            if (pet.isSleeping)
+            if (Pet.IsSleeping)
             {
                 //Show message: "I'm sleeping!"
             }
             else
             {
-                if (pet.Hungry < MAX_STAT)
+                if (Pet.Hungry < MaxStat)
                 {
                     //TODO: insert eating animation
-                    graphicsEnum = GraphicsEnum.EatingAnim;
-                    gameObjectService.UseObject(pet, foodId);
+                    _graphicsEnum = GraphicsEnum.EatingAnim;
+                    _gameObjectService.UseObject(Pet, foodId);
                 }
                 else
                 {
@@ -335,31 +325,31 @@ namespace MetroTama
 
         public void Light()
         {
-            pet.isSleeping = !pet.isSleeping;
-            if (pet.isSleeping)
+            Pet.IsSleeping = !Pet.IsSleeping;
+            if (Pet.IsSleeping)
             {
-                sunDestRotationPos = sunDestRotationPos - Math.PI;
-                bgColor = new Color(15,24,28);
+                _sunDestRotationPos = _sunDestRotationPos - Math.PI;
+                _bgColor = new Color(15,24,28);
             }
             else {
-                sunDestRotationPos = 2.5;
-                bgColor = new Color(134, 185, 288);
+                _sunDestRotationPos = 2.5;
+                _bgColor = new Color(134, 185, 288);
             }
         }
 
         public void Play(int gameId)
         {
-            if (pet.isSleeping)
+            if (Pet.IsSleeping)
             {
                 //Show message: "I'm sleeping!"
             }
             else
             {
-                if (pet.Fun < MAX_STAT)
+                if (Pet.Fun < MaxStat)
                 {
                     //TODO: add ball animation
 
-                    gameObjectService.UseObject(pet, gameId);
+                    _gameObjectService.UseObject(Pet, gameId);
                 }
                 else
                 {
@@ -371,17 +361,17 @@ namespace MetroTama
 
         public void Read(int bookId)
         {
-            if (pet.isSleeping)
+            if (Pet.IsSleeping)
             {
                 //Show message: "I'm sleeping!"
             }
             else
             {
-                if (pet.Study < MAX_STAT)
+                if (Pet.Study < MaxStat)
                 {
                     //TODO: add read animation
 
-                    gameObjectService.UseObject(pet, bookId);
+                    _gameObjectService.UseObject(Pet, bookId);
                 }
                 else
                 {
@@ -392,16 +382,16 @@ namespace MetroTama
 
         public void Clean(int cleanObjectId)
         {
-            if (pet.isSleeping)
+            if (Pet.IsSleeping)
             {
                 //Show message: "I'm sleeping!"
             }
             else
             {
-                if (pet.Hygene < MAX_STAT)
+                if (Pet.Hygene < MaxStat)
                 {
                     //TODO: add clean animation
-                    gameObjectService.UseObject(pet, cleanObjectId);
+                    _gameObjectService.UseObject(Pet, cleanObjectId);
                 }
                 else
                 {
@@ -412,16 +402,16 @@ namespace MetroTama
 
         public void FirstAid(int medicObjectId)
         {
-            if (pet.isSleeping)
+            if (Pet.IsSleeping)
             {
                 //Show message: "I'm sleeping!"
             }
             else
             {
-                if (pet.isSick)
+                if (Pet.IsSick)
                 {
                     //TODO: add first aid animation
-                    gameObjectService.UseObject(pet, medicObjectId);
+                    _gameObjectService.UseObject(Pet, medicObjectId);
                 }
                 else
                 {

@@ -1,4 +1,5 @@
 ﻿using MetroTama.Domain;
+using MetroTama.Domain.Entities;
 using MetroTama.Domain.Repository;
 using System;
 using System.Collections.Generic;
@@ -48,7 +49,7 @@ namespace MetroTama.Services
 
             if (temp_pet.Hygene < SICK_VALUE)
             {
-                temp_pet.isSick = true;
+                temp_pet.IsSick = true;
             }
 
             if (temp_pet.Hygene > MAX_VALUE)
@@ -113,7 +114,7 @@ namespace MetroTama.Services
 
             if (temp_pet.Healt < SICK_VALUE)
             {
-                temp_pet.isSick = true;
+                temp_pet.IsSick = true;
             }
 
             if (temp_pet.Healt > MAX_VALUE)

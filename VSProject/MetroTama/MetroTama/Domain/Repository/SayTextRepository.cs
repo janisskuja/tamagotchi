@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MetroTama.Domain.Entities;
 
 namespace MetroTama.Domain.Repository
 {
@@ -10,36 +11,36 @@ namespace MetroTama.Domain.Repository
     {
         public string GetSayText(int id)
         {
-            Dictionary<int, SayText> texts = new Dictionary<int, SayText>();
-            texts.Add(1, getText(1, "isSick"));
-            texts.Add(2, getText(2, "low_Hungry"));
-            texts.Add(3, getText(3, "medium_Hungry"));
-            texts.Add(4, getText(4, "high_Hungry"));
-            texts.Add(5, getText(5, "low_Healt"));
-            texts.Add(6, getText(6, "medium_Healt"));
-            texts.Add(7, getText(7, "high_Healt"));
-            texts.Add(8, getText(8, "low_Hygene"));
-            texts.Add(9, getText(9, "medium_Hygene"));
-            texts.Add(10, getText(10, "high_Hygene"));
-            texts.Add(11, getText(11, "low_Fun"));
-            texts.Add(12, getText(12, "medium_Fun"));
-            texts.Add(13, getText(13, "high_Fun"));
-            texts.Add(14, getText(14, "low_Energy"));
-            texts.Add(15, getText(15, "medium_Energy"));
-            texts.Add(16, getText(16, "high_Energy"));
-            texts.Add(17, getText(17, "low_Study"));
-            texts.Add(18, getText(18, "medium_Study"));
-            texts.Add(19, getText(19, "high_Study"));
-            texts.Add(20, getText(20, "notSick"));
+            var texts = new Dictionary<int, SayText>
+                {
+                    {1, GetText(1, "isSick")},
+                    {2, GetText(2, "low_Hungry")},
+                    {3, GetText(3, "medium_Hungry")},
+                    {4, GetText(4, "high_Hungry")},
+                    {5, GetText(5, "low_Healt")},
+                    {6, GetText(6, "medium_Healt")},
+                    {7, GetText(7, "high_Healt")},
+                    {8, GetText(8, "low_Hygene")},
+                    {9, GetText(9, "medium_Hygene")},
+                    {10, GetText(10, "high_Hygene")},
+                    {11, GetText(11, "low_Fun")},
+                    {12, GetText(12, "medium_Fun")},
+                    {13, GetText(13, "high_Fun")},
+                    {14, GetText(14, "low_Energy")},
+                    {15, GetText(15, "medium_Energy")},
+                    {16, GetText(16, "high_Energy")},
+                    {17, GetText(17, "low_Study")},
+                    {18, GetText(18, "medium_Study")},
+                    {19, GetText(19, "high_Study")},
+                    {20, GetText(20, "notSick")}
+                };
 
             return texts[id].Text;
         }
 
-        private SayText getText(int id, string ParamName)
+        private static SayText GetText(int id, string paramName)
         {
-            SayText saytext = new SayText();
-            saytext.SayTextId = id;
-            saytext.ParamName = ParamName;
+            var saytext = new SayText {SayTextId = id, ParamName = paramName};
 
             switch (id)
             {

@@ -3,28 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MetroTama.Domain.Entities;
 
 namespace MetroTama.Domain.Repository
 {
     class GameObjectRepository
     {
         public GameObject GetGameObject(int gameObjectId) {
-            Dictionary<int, GameObject> objects = new Dictionary<int, GameObject>();
-            objects.Add(1, getObject(1, "Apple"));
-            objects.Add(2, getObject(2, "Burger"));
-            objects.Add(3, getObject(3, "Drink"));
-            objects.Add(4, getObject(4, "Ball"));
-            objects.Add(5, getObject(5, "Read"));
-            objects.Add(6, getObject(6, "Clean"));
-            objects.Add(7, getObject(7, "Medic"));
+            var objects = new Dictionary<int, GameObject>
+                {
+                    {1, GetObject(1, "Apple")},
+                    {2, GetObject(2, "Burger")},
+                    {3, GetObject(3, "Drink")},
+                    {4, GetObject(4, "Ball")},
+                    {5, GetObject(5, "Read")},
+                    {6, GetObject(6, "Clean")},
+                    {7, GetObject(7, "Medic")}
+                };
             return objects[gameObjectId];
         }
 
-        private static GameObject getObject(int id, String Name)
+        private static GameObject GetObject(int id, String name)
         {
-            GameObject gameObject = new GameObject();
-            gameObject.GameObjectId = id;
-            gameObject.Name = Name;
+            var gameObject = new GameObject {GameObjectId = id, Name = name};
 
             switch(id)
             {

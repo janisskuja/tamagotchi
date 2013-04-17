@@ -1,4 +1,5 @@
 ﻿using System;
+using MetroTama.Domain.Entities;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using MonoGame.Framework;
@@ -41,7 +42,7 @@ namespace MetroTama
             // Create the game.
             _game = XamlGame<Game1>.Create(launchArguments, Window.Current.CoreWindow, this);
 
-            _game.SetXAMLPage(this);
+            _game.SetXamlPage(this);
 
             ProgressHP.Maximum = 100;
             ProgressEN.Maximum = 100;
@@ -222,9 +223,9 @@ namespace MetroTama
                 //Status.Text = BackgroundTaskSample.GetBackgroundTaskStatus(BackgroundTaskSample.TimeTriggeredTaskName);
 
                 //TODO: update pet in background
-                _game.pet.UpdateFromBackgroud();
+                _game.Pet.UpdateFromBackgroud();
                 //TODO: output text on live tile
-                TriggerTest.Text = sayTextService.GetText(_game.pet);
+                TriggerTest.Text = sayTextService.GetText(_game.Pet);
             });
 
 

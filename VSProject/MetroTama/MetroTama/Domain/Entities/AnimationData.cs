@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MetroTama.Content.Graphics;
+﻿using MetroTama.Content.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MetroTama.Services.Animation
+namespace MetroTama.Domain.Entities
 {
     public class AnimationData
     {       
@@ -21,16 +16,16 @@ namespace MetroTama.Services.Animation
         //public int frameWidth = 64;
         //public Texture2D spriteSheet;
 
-        public float frameTime; // duration of time to show each frame
-        public int totalXFrames; // total number of frames in our spritesheet
-        public int totalYFrames; // total number of frames in our spritesheet
-        public int frameHeight; // define the size of our animation frame
-        public int frameWidth;
-        public Texture2D spriteSheet;
-        public GraphicsEnum graphicsEnum;
+        public float FrameTime; // duration of time to show each frame
+        public int TotalXFrames; // total number of frames in our spritesheet
+        public int TotalYFrames; // total number of frames in our spritesheet
+        public int FrameHeight; // define the size of our animation frame
+        public int FrameWidth;
+        public Texture2D SpriteSheet;
+        public GraphicsEnum GraphicsEnum;
 
-        public Rectangle getSourceRectangle(int frameIndexX, int frameIndexY) {
-            return new Rectangle(frameIndexX * frameWidth, frameIndexY * frameHeight, frameWidth, frameHeight);
+        public Rectangle GetSourceRectangle(int frameIndexX, int frameIndexY) {
+            return new Rectangle(frameIndexX * FrameWidth, frameIndexY * FrameHeight, FrameWidth, FrameHeight);
         }
     }
 }

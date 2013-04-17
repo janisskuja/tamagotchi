@@ -3,35 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MetroTama.Domain.Entities;
 using Microsoft.Xna.Framework.Graphics;
 using MetroTama.Content.Graphics;
-using MetroTama.Services.Animation;
 
 namespace MetroTama.Domain.Repository
 {
     class PetRepository
     {
         public Pet GetPet() {
-            StageRepository temp_StageRepository = new StageRepository();
-            Stage temp_stage = temp_StageRepository.GetStage();
+            var tempStageRepository = new StageRepository();
+            var tempStage = tempStageRepository.GetStage();
 
-            Pet pet = new Pet();
-            pet.PetId = 1;
-            pet.Name = "Tamo";
-            pet.FavoriteFoodId = 1;
-            pet.DislikedFoodId = 2;
-            pet.Hungry = 100;
-            pet.Healt = 100;
-            pet.Hygene = 100;
-            pet.Fun = 100;
-            pet.Energy = 100;
-            pet.Study = 0;
-            pet.Stage = temp_stage;
-            pet.isSick = false;
-            List<GraphicsEnum> animations = new List<GraphicsEnum>();
-            animations.Add(GraphicsEnum.Celebrate);
-            animations.Add(GraphicsEnum.Player);
-            pet.animations = animations;
+            var pet = new Pet
+                {
+                    PetId = 1,
+                    Name = "Tamo",
+                    FavoriteFoodId = 1,
+                    DislikedFoodId = 2,
+                    Hungry = 100,
+                    Healt = 100,
+                    Hygene = 100,
+                    Fun = 100,
+                    Energy = 100,
+                    Study = 0,
+                    Stage = tempStage,
+                    IsSick = false
+                };
+            var animations = new List<GraphicsEnum> {GraphicsEnum.Celebrate, GraphicsEnum.Player};
+            pet.Animations = animations;
             return pet;
         }
     }

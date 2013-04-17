@@ -1,26 +1,20 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MetroTama.Services.Animation;
 using MetroTama.Content.Graphics;
-using Microsoft.Xna.Framework.Graphics;
 
-namespace MetroTama.Domain
+namespace MetroTama.Domain.Entities
 {
     public class Pet
     {
-        private static int ZERRO_VALUE = 0;
-        private static int MAX_VALUE = 100;
-        private static int HEALT_DECREASE = 1;
-        private static int STUDY_DECREASE = 2;
-        private static int HUNGRY_DECREASE = 4;
-        private static int HYGENE_DECREASE = 3;
-        private static int FUN_DECREASE = 5;
-        private static int ENERGY_DECREASE = 2;
+        private const int ZerroValue = 0;
+        private const int MaxValue = 100;
+        private const int HealtDecrease = 1;
+        private const int StudyDecrease = 2;
+        private const int HungryDecrease = 4;
+        private const int HygeneDecrease = 3;
+        private const int FunDecrease = 5;
+        private const int EnergyDecrease = 2;
 
         public int PetId;
         public string Name;
@@ -28,7 +22,7 @@ namespace MetroTama.Domain
         public int TypeId;
         public int FavoriteFoodId; //TODO: many favorite foods
         public int DislikedFoodId; //TODO: many disliked foods
-        public bool isSick;
+        public bool IsSick;
         public int Hungry;
         public int Healt;
         public int Hygene;
@@ -36,26 +30,26 @@ namespace MetroTama.Domain
         public int Energy;
         public int Study;
         public Stage Stage;
-        public TimeSpan Hungry_LastUpdateTime;
-        public TimeSpan Healt_LastUpdateTime;
-        public TimeSpan Hygene_LastUpdateTime;
-        public TimeSpan Fun_LastUpdateTime;
-        public TimeSpan Energy_LastUpdateTime;
-        public TimeSpan Study_LastUpdateTime;
-        public TimeSpan Poop_LastUpdateTime;
-        public bool isSleeping;
-        public List<GraphicsEnum> animations;
+        public TimeSpan HungryLastUpdateTime;
+        public TimeSpan HealtLastUpdateTime;
+        public TimeSpan HygeneLastUpdateTime;
+        public TimeSpan FunLastUpdateTime;
+        public TimeSpan EnergyLastUpdateTime;
+        public TimeSpan StudyLastUpdateTime;
+        public TimeSpan PoopLastUpdateTime;
+        public bool IsSleeping;
+        public List<GraphicsEnum> Animations;
 
-        public void Update(GameTime temp_gameTime)
+        public void Update(GameTime tempGameTime)
         {
 
-            CheckEnergy(temp_gameTime);
-            CheckHungry(temp_gameTime);
-            CheckHygene(temp_gameTime);
-            CheckFun(temp_gameTime);
-            CheckStudy(temp_gameTime);
-            CheckPoop(temp_gameTime);
-            CheckHealth(temp_gameTime);
+            CheckEnergy(tempGameTime);
+            CheckHungry(tempGameTime);
+            CheckHygene(tempGameTime);
+            CheckFun(tempGameTime);
+            CheckStudy(tempGameTime);
+            CheckPoop(tempGameTime);
+            CheckHealth(tempGameTime);
 
         }
 
@@ -69,236 +63,236 @@ namespace MetroTama.Domain
             UpdateHealth();
         }
 
-        private void CheckHealth(GameTime temp_gameTime)
+        private void CheckHealth(GameTime tempGameTime)
         {
-            if (temp_gameTime.TotalGameTime.Subtract(Healt_LastUpdateTime) > Stage.HealtTime)
+            if (tempGameTime.TotalGameTime.Subtract(HealtLastUpdateTime) > Stage.HealtTime)
             {
                 UpdateHealth();
-                Healt_LastUpdateTime = temp_gameTime.TotalGameTime;
+                HealtLastUpdateTime = tempGameTime.TotalGameTime;
             }
            
         }
 
         private void UpdateHealth()
         {
-            if (Healt > ZERRO_VALUE)
+            if (Healt > ZerroValue)
             {
-                if (!isSleeping)
+                if (!IsSleeping)
                 {
                     if ((Energy < 50) || (Hungry < 50) || (Hygene < 50) || (Fun < 50))
                     {
-                        Healt -= HEALT_DECREASE;
+                        Healt -= HealtDecrease;
                     }
                 }
                 else
                 {
                     if ((Energy < 50) || (Hungry < 50) || (Hygene < 50) || (Fun < 50))
                     {
-                        Healt -= HEALT_DECREASE / 2;
+                        Healt -= HealtDecrease / 2;
                     }
                 }
 
             }
 
-            if (Healt > MAX_VALUE)
+            if (Healt > MaxValue)
             {
-                Healt = MAX_VALUE;
+                Healt = MaxValue;
             }
 
-            if (Healt < ZERRO_VALUE)
+            if (Healt < ZerroValue)
             {
                 Healt = 0;
             }
         }
 
-        private void CheckPoop(GameTime temp_gameTime)
+        private void CheckPoop(GameTime tempGameTime)
         {
-            if (temp_gameTime.TotalGameTime.Subtract(Poop_LastUpdateTime) > Stage.PoopTime)
+            if (tempGameTime.TotalGameTime.Subtract(PoopLastUpdateTime) > Stage.PoopTime)
             {
                 // Do poop
-                Poop_LastUpdateTime = temp_gameTime.TotalGameTime;
+                PoopLastUpdateTime = tempGameTime.TotalGameTime;
             }
         }
 
-        private void CheckStudy(GameTime temp_gameTime)
+        private void CheckStudy(GameTime tempGameTime)
         {
-            if (temp_gameTime.TotalGameTime.Subtract(Study_LastUpdateTime) > Stage.StudyTime)
+            if (tempGameTime.TotalGameTime.Subtract(StudyLastUpdateTime) > Stage.StudyTime)
             {
                 UpdateStudy();
-                Study_LastUpdateTime = temp_gameTime.TotalGameTime;
+                StudyLastUpdateTime = tempGameTime.TotalGameTime;
             }
         }
 
         private void UpdateStudy()
         {
-            if (!isSleeping)
+            if (!IsSleeping)
             {
-                if (Study > ZERRO_VALUE)
+                if (Study > ZerroValue)
                 {
-                    Study -= STUDY_DECREASE;
+                    Study -= StudyDecrease;
 
                 }
             }
             else
             {
-                if (Study > ZERRO_VALUE)
+                if (Study > ZerroValue)
                 {
-                    Study -= STUDY_DECREASE / 2;
+                    Study -= StudyDecrease / 2;
                 }
             }
 
-            if (Study < ZERRO_VALUE)
+            if (Study < ZerroValue)
             {
                 Study = 0;
             }
-            if (Study > MAX_VALUE)
+            if (Study > MaxValue)
             {
-                Study = MAX_VALUE;
+                Study = MaxValue;
             }
         }
 
-        private void CheckFun(GameTime temp_gameTime)
+        private void CheckFun(GameTime tempGameTime)
         {
-            if (temp_gameTime.TotalGameTime.Subtract(Fun_LastUpdateTime) > Stage.FunTime)
+            if (tempGameTime.TotalGameTime.Subtract(FunLastUpdateTime) > Stage.FunTime)
             {
                 UpdateFun();
-                Fun_LastUpdateTime = temp_gameTime.TotalGameTime;
+                FunLastUpdateTime = tempGameTime.TotalGameTime;
             }
         }
 
         private void UpdateFun()
         {
-            if (!isSleeping)
+            if (!IsSleeping)
             {
-                if (Fun > ZERRO_VALUE)
+                if (Fun > ZerroValue)
                 {
-                    Fun -= FUN_DECREASE;
+                    Fun -= FunDecrease;
 
                 }
             }
             else
             {
-                if (Fun > ZERRO_VALUE)
+                if (Fun > ZerroValue)
                 {
-                    Fun -= FUN_DECREASE / 2;
+                    Fun -= FunDecrease / 2;
 
                 }
             }
-            if (Fun < ZERRO_VALUE)
+            if (Fun < ZerroValue)
             {
                 Fun = 0;
             }
 
-            if (Fun > MAX_VALUE)
+            if (Fun > MaxValue)
             {
-                Fun = MAX_VALUE;
+                Fun = MaxValue;
             }
         }
 
-        private void CheckHygene(GameTime temp_gameTime)
+        private void CheckHygene(GameTime tempGameTime)
         {
-            if (temp_gameTime.TotalGameTime.Subtract(Hygene_LastUpdateTime) > Stage.DirtyTime)
+            if (tempGameTime.TotalGameTime.Subtract(HygeneLastUpdateTime) > Stage.DirtyTime)
             {
                 UpdateHygene();
-                Hygene_LastUpdateTime = temp_gameTime.TotalGameTime;
+                HygeneLastUpdateTime = tempGameTime.TotalGameTime;
             }
         }
 
         private void UpdateHygene()
         {
-            if (!isSleeping)
+            if (!IsSleeping)
             {
-                if (Hygene > ZERRO_VALUE)
+                if (Hygene > ZerroValue)
                 {
-                    Hygene -= HYGENE_DECREASE;
+                    Hygene -= HygeneDecrease;
 
                 }
             }
             else
             {
-                if (Hygene > ZERRO_VALUE)
+                if (Hygene > ZerroValue)
                 {
-                    Hygene -= HYGENE_DECREASE / 2;
+                    Hygene -= HygeneDecrease / 2;
 
                 }
             }
-            if (Hygene < ZERRO_VALUE)
+            if (Hygene < ZerroValue)
             {
                 Hygene = 0;
             }
-            if (Hygene > MAX_VALUE)
+            if (Hygene > MaxValue)
             {
-                Hygene = MAX_VALUE;
+                Hygene = MaxValue;
             }
         }
 
-        private void CheckEnergy(GameTime temp_gameTime)
+        private void CheckEnergy(GameTime tempGameTime)
         {
-            if (temp_gameTime.TotalGameTime.Subtract(Energy_LastUpdateTime) > Stage.EnergyTime)
+            if (tempGameTime.TotalGameTime.Subtract(EnergyLastUpdateTime) > Stage.EnergyTime)
             {
                 UpdateEnergy();
-                Energy_LastUpdateTime = temp_gameTime.TotalGameTime;
+                EnergyLastUpdateTime = tempGameTime.TotalGameTime;
             }
         }
 
         private void UpdateEnergy()
         {
-            if (Energy > ZERRO_VALUE)
+            if (Energy > ZerroValue)
             {
-                if (isSleeping)
+                if (IsSleeping)
                 {
-                    Energy += ENERGY_DECREASE;
+                    Energy += EnergyDecrease;
                 }
                 else
                 {
-                    Energy -= ENERGY_DECREASE;
+                    Energy -= EnergyDecrease;
                 }
 
             }
-            if (Energy < ZERRO_VALUE)
+            if (Energy < ZerroValue)
             {
                 Energy = 0;
             }
-            if (Energy > MAX_VALUE)
+            if (Energy > MaxValue)
             {
-                Energy = MAX_VALUE;
+                Energy = MaxValue;
             }
         }
 
-        private void CheckHungry(GameTime temp_gameTime)
+        private void CheckHungry(GameTime tempGameTime)
         {
-            if (temp_gameTime.TotalGameTime.Subtract(Hungry_LastUpdateTime) > Stage.EatTime)
+            if (tempGameTime.TotalGameTime.Subtract(HungryLastUpdateTime) > Stage.EatTime)
             {
                 UpdateHungry();
-                Hungry_LastUpdateTime = temp_gameTime.TotalGameTime;
+                HungryLastUpdateTime = tempGameTime.TotalGameTime;
             }
         }
 
         private void UpdateHungry()
         {
-            if (!isSleeping)
+            if (!IsSleeping)
             {
-                if (Hungry > ZERRO_VALUE)
+                if (Hungry > ZerroValue)
                 {
-                    Hungry -= HUNGRY_DECREASE;
+                    Hungry -= HungryDecrease;
 
                 }
             }
             else
             {
-                if (Hungry > ZERRO_VALUE)
+                if (Hungry > ZerroValue)
                 {
-                    Hungry -= HUNGRY_DECREASE / 2;
+                    Hungry -= HungryDecrease / 2;
 
                 }
             }
-            if (Hungry < ZERRO_VALUE)
+            if (Hungry < ZerroValue)
             {
                 Hungry = 0;
             }
-            if (Hungry > MAX_VALUE)
+            if (Hungry > MaxValue)
             {
-                Hungry = MAX_VALUE;
+                Hungry = MaxValue;
             }
         }
     }
