@@ -1,14 +1,12 @@
-﻿using MetroTama.Domain.Enumerator;
-using TCD.Controls;
-using Windows.UI;
+﻿using MetroTama.Common;
+using MetroTama.Domain.Enumerator;
+using MetroTama.Domain.Repository;
+using MetroTama.Services;
 using Windows.UI.Xaml;
 using MonoGame.Framework;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Media;
-using MetroTama.Domain.Entities;
-using MetroTama.Domain.Repository;
-using MetroTama.Services;
+
 
 namespace MetroTama
 {
@@ -19,18 +17,30 @@ namespace MetroTama
     {
         public Game1 _game;
         private GameObjectService _gameObjectService = new GameObjectService();
+        readonly PetRepository _petRepository = new PetRepository();
 
 
         public GamePage(string launchArguments)
         {
             InitializeComponent();
-        
-
-            // Create the game.
-            _game = XamlGame<Game1>.Create(launchArguments, Window.Current.CoreWindow, DxSwapChainPanel);
-            _game.SetXamlPage(this);
-
+            if (_petRepository.GetPet() != null)
+            {
+                // Create the game.
+                _game = XamlGame<Game1>.Create(launchArguments, Window.Current.CoreWindow, DxSwapChainPanel);
+                _game.SetXamlPage(this);
+            }
             Window.Current.SizeChanged += Current_SizeChanged;
+            Window.Current.Activated += Current_Activated;
+        }
+
+        private void Current_Activated(object sender, Windows.UI.Core.WindowActivatedEventArgs e)
+        {
+            // See if pet exists, if not create one
+            if (_petRepository.GetPet() == null)
+            {
+                Window.Current.Content = new NewPetPage();
+                Window.Current.Activate();
+            }
         }
 
         private void Current_SizeChanged(object sender, Windows.UI.Core.WindowSizeChangedEventArgs e)
@@ -134,6 +144,7 @@ namespace MetroTama
         private void Heal_Click(object sender, RoutedEventArgs e)
         {
             _gameObjectService.UseObject(_game, GameObjectEnum.Medkit);
+
         }
 
         private void Light_Click(object sender, RoutedEventArgs e)
