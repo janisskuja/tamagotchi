@@ -48,6 +48,7 @@ namespace MetroTama
         // an index of the current frame being shown
         int _frameIndexX;
         int _frameIndexY;
+        private const float _animPause = 5000f;
 
         public Game1()
         {
@@ -205,14 +206,16 @@ namespace MetroTama
             // TODO: Add your drawing code here
          
             _time += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            while (_time > animation.FrameTime)
+            
+            if (_frameIndexX != _contentRepo.GetAnimationData(_graphicsEnum).TotalXFrames - 1 ||
+                _frameIndexY != _contentRepo.GetAnimationData(_graphicsEnum).TotalYFrames - 1)
             {
-                // Play the next frame in the SpriteSheet
-                _frameIndexX++;
-                // reset elapsedTIme
-                _time = 0f;
+                updateAnimations(animation);
             }
-            ManageFrameIndexes();
+            else if(_time * 1000f > _animPause)
+            {
+                    updateAnimations(animation);
+            }
 
             _spriteBatch.Begin();
 
@@ -247,8 +250,21 @@ namespace MetroTama
             ManageBigCircleRotationSpeed();
             base.Draw(gameTime);
         }
-            
-        
+
+        private void updateAnimations(AnimationData animation)
+        {
+            while (_time > animation.FrameTime)
+            {
+                // Play the next frame in the SpriteSheet
+                _frameIndexX++;
+
+                // reset elapsedTIme
+                _time = 0f;
+            }
+
+            ManageFrameIndexes();
+        }
+
 
         private void DrawTamogochiAnimation(AnimationData animation)
         {
@@ -317,6 +333,7 @@ namespace MetroTama
                 _frameIndexX = 0;
                 _frameIndexY++;
             }
+
             if (_frameIndexY <= _contentRepo.GetAnimationData(_graphicsEnum).TotalYFrames) return;
             _frameIndexY = 0;
             _graphicsEnum = GraphicsEnum.IdleAnimation;
