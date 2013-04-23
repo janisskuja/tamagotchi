@@ -155,6 +155,7 @@
     <Compile Include="Domain\Repository\ContentRepository.cs" />
     <Compile Include="Domain\Repository\DbInitRepository.cs" />
     <Compile Include="Domain\Repository\PetRepository.cs" />
+    <Compile Include="Domain\Repository\SayTextRepository.cs" />
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>

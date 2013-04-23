@@ -8,8 +8,6 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Media;
 using MetroTama.Domain.Entities;
 using MetroTama.Domain.Repository;
-using Windows.UI.Popups;
-using System;
 
 namespace MetroTama
 {

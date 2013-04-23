@@ -9,7 +9,7 @@ namespace MetroTama.Domain.Repository
 {
     class PetRepository
     {
-        public static int AddPet( int t_PetStageId, int t_FavoriteGameObjectId, int t_DislikeGameObjectId, string t_Name, int t_Health,
+        public int AddPet( int t_PetStageId, int t_FavoriteGameObjectId, int t_DislikeGameObjectId, string t_Name, int t_Health,
                                     int t_Hygene, int t_Hunger, int t_Energy, int t_Discipline, int t_Mood, int t_Gender, int t_Age, bool t_Sleeping,
                                     bool t_Current, DateTime t_BirthDate, DateTime t_LastUpdated )
         {
@@ -41,7 +41,7 @@ namespace MetroTama.Domain.Repository
             return success;
         }
 
-        public static Pet GetPet()
+        public Pet GetPet()
         {
             using (var db = new SQLite.SQLiteConnection(App.DBPath))
             {
@@ -56,6 +56,15 @@ namespace MetroTama.Domain.Repository
                 }
                 return newPet;
             }
+        }
+        public int UpdateAllPet(Pet t_Pet)
+        {
+            int success;
+            using (var db = new SQLite.SQLiteConnection(App.DBPath))
+            {
+                success = db.Update(t_Pet);
+            }
+            return success;
         }
     }
 }
