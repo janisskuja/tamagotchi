@@ -9,9 +9,7 @@ namespace MetroTama.Domain.Repository
 {
     class PetRepository
     {
-        public int AddPet( int t_PetStageId, int t_FavoriteGameObjectId, int t_DislikeGameObjectId, string t_Name, int t_Health,
-                                    int t_Hygene, int t_Hunger, int t_Energy, int t_Discipline, int t_Mood, int t_Gender, int t_Age, bool t_Sleeping,
-                                    bool t_Current, DateTime t_BirthDate, DateTime t_LastUpdated )
+        public int AddPet( Pet _pet )
         {
             //returns new ID
             int success;
@@ -19,22 +17,22 @@ namespace MetroTama.Domain.Repository
             {
                     success = db.Insert(new Pet()
                     {
-                        PetStageId = t_PetStageId,
-                        FavoriteGameObjectId = t_FavoriteGameObjectId,
-                        DislikeGameObjectId = t_DislikeGameObjectId,
-                        Name = t_Name,
-                        Health = t_Health,
-                        Hygene = t_Hygene,
-                        Hunger = t_Hunger,
-                        Energy = t_Energy,
-                        Discipline = t_Discipline,
-                        Mood = t_Mood,
-                        Gender = t_Gender,
-                        Age = t_Age,
-                        Sleeping = t_Sleeping,
-                        Current = t_Current,
-                        BirthDate = t_BirthDate,
-                        LastUpdated = t_LastUpdated
+                        PetStageId = _pet.PetStageId,
+                        FavoriteGameObjectId = _pet.FavoriteGameObjectId,
+                        DislikeGameObjectId = _pet.DislikeGameObjectId,
+                        Name = _pet.Name,
+                        Health = _pet.Health,
+                        Hygene = _pet.Hygene,
+                        Hunger = _pet.Hunger,
+                        Energy = _pet.Energy,
+                        Discipline = _pet.Discipline,
+                        Mood = _pet.Mood,
+                        Gender = _pet.Gender,
+                        Age = _pet.Age,
+                        Sleeping = _pet.Sleeping,
+                        Current = _pet.Current,
+                        BirthDate = _pet.BirthDate,
+                        LastUpdated = _pet.LastUpdated
                     });
                 
             }
