@@ -36,7 +36,7 @@ namespace MetroTama
         Color _bgColor;
         private double _mult = 3;
         private double _sunRingRotation;
-        private double _sunDestRotationPos = 2.5;
+        private const double _sunDestRotationPos = 2.5;
         Dictionary<int, float> _stars1;
         Dictionary<int, float> _stars2;
 
@@ -241,8 +241,8 @@ namespace MetroTama
 
         private void DrawTamogochiAnimation(AnimationData animation)
         {
-            var position = new Vector2(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height / 2);
-            var origin = new Vector2(animation.FrameWidth / 2.0f, 13);
+            var position = new Vector2(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height);
+            var origin = new Vector2(animation.FrameWidth / 2.0f, animation.FrameHeight+ 128);
             _spriteBatch.Draw(animation.SpriteSheet, position, animation.GetSourceRectangle(_frameIndexX, _frameIndexY), Color.White, 0.0f, origin, 1.0f, SpriteEffects.None, 0.0f);
         }
 
@@ -262,6 +262,7 @@ namespace MetroTama
             _spriteBatch.Draw(bgDetail.SpriteSheet, new Vector2(0, this.Window.ClientBounds.Height), bgDetail.GetSourceRectangle(), Color.White, 0.0f, bgDetail.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.Draw(bgDetail.SpriteSheet, new Vector2(bgDetail.Width, this.Window.ClientBounds.Height), bgDetail.GetSourceRectangle(), Color.White, 0.0f, bgDetail.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.Draw(bgDetail.SpriteSheet, new Vector2(bgDetail.Width * 2, this.Window.ClientBounds.Height), bgDetail.GetSourceRectangle(), Color.White, 0.0f, bgDetail.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
+            _spriteBatch.Draw(bgDetail.SpriteSheet, new Vector2(bgDetail.Width * 3, this.Window.ClientBounds.Height), bgDetail.GetSourceRectangle(), Color.White, 0.0f, bgDetail.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
         }
 
         private void DrawClouds(StaticImageData cloudOne, StaticImageData cloudTwo, StaticImageData cloudThree, StaticImageData star1, StaticImageData star2)
