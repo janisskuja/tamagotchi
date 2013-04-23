@@ -35,7 +35,7 @@ namespace MetroTama.Services
                     game._graphicsEnum = Content.Graphics.GraphicsEnum.EatingAnim;
                     break;
                 case GameObjectEnum.Ball:
-                    game._graphicsEnum = Content.Graphics.GraphicsEnum.Player;
+                    //game._graphicsEnum = Content.Graphics.GraphicsEnum.Player;
                     break;
                 case GameObjectEnum.Book:
                     //game._graphicsEnum = Content.Graphics.GraphicsEnum.Read;

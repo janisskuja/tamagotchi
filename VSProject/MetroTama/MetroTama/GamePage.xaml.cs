@@ -127,17 +127,18 @@ namespace MetroTama
 
         private void Clean_Click(object sender, RoutedEventArgs e)
         {
-           
+            _gameObjectService.UseObject(_game, GameObjectEnum.Soap);
+            // Kaut kas jādomā ar mazgāšanos
         }
 
         private void Heal_Click(object sender, RoutedEventArgs e)
         {
-           
+            _gameObjectService.UseObject(_game, GameObjectEnum.Medkit);
         }
 
         private void Light_Click(object sender, RoutedEventArgs e)
         {
-            
+            //Sleeping mode
         }
 
         private void Apple_Click(object sender, RoutedEventArgs e)
@@ -147,22 +148,22 @@ namespace MetroTama
 
         private void Burger_Click(object sender, RoutedEventArgs e)
         {
-           
+            _gameObjectService.UseObject(_game, GameObjectEnum.Burger);
         }
 
         private void Watter_Click(object sender, RoutedEventArgs e)
         {
-           
+            _gameObjectService.UseObject(_game, GameObjectEnum.Watter);
         }
 
         private void Ball_Click(object sender, RoutedEventArgs e)
         {
-           
+            _gameObjectService.UseObject(_game, GameObjectEnum.Ball);
         }
 
         private void Read_Click(object sender, RoutedEventArgs e)
         {
-           
+            _gameObjectService.UseObject(_game, GameObjectEnum.Book);
         }
     }
 }
