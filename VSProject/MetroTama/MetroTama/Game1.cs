@@ -114,7 +114,7 @@ namespace MetroTama
                 {
                     AddStars(ref previousX, i);
                 }
-                catch (Exception e)
+                catch
                 {
                 }
             }
