@@ -27,9 +27,8 @@ namespace MetroTama
 
         SpriteBatch _spriteBatch;
         
-        public Pet Pet;
+
         public GamePage GamePage;
-        PetRepository _petRepository;
         ContentRepository _contentRepo;
         GameObjectService _gameObjectService;
         private GraphicsEnum _graphicsEnum;
@@ -67,8 +66,6 @@ namespace MetroTama
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            _petRepository = new PetRepository();
-            Pet = _petRepository.GetPet();
             _gameObjectService = new GameObjectService();
             _bgColor = new Color(134, 185, 288);
             
@@ -128,9 +125,8 @@ namespace MetroTama
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            // TODO: Add your update logic here
-            Pet.Update(gameTime);
-            GamePage.UpdateText(Pet);
+           // TODO: Add your update logic here
+        
            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
            if (gameTime.TotalGameTime.Subtract(_lastMessageUpdate) > MessageShowTime)
@@ -177,8 +173,8 @@ namespace MetroTama
 
             _spriteBatch.Begin();
 
-            if (Pet.IsSleeping)
-            {
+            //if (Pet.IsSleeping)
+            //{
                 foreach (KeyValuePair<int, float> item in _stars1)
                 {
                     _spriteBatch.Draw(star1.SpriteSheet, new Vector2(item.Key, item.Value), star1.GetSourceRectangle(), Color.White, (float)_sunRingRotation, star1.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
@@ -188,7 +184,7 @@ namespace MetroTama
                 {
                     _spriteBatch.Draw(star2.SpriteSheet, new Vector2(item.Key, item.Value), star2.GetSourceRectangle(), Color.White, (float)_sunRingRotation, star2.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
                 }
-            }
+            //}
 
             const int sunRad = 700;
             Vector2 positionInCircleRadius = GetCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, _mult, sunRad);
@@ -226,14 +222,14 @@ namespace MetroTama
         {
             for (int i = 0; i <= this.Window.ClientBounds.Width; i++)
             {
-                if (Pet.IsSleeping)
-                {
+               // if (Pet.IsSleeping)
+               // {
                     _spriteBatch.Draw(bgGradientNight.SpriteSheet, new Vector2(i, 0), bgGradientNight.GetSourceRectangle(), Color.White, 0.0f, bgGradientNight.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
-                }
-                else
-                {
+               // }
+               // else
+               // {
                     _spriteBatch.Draw(bgGradient.SpriteSheet, new Vector2(i, 0), bgGradient.GetSourceRectangle(), Color.White, 0.0f, bgGradient.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
-                }
+               // }
             }
             _spriteBatch.Draw(bgDetail.SpriteSheet, new Vector2(0, this.Window.ClientBounds.Height), bgDetail.GetSourceRectangle(), Color.White, 0.0f, bgDetail.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.Draw(bgDetail.SpriteSheet, new Vector2(bgDetail.Width, this.Window.ClientBounds.Height), bgDetail.GetSourceRectangle(), Color.White, 0.0f, bgDetail.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
@@ -245,7 +241,8 @@ namespace MetroTama
             CalculateObjectPositionX(cloudOne);
             CalculateObjectPositionX(cloudTwo);
             CalculateObjectPositionX(cloudThree);
-            Color cloudColor = (Pet.IsSleeping) ? new Color(15, 24, 28) : Color.White;
+          //  Color cloudColor = (Pet.IsSleeping) ? new Color(15, 24, 28) : Color.White;
+            Color cloudColor = Color.White;
             var random = new Random();
             _spriteBatch.Draw(cloudOne.SpriteSheet, GetCloudPosition(cloudOne), cloudOne.GetSourceRectangle(), cloudColor, 0.0f, cloudOne.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.Draw(cloudTwo.SpriteSheet, GetCloudPosition(cloudTwo), cloudTwo.GetSourceRectangle(), cloudColor, 0.0f, cloudTwo.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
@@ -294,130 +291,6 @@ namespace MetroTama
         public Vector2 GetCloudPosition(StaticImageData cloud)
         {
             return new Vector2((float)cloud.XPosition, (float)cloud.YPosition);
-        }
-
-        public void Feed(int foodId)
-        {
-            //Just for testing: must be deleted!
-            var sayTextSrv = new SayTextService();
-            _sayText = sayTextSrv.GetText(Pet);
-            _showMessage = true;
-            // end of tests
-
-            if (Pet.IsSleeping)
-            {
-                //Show message: "I'm sleeping!"
-            }
-            else
-            {
-                if (Pet.Hungry < MaxStat)
-                {
-                    //TODO: insert eating animation
-                    _graphicsEnum = GraphicsEnum.EatingAnim;
-                    _gameObjectService.UseObject(Pet, foodId);
-                }
-                else
-                {
-                    //Show message: "I don't want to play!"
-                }
-            }
-        }
-
-        public void Light()
-        {
-            Pet.IsSleeping = !Pet.IsSleeping;
-            if (Pet.IsSleeping)
-            {
-                _sunDestRotationPos = _sunDestRotationPos - Math.PI;
-                _bgColor = new Color(15,24,28);
-            }
-            else {
-                _sunDestRotationPos = 2.5;
-                _bgColor = new Color(134, 185, 288);
-            }
-        }
-
-        public void Play(int gameId)
-        {
-            if (Pet.IsSleeping)
-            {
-                //Show message: "I'm sleeping!"
-            }
-            else
-            {
-                if (Pet.Fun < MaxStat)
-                {
-                    //TODO: add ball animation
-
-                    _gameObjectService.UseObject(Pet, gameId);
-                }
-                else
-                {
-                    //Show message: "I don't want to play!"
-                }
-            }
-
-        }
-
-        public void Read(int bookId)
-        {
-            if (Pet.IsSleeping)
-            {
-                //Show message: "I'm sleeping!"
-            }
-            else
-            {
-                if (Pet.Study < MaxStat)
-                {
-                    //TODO: add read animation
-
-                    _gameObjectService.UseObject(Pet, bookId);
-                }
-                else
-                {
-                    //Show message: "I don't want to study!"
-                }
-            }
-        }
-
-        public void Clean(int cleanObjectId)
-        {
-            if (Pet.IsSleeping)
-            {
-                //Show message: "I'm sleeping!"
-            }
-            else
-            {
-                if (Pet.Hygene < MaxStat)
-                {
-                    //TODO: add clean animation
-                    _gameObjectService.UseObject(Pet, cleanObjectId);
-                }
-                else
-                {
-                    //Show message: "Can't clean <petname>, because he is not dirty!"
-                }
-            }
-        }
-
-        public void FirstAid(int medicObjectId)
-        {
-            if (Pet.IsSleeping)
-            {
-                //Show message: "I'm sleeping!"
-            }
-            else
-            {
-                if (Pet.IsSick)
-                {
-                    //TODO: add first aid animation
-                    _gameObjectService.UseObject(Pet, medicObjectId);
-                }
-                else
-                {
-                    //Show message: "Can't use "First Aid", because <petname> is not sick!"
-                }
-            }
         }
     }
 }

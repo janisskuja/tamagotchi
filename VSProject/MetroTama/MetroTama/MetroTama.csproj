@@ -126,6 +126,12 @@
     <Reference Include="SharpDX.XInput">
       <HintPath>Windows8\SharpDX.XInput.dll</HintPath>
     </Reference>
+    <Reference Include="TCD.Controls">
+      <HintPath>..\packages\TCD.Controls.1.5.0\lib\netcore45\TCD.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="TCD.Controls.Settings">
+      <HintPath>..\packages\TCD.Controls.1.5.0\lib\netcore45\TCD.Controls.Settings.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -136,16 +142,18 @@
     <Compile Include="Dictionary.cs" />
     <Compile Include="Domain\Entities\AnimationData.cs" />
     <Compile Include="Domain\Entities\GameObject.cs" />
+    <Compile Include="Domain\Entities\GraveYard.cs" />
     <Compile Include="Domain\Entities\Pet.cs" />
     <Compile Include="Domain\Entities\SayText.cs" />
     <Compile Include="Domain\Entities\Stage.cs" />
     <Compile Include="Domain\Entities\StaticImageData.cs" />
-    <Compile Include="Domain\Entities\User.cs" />
+    <Compile Include="Domain\Enumerator\StageEnum.cs" />
+    <Compile Include="Domain\Enumerator\ParameterEnum.cs" />
+    <Compile Include="Domain\Enumerator\GenderEnum.cs" />
+    <Compile Include="Domain\Enumerator\GameObjectEnum.cs" />
+    <Compile Include="Domain\Enumerator\UiSubcategoryEnum.cs" />
     <Compile Include="Domain\Repository\ContentRepository.cs" />
-    <Compile Include="Domain\Repository\GameObjectRepository.cs" />
-    <Compile Include="Domain\Repository\PetRepository.cs" />
-    <Compile Include="Domain\Repository\SayTextRepository.cs" />
-    <Compile Include="Domain\Repository\StageRepository.cs" />
+    <Compile Include="Domain\Repository\DbInitRepository.cs" />
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
@@ -153,6 +161,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\GameObjectService.cs" />
     <Compile Include="Services\SayTextService.cs" />
+    <Compile Include="SQLite.cs" />
+    <Compile Include="SQLiteAsync.cs" />
     <Compile Include="TamaBackgroundTask.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -228,6 +238,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="MetroTama_TemporaryKey.pfx" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo.png" />
@@ -254,6 +265,14 @@
     <Folder Include="Content\Sound\" />
     <Folder Include="Internal\" />
     <Folder Include="Services\Animation\" />
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Microsoft.VCLibs, version=11.0">
+      <Name>Microsoft Visual C++ Runtime Package</Name>
+    </SDKReference>
+    <SDKReference Include="SQLite.WinRT, Version=3.7.16.2">
+      <Name>SQLite for Windows Runtime</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>

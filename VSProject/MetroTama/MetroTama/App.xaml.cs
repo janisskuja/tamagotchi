@@ -1,4 +1,6 @@
-﻿using Windows.ApplicationModel;
+﻿using System.IO;
+using MetroTama.Domain.Repository;
+using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 
@@ -11,6 +13,8 @@ namespace MetroTama
     /// </summary>
     sealed partial class App : Application
     {
+        public static string DBPath = string.Empty;
+        private DbInitRepository DbInitRepository = new DbInitRepository();
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -43,7 +47,11 @@ namespace MetroTama
                 {
                     // TODO: Load state from previously suspended application
                 }
-
+                // Get a reference to the SQLite database
+                DBPath = Path.Combine(
+                    Windows.Storage.ApplicationData.Current.LocalFolder.Path, "metrotama.db");
+                // Initialize the database if necessary
+                DbInitRepository.InitTablesAndData();
                 // Place the GamePage in the current Window
                 Window.Current.Content = gamePage;
             }

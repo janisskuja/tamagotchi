@@ -1,234 +1,164 @@
-﻿using System;
-using MetroTama.Domain.Entities;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using MonoGame.Framework;
-using MetroTama.Domain;
-using MetroTama.Domain.Repository;
-using Windows.ApplicationModel.Background;
-using Windows.Storage;
-using Windows.UI.Core;
+﻿using MetroTama.Domain.Enumerator;
+using TCD.Controls;
 using Windows.UI;
+using Windows.UI.Xaml;
+using MonoGame.Framework;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Media;
-using MetroTama.Services;
 
 namespace MetroTama
 {
     /// <summary>
     /// The root page used to display the game.
     /// </summary>
-    public sealed partial class GamePage : SwapChainBackgroundPanel
+    public sealed partial class GamePage : LayoutAwarePage
     {
         readonly Game1 _game;
 
-        private static string FOOD = "food";
-        private static string ACTIVITY = "activity";
-        private static int FOOD_APPLE = 1;
-        private static int FOOD_BURGER = 2;
-        private static int FOOD_DRINK = 3;
-        private static int ACTIVITY_BALL = 4;
-        private static int ACTIVITY_READ = 5;
-        private static int CLEAN_OBJECT = 6;
-        private static int MEDIC_OBJECT = 7;
-
-        public static string TimeTriggeredTaskProgress = "";
-
-        private SayTextService sayTextService = new SayTextService();
-
         public GamePage(string launchArguments)
         {
-            this.InitializeComponent();
+            InitializeComponent();
+        
 
             // Create the game.
-            _game = XamlGame<Game1>.Create(launchArguments, Window.Current.CoreWindow, this);
-
+            _game = XamlGame<Game1>.Create(launchArguments, Window.Current.CoreWindow, DxSwapChainPanel);
             _game.SetXamlPage(this);
 
-            ProgressHP.Maximum = 100;
-            ProgressEN.Maximum = 100;
-            ProgressHYG.Maximum = 100;
-            ProgressHUN.Maximum = 100;
-            ProgressMD.Maximum = 100;
-            ProgressSM.Maximum = 100;
-            // TODO: fix this method
-
-           // RegisterBackgroundTask();
+            Window.Current.SizeChanged += Current_SizeChanged;
         }
 
-        private void Button_Feed_Click(object sender, RoutedEventArgs e)
+        private void Current_SizeChanged(object sender, Windows.UI.Core.WindowSizeChangedEventArgs e)
         {
-            ActivateSubcategory(FOOD);
-        }
-
-        private void Button_Play_Click(object sender, RoutedEventArgs e)
-        {
-            ActivateSubcategory(ACTIVITY);
-        }
-
-        private void Button_Clean_Click(object sender, RoutedEventArgs e)
-        {
-            HideAllSubcategories();
-            _game.Clean(CLEAN_OBJECT);
-        }
-
-        private void Button_First_Aid_Click(object sender, RoutedEventArgs e)
-        {
-            HideAllSubcategories();
-            _game.FirstAid(MEDIC_OBJECT);
-        }
-
-        private void Button_Light_Click(object sender, RoutedEventArgs e)
-        {
-            HideAllSubcategories();
-            _game.Light();
-        }
-
-        private void ActivateSubcategory(string name)
-        {
-            HideAllSubcategories();
-            switch (name)
+            if (BottomAppBar != null && BottomAppBar.IsOpen && TopAppBar != null && TopAppBar.IsOpen)
             {
-                case "food":
-                    GridFood.Visibility = Visibility.Visible;
+                UpdateAppBarViewState();
+            }
+        }
+
+        private void UpdateAppBarViewState()
+        {
+            string viewState = Windows.UI.ViewManagement.ApplicationView.Value.ToString();
+            // Get the app bar's root Panel.
+            Panel root = BtmAppBar.Content as Panel;
+            if (root != null)
+            {
+                // Get the Panels that hold the controls.
+                foreach (Panel panel in root.Children)
+                {
+                    // Get each control and update its state if 
+                    // it's a Button or ToggleButton.
+                    foreach (UIElement child in panel.Children)
+                    {
+                        if (child.GetType() == typeof(Button) ||
+                            child.GetType() == typeof(ToggleButton))
+                        {
+                            VisualStateManager.GoToState((ButtonBase)child, viewState, true);
+                        }
+                    }
+                }
+            }
+            switch (viewState)
+            {
+                case "Snapped":
+                    Grid.SetRow(BtmRightAppBarPanel,1);
                     break;
-                case "activity":
-                    GridActivity.Visibility = Visibility.Visible;
+                default:
+                    Grid.SetRow(BtmRightAppBarPanel, 0);
                     break;
             }
         }
 
-        private void HideAllSubcategories()
+        private void ShowSubcategory(UiSubcategoryEnum subcategory)
         {
-            GridFood.Visibility = Visibility.Collapsed;
-            GridActivity.Visibility = Visibility.Collapsed;
-        }
-
-        private void BtnApple_Click(object sender, RoutedEventArgs e)
-        {
-            _game.Feed(FOOD_APPLE);
-        }
-
-        private void BtnBurger_Click(object sender, RoutedEventArgs e)
-        {
-            _game.Feed(FOOD_BURGER);
-        }
-
-        private void BtnDrink_Click(object sender, RoutedEventArgs e)
-        {
-            _game.Feed(FOOD_DRINK);
-        }
-
-        private void BtnBaseball_Click(object sender, RoutedEventArgs e)
-        {
-            _game.Play(ACTIVITY_BALL);
-        }
-
-        private void BtnBook_Click(object sender, RoutedEventArgs e)
-        {
-            _game.Read(ACTIVITY_READ);
-        }
-
-        public void UpdateText(Pet pet)
-        {
-
-            ProgressHP.Value = pet.Healt;
-            CheckProgressHp();
-            ProgressEN.Value = pet.Energy;
-            ProgressHYG.Value = pet.Hygene;
-            ProgressMD.Value = pet.Fun;
-            ProgressSM.Value = pet.Study;
-            ProgressHUN.Value = pet.Hungry;
-            TextHP.Text = pet.Healt.ToString();
-            TextEN.Text = pet.Energy.ToString();
-            TextHYG.Text = pet.Hygene.ToString();
-            TextMD.Text = pet.Fun.ToString();
-            TextSM.Text = pet.Study.ToString();
-            TextHUN.Text = pet.Hungry.ToString();
-
-        }
-
-        private void CheckProgressHp()
-        {
-            // TODO: fix progress bars
-            //SolidColorBrush colorBrush = new SolidColorBrush(Color.FromArgb(0, 242, 34, 12));
-
-            //if (ProgressHP.Value > 25)
-            //{
-            //    ProgressHP.Foreground = colorBrush;
-            //}
-        }
-
-        /// <summary>
-        /// Register a TimeTriggeredTask.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private async void RegisterBackgroundTask()
-        {
-            //
-            // Time triggered tasks can only run when the application is on the lock screen.
-            // Time triggered tasks can be registered even if the application is not on the lockscreen.
-            // 
-            await BackgroundExecutionManager.RequestAccessAsync();
-
-            var task = BackgroundTask.RegisterBackgroundTask(BackgroundTask.BackgroundTaskEntryPoint,
-                                                                   BackgroundTask.TimeTriggeredTaskName,
-                                                                   new TimeTrigger(15, false),
-                                                                   null);
-            AttachProgressAndCompletedHandlers(task);
-            UpdateUI();
-        }
-
-        /// <summary>
-        /// Attach progress and completed handers to a background task.
-        /// </summary>
-        /// <param name="task">The task to attach progress and completed handlers to.</param>
-        private void AttachProgressAndCompletedHandlers(IBackgroundTaskRegistration task)
-        {
-            task.Progress += new BackgroundTaskProgressEventHandler(OnProgress);
-            task.Completed += new BackgroundTaskCompletedEventHandler(OnCompleted);
-        }
-        /// <summary>
-        /// Handle background task progress.
-        /// </summary>
-        /// <param name="task">The task that is reporting progress.</param>
-        /// <param name="e">Arguments of the progress report.</param>
-        private void OnProgress(IBackgroundTaskRegistration task, BackgroundTaskProgressEventArgs args)
-        {
-            var progress = "Progress: " + args.Progress + "%";
-            TimeTriggeredTaskProgress = progress;
-            UpdateUI();
-        }
-        /// <summary>
-        /// Handle background task completion.
-        /// </summary>
-        /// <param name="task">The task that is reporting completion.</param>
-        /// <param name="e">Arguments of the completion report.</param>
-        private void OnCompleted(IBackgroundTaskRegistration task, BackgroundTaskCompletedEventArgs args)
-        {
-            UpdateUI();
-        }
-
-        /// <summary>
-        /// Update the scenario UI.
-        /// </summary>
-        private async void UpdateUI()
-        {
-            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
-            () =>
+            switch (subcategory)
             {
-                //RegisterButton.IsEnabled = !BackgroundTaskSample.TimeTriggeredTaskRegistered;
-                //UnregisterButton.IsEnabled = BackgroundTaskSample.TimeTriggeredTaskRegistered;
-                //Progress.Text = BackgroundTaskSample.TimeTriggeredTaskProgress;
-                //Status.Text = BackgroundTaskSample.GetBackgroundTaskStatus(BackgroundTaskSample.TimeTriggeredTaskName);
+                case UiSubcategoryEnum.Food:
+                    BtmLeftActionSubPanel.Visibility = Visibility.Collapsed;
+                    BtmLeftFoodSubPanel.Visibility = (BtmLeftFoodSubPanel.Visibility == Visibility.Collapsed)
+                                                         ? Visibility.Visible
+                                                         : Visibility.Collapsed;
+                    break;
+                case UiSubcategoryEnum.Action:
+                    BtmLeftFoodSubPanel.Visibility = Visibility.Collapsed;
+                    BtmLeftActionSubPanel.Visibility = (BtmLeftActionSubPanel.Visibility == Visibility.Collapsed)
+                                                       ? Visibility.Visible
+                                                       : Visibility.Collapsed;
+                    break;
+                default:
+                    break;
+            }
+        }
 
-                //TODO: update pet in background
-                _game.Pet.UpdateFromBackgroud();
-                //TODO: output text on live tile
-                TriggerTest.Text = sayTextService.GetText(_game.Pet);
-            });
 
+        private void Btm_AppBar_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateAppBarViewState();
+        }
 
+        private void Btm_AppBar_Unloaded(object sender, RoutedEventArgs e)
+        {
+            //  throw new System.NotImplementedException();
+        }
+
+        private void Top_AppBar_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateAppBarViewState();
+        }
+
+        private void Top_AppBar_Unloaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Food_Click(object sender, RoutedEventArgs e)
+        {
+            ShowSubcategory(UiSubcategoryEnum.Food);
+        }
+
+        private void Action_Click(object sender, RoutedEventArgs e)
+        {
+            ShowSubcategory(UiSubcategoryEnum.Action);
+        }
+
+        private void Clean_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void Heal_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void Light_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Apple_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void Burger_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void Watter_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void Ball_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void Read_Click(object sender, RoutedEventArgs e)
+        {
+           
         }
     }
 }

@@ -1,200 +1,81 @@
-﻿<SwapChainBackgroundPanel
+﻿<controls:LayoutAwarePage
     x:Class="MetroTama.GamePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:MetroTama"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:TCD.Controls"
     mc:Ignorable="d">
 
-    <Grid>
-        <AppBar Margin="0,0,0,700" Style="{StaticResource ResourceKey= TamaInfoAppBarStyle}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <Rectangle Stroke="Black" Width="42" Height="41.5" HorizontalAlignment="Left">
-                        <Rectangle.Fill>
-                            <ImageBrush ImageSource="Assets/iconsSetTamag_11.png" Stretch="UniformToFill"/>
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <ProgressBar x:Name="ProgressHP" Style="{StaticResource ResourceKey= TamaProgressStyle}"/>
-                    <TextBlock x:Name="TextHP"  Style="{StaticResource ResourceKey= TamaTextBoxStyle}"/>
-                </Grid>
-                <Grid Grid.Column="1">
-                    <Rectangle Stroke="Black" Width="42" Height="41.5" HorizontalAlignment="Left">
-                        <Rectangle.Fill>
-                            <ImageBrush ImageSource="Assets/iconsSetTamag_03.png" Stretch="UniformToFill"/>
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <ProgressBar x:Name="ProgressHUN" Style="{StaticResource ResourceKey= TamaProgressStyle}"/>
-                    <TextBlock x:Name="TextHUN" Style="{StaticResource ResourceKey= TamaTextBoxStyle}"/>
-                </Grid>
-                <Grid Grid.Column="2">
-                    <Rectangle Stroke="Black" Width="42" Height="41.5" HorizontalAlignment="Left">
-                        <Rectangle.Fill>
-                            <ImageBrush ImageSource="Assets/iconsSetTamag_30.png" Stretch="UniformToFill"/>
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <ProgressBar x:Name="ProgressEN" Style="{StaticResource ResourceKey= TamaProgressStyle}"/>
-                    <TextBlock x:Name="TextEN" Style="{StaticResource ResourceKey= TamaTextBoxStyle}"/>
-                </Grid>
-                <Grid Grid.Column="3">
-                    <Rectangle Stroke="Black" Width="42" Height="41.5" HorizontalAlignment="Left">
-                        <Rectangle.Fill>
-                            <ImageBrush ImageSource="Assets/iconsSetTamag_08.png" Stretch="UniformToFill"/>
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <ProgressBar x:Name="ProgressHYG" Style="{StaticResource ResourceKey= TamaProgressStyle}"/>
-                    <TextBlock x:Name="TextHYG" Style="{StaticResource ResourceKey= TamaTextBoxStyle}"/>
-                </Grid>
-                <Grid Grid.Column="4">
-                    <Rectangle Stroke="Black" Width="42" Height="41.5" HorizontalAlignment="Left">
-                        <Rectangle.Fill>
-                            <ImageBrush ImageSource="Assets/iconsSetTamag_31.png" Stretch="UniformToFill"/>
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <ProgressBar x:Name="ProgressMD" Style="{StaticResource ResourceKey= TamaProgressStyle}"/>
-                    <TextBlock x:Name="TextMD" Style="{StaticResource ResourceKey= TamaTextBoxStyle}"/>
-                </Grid>
-                <Grid Grid.Column="5">
-                    <Rectangle Stroke="Black" Width="42" Height="41.5" HorizontalAlignment="Left">
-                        <Rectangle.Fill>
-                            <ImageBrush ImageSource="Assets/iconsSetTamag_18.png" Stretch="UniformToFill"/>
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <ProgressBar x:Name="ProgressSM" Style="{StaticResource ResourceKey= TamaProgressStyle}"/>
-                    <TextBlock x:Name="TextSM" Style="{StaticResource ResourceKey= TamaTextBoxStyle}"/>
-                </Grid>
-            </Grid>
-        </AppBar>
-        <AppBar Margin="0,698,0,0"  Style="{StaticResource ResourceKey= TamaAppBarStyle}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Orientation="Horizontal">
-                    <Grid Style="{StaticResource ResourceKey= TamaButtonGridStyle}">
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                            <Button x:Name="BtnFeed" Click="Button_Feed_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="Assets/iconsSetTamag_03.png" Stretch="UniformToFill"/>
-                                </Button.Background>
-                            </Button>
-                            <TextBlock Text="Feed" Style="{StaticResource ResourceKey= TamaTextBoxBtnStyle}"/>
-                        </StackPanel>
-                    </Grid>
-                    <Grid Style="{StaticResource ResourceKey= TamaButtonGridStyle}">
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                            <Button x:Name="BtnActivity" Click="Button_Play_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}" >
-                                <Button.Background>
-                                    <ImageBrush ImageSource="Assets/iconsSetTamag_06.png" Stretch="UniformToFill"/>
-                                </Button.Background>
-                            </Button>
-                            <TextBlock Text="Action" Style="{StaticResource ResourceKey= TamaTextBoxBtnStyle}"/>
-                        </StackPanel>
-                    </Grid>
-                    <Grid Style="{StaticResource ResourceKey= TamaButtonGridStyle}">
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                            <Button x:Name="BtnClean" Click="Button_Clean_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="Assets/iconsSetTamag_08.png" Stretch="UniformToFill"/>
-                                </Button.Background>
-                            </Button>
-                            <TextBlock Text="Clean" Style="{StaticResource ResourceKey= TamaTextBoxBtnStyle}"/>
-                        </StackPanel>
-                    </Grid>
-                    <Grid Style="{StaticResource ResourceKey= TamaButtonGridStyle}">
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                            <Button x:Name="BtnFirstAid" Style="{StaticResource ResourceKey=TamaButtonStyle}" Click="Button_First_Aid_Click">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="Assets/iconsSetTamag_11.png" Stretch="UniformToFill"/>
-                                </Button.Background>
-                            </Button>
-                            <TextBlock Text="Heal" Style="{StaticResource ResourceKey= TamaTextBoxBtnStyle}"/>
-                        </StackPanel>
-                    </Grid>
-                    <Grid Style="{StaticResource ResourceKey= TamaButtonGridStyle}">
-                        <StackPanel>
-                            <Button x:Name="BtnLight" Style="{StaticResource ResourceKey=TamaButtonStyle}" Click="Button_Light_Click">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="Assets/iconsSetTamag_20.png" Stretch="UniformToFill"/>
-                                </Button.Background>
-                            </Button>
-                            <TextBlock Text="Light" Style="{StaticResource ResourceKey= TamaTextBoxBtnStyle}"/>
-                        </StackPanel>
-                    </Grid>
-                    <TextBlock x:Name="TriggerTest" Style="{StaticResource ResourceKey= TamaTextBoxBtnStyle}"/>
-                </StackPanel>
-                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
-                    <Grid x:Name="GridFood" Visibility="Collapsed">
-                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                            <Grid Style="{StaticResource ResourceKey= TamaButtonGridStyle}">
-                                <StackPanel>
-                                    <Button x:Name="BtnApple" Click="BtnApple_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}">
-                                        <Button.Background>
-                                            <ImageBrush ImageSource="Assets/iconsSetTamag_27.png" Stretch="UniformToFill"/>
-                                        </Button.Background>
-                                    </Button>
-                                    <TextBlock Text="Apple" Style="{StaticResource ResourceKey= TamaTextBoxBtnStyle}"/>
-                                </StackPanel>
-                            </Grid>
-                            <Grid Style="{StaticResource ResourceKey= TamaButtonGridStyle}">
-                                <StackPanel>
-                                    <Button x:Name="BtnBurger" Click="BtnBurger_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}">
-                                        <Button.Background>
-                                            <ImageBrush ImageSource="Assets/iconsSetTamag_28.png" Stretch="UniformToFill"/>
-                                        </Button.Background>
-                                    </Button>
-                                    <TextBlock Text="Burger" Style="{StaticResource ResourceKey= TamaTextBoxBtnStyle}"/>
-                                </StackPanel>
-                            </Grid>
-                            <Grid Style="{StaticResource ResourceKey= TamaButtonGridStyle}">
-                                <StackPanel>
-                                    <Button x:Name="BtnDrink" Click="BtnDrink_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}">
-                                        <Button.Background>
-                                            <ImageBrush ImageSource="Assets/iconsSetTamag_21.png" Stretch="UniformToFill"/>
-                                        </Button.Background>
-                                    </Button>
-                                    <TextBlock Text="Drink" Style="{StaticResource ResourceKey= TamaTextBoxBtnStyle}"/>
-                                </StackPanel>
-                            </Grid>
-                        </StackPanel>
-                    </Grid>
-                    <Grid x:Name="GridActivity" Visibility="Collapsed">
-                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                            <Grid Style="{StaticResource ResourceKey= TamaButtonGridStyle}">
-                                <StackPanel>
-                                    <Button x:Name="BtnBaseball" Click="BtnBaseball_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}">
-                                        <Button.Background>
-                                            <ImageBrush ImageSource="Assets/iconsSetTamag_22.png" Stretch="UniformToFill"/>
-                                        </Button.Background>
-                                    </Button>
-                                    <TextBlock Text="Play" Style="{StaticResource ResourceKey= TamaTextBoxBtnStyle}"/>
-                                </StackPanel>
-                            </Grid>
-                            <Grid Style="{StaticResource ResourceKey= TamaButtonGridStyle}">
-                                <StackPanel>
-                                    <Button x:Name="BtnBook" Click="BtnBook_Click" Style="{StaticResource ResourceKey=TamaButtonStyle}">
-                                        <Button.Background>
-                                            <ImageBrush ImageSource="Assets/iconsSetTamag_18.png" Stretch="UniformToFill"/>
-                                        </Button.Background>
-                                    </Button>
-                                    <TextBlock Text="Read" Style="{StaticResource ResourceKey= TamaTextBoxBtnStyle}"/>
-                                </StackPanel>
-                            </Grid>
-                        </StackPanel>
-                    </Grid>
-                </StackPanel>
-            </Grid>
-        </AppBar>
-    </Grid>
 
-</SwapChainBackgroundPanel>
+    <Page.BottomAppBar>
+        <AppBar x:Name="BtmAppBar" IsSticky="True" 
+            Loaded="Btm_AppBar_Loaded" Unloaded="Btm_AppBar_Unloaded">
+            <Grid x:Name="BtmRightAppBarGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel x:Name="BtmLeftAppBarPanel" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <StackPanel x:Name="BtmLeftFoodSubPanel" Orientation="Horizontal" Visibility="Collapsed">
+                        <Button Style="{StaticResource AppleAppBarButtonStyle}" Click="Apple_Click"/>
+                        <Button Style="{StaticResource BurgerAppBarButtonStyle}" Click="Burger_Click"/>
+                        <Button Style="{StaticResource WatterAppBarButtonStyle}" Click="Watter_Click"/>
+
+                    </StackPanel>
+                    <StackPanel x:Name="BtmLeftActionSubPanel" Orientation="Horizontal" Visibility="Collapsed">
+                        <Button Style="{StaticResource BallAppBarButtonStyle}" Click="Ball_Click"/>
+                        <Button Style="{StaticResource ReadAppBarButtonStyle}" Click="Read_Click"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel x:Name="BtmRightAppBarPanel" 
+                        Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="BtnFood" Style="{StaticResource FoodAppBarButtonStyle}" Click="Food_Click"/>
+                    <Button Style="{StaticResource ActionAppBarButtonStyle}" Click="Action_Click"/>
+                    <Button Style="{StaticResource CleanAppBarButtonStyle}" Click="Clean_Click"/>
+                    <Button Style="{StaticResource HealAppBarButtonStyle}" Click="Heal_Click"/>
+                    <Button Style="{StaticResource LightAppBarButtonStyle}" Click="Light_Click"/>
+                </StackPanel>
+
+
+            </Grid>
+
+        </AppBar>
+
+    </Page.BottomAppBar>
+
+    <Page.TopAppBar>
+        <AppBar x:Name="TopAppBar" IsSticky="True" 
+            Loaded="Top_AppBar_Loaded" Unloaded="Top_AppBar_Unloaded" HorizontalAlignment="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel x:Name="TopLeftAppBarPanel" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <!--               <ProgressBar Style="{StaticResource HealthProgressBarStyle}"/>
+                    <ProgressBar Style="{StaticResource HungerProgressBarStyle}"/>
+                    <ProgressBar Style="{StaticResource EnergyProgressBarStyle}"/>-->
+                </StackPanel>
+
+                <StackPanel x:Name="TopRightAppBarPanel" Orientation="Horizontal" HorizontalAlignment="Left">
+
+                    <!--                <ProgressBar Style="{StaticResource HygeneProgressBarStyle}"/>
+                    <ProgressBar Style="{StaticResource MoodProgressBarStyle}"/>
+                    <ProgressBar Style="{StaticResource DisciplineProgressBarStyle}"/>-->
+                </StackPanel>
+
+
+            </Grid>
+
+        </AppBar>
+
+    </Page.TopAppBar>
+
+    <SwapChainBackgroundPanel x:Name="DxSwapChainPanel" ManipulationMode="None" >
+
+    </SwapChainBackgroundPanel>
+    
+</controls:LayoutAwarePage>

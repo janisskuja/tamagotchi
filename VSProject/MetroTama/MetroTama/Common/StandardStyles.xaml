@@ -227,10 +227,6 @@
         </Setter>
     </Style>
 
-    <Style x:Key="TextPrimaryButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource TextButtonStyle}">
-        <Setter Property="Foreground" Value="{StaticResource ApplicationHeaderForegroundThemeBrush}"/>
-    </Style>
-
     <Style x:Key="TextSecondaryButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource TextButtonStyle}">
         <Setter Property="Foreground" Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
     </Style>
@@ -407,7 +403,56 @@
         An AppBarButton Style is provided for each of the glyphs in the Segoe UI Symbol font.  
         Uncomment any style you reference (as not all may be required).
     -->
-
+    <Style x:Key="AppleAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+        <Setter Property="AutomationProperties.AutomationId" Value="AppleAppBarButton"/>
+        <Setter Property="AutomationProperties.Name" Value="Apple"/>
+        <Setter Property="Content" Value="&#xE100;"/>
+    </Style>
+    <Style x:Key="BurgerAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+        <Setter Property="AutomationProperties.AutomationId" Value="BurgerAppBarButton"/>
+        <Setter Property="AutomationProperties.Name" Value="Burger"/>
+        <Setter Property="Content" Value="&#xE100;"/>
+    </Style>
+    <Style x:Key="WatterAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+        <Setter Property="AutomationProperties.AutomationId" Value="WatterAppBarButton"/>
+        <Setter Property="AutomationProperties.Name" Value="Watter"/>
+        <Setter Property="Content" Value="&#xE100;"/>
+    </Style>
+    <Style x:Key="BallAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+        <Setter Property="AutomationProperties.AutomationId" Value="BallAppBarButton"/>
+        <Setter Property="AutomationProperties.Name" Value="Ball"/>
+        <Setter Property="Content" Value="&#xE100;"/>
+    </Style>
+    <Style x:Key="ReadAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+        <Setter Property="AutomationProperties.AutomationId" Value="ReadAppBarButton"/>
+        <Setter Property="AutomationProperties.Name" Value="Read"/>
+        <Setter Property="Content" Value="&#xE100;"/>
+    </Style>
+    <Style x:Key="FoodAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+        <Setter Property="AutomationProperties.AutomationId" Value="FoodAppBarButton"/>
+        <Setter Property="AutomationProperties.Name" Value="Food"/>
+        <Setter Property="Content" Value="&#xE100;"/>
+    </Style>
+    <Style x:Key="ActionAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+        <Setter Property="AutomationProperties.AutomationId" Value="ActionAppBarButton"/>
+        <Setter Property="AutomationProperties.Name" Value="Action"/>
+        <Setter Property="Content" Value="&#xE100;"/>
+    </Style>
+    <Style x:Key="CleanAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+        <Setter Property="AutomationProperties.AutomationId" Value="CleanAppBarButton"/>
+        <Setter Property="AutomationProperties.Name" Value="Clean"/>
+        <Setter Property="Content" Value="&#xE100;"/>
+    </Style>
+    <Style x:Key="HealAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+        <Setter Property="AutomationProperties.AutomationId" Value="HealAppBarButton"/>
+        <Setter Property="AutomationProperties.Name" Value="Heal"/>
+        <Setter Property="Content" Value="&#xE100;"/>
+    </Style>
+    <Style x:Key="LightAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+        <Setter Property="AutomationProperties.AutomationId" Value="LightAppBarButton"/>
+        <Setter Property="AutomationProperties.Name" Value="Light"/>
+        <Setter Property="Content" Value="&#xE100;"/>
+    </Style>
     <!--
     
     <Style x:Key="SkipBackAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
