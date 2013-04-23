@@ -32,7 +32,7 @@ namespace MetroTama
         public GamePage GamePage;
         ContentRepository _contentRepo;
         GameObjectService _gameObjectService;
-        private GraphicsEnum _graphicsEnum = GraphicsEnum.IdleAnimation;
+        public GraphicsEnum _graphicsEnum = GraphicsEnum.IdleAnimation;
         Color _bgColor;
         private double _mult = 3;
         private double _sunRingRotation;

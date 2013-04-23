@@ -8,6 +8,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Media;
 using MetroTama.Domain.Entities;
 using MetroTama.Domain.Repository;
+using MetroTama.Services;
 
 namespace MetroTama
 {
@@ -16,7 +17,9 @@ namespace MetroTama
     /// </summary>
     public sealed partial class GamePage : LayoutAwarePage
     {
-        readonly Game1 _game;
+        public Game1 _game;
+        private GameObjectService _gameObjectService = new GameObjectService();
+
 
         public GamePage(string launchArguments)
         {
@@ -113,7 +116,7 @@ namespace MetroTama
             
         }
 
-        private async void Food_Click(object sender, RoutedEventArgs e)
+        private void Food_Click(object sender, RoutedEventArgs e)
         {
             ShowSubcategory(UiSubcategoryEnum.Food);
         }
@@ -139,7 +142,7 @@ namespace MetroTama
 
         private void Apple_Click(object sender, RoutedEventArgs e)
         {
-           
+            _gameObjectService.UseObject(_game, GameObjectEnum.Apple);
         }
 
         private void Burger_Click(object sender, RoutedEventArgs e)

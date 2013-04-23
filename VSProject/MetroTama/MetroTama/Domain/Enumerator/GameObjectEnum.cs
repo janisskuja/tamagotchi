@@ -1,6 +1,6 @@
 ﻿namespace MetroTama.Domain.Enumerator
 {
-    enum GameObjectEnum
+    public enum GameObjectEnum
     {
         Apple = 1,
         Burger = 2,
