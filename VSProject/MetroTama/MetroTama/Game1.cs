@@ -110,14 +110,25 @@ namespace MetroTama
             _stars2 = new Dictionary<int, float>();
             for (var i = 1; i < 11; i++)
             {
-                lock (SyncLock)
+                try
                 {
-                    // synchronize
-                    previousX = Random.Next(100)*i + previousX;
+                    AddStars(ref previousX, i);
                 }
-                _stars1.Add(previousX, (float) GetRandomNumber(10, 400));
-                _stars2.Add(20*i, (float) GetRandomNumber(10, 400));
+                catch (Exception e)
+                {
+                }
             }
+        }
+
+        private void AddStars(ref int previousX, int i)
+        {
+            lock (SyncLock)
+            {
+                // synchronize
+                previousX = Random.Next(100)*i + previousX;
+            }
+            _stars1.Add(previousX, (float) GetRandomNumber(10, 400));
+            _stars2.Add(previousX - 20 * i, (float)GetRandomNumber(10, 400));
         }
 
         private static double GetRandomNumber(double minimum, double maximum)

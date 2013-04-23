@@ -12,3 +12,4 @@ tmp/**/*
 VSProject/MetroTama/*.*.suo
 VSProject/MetroTama/MetroTama/obj/**/*
 VSProject/MetroTama/MetroTama/bin/**/*
+VSProject/MetroTama/MetroTamaUTest/bin/**/*
