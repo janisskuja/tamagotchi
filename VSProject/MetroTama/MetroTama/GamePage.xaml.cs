@@ -6,6 +6,10 @@ using MonoGame.Framework;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Media;
+using MetroTama.Domain.Entities;
+using MetroTama.Domain.Repository;
+using Windows.UI.Popups;
+using System;
 
 namespace MetroTama
 {
@@ -111,11 +115,10 @@ namespace MetroTama
             
         }
 
-        private void Food_Click(object sender, RoutedEventArgs e)
+        private async void Food_Click(object sender, RoutedEventArgs e)
         {
             ShowSubcategory(UiSubcategoryEnum.Food);
         }
-
         private void Action_Click(object sender, RoutedEventArgs e)
         {
             ShowSubcategory(UiSubcategoryEnum.Action);
