@@ -22,8 +22,8 @@ namespace MetroTama.Domain.Repository
                 {
                     {GraphicsEnum.Celebrate, GetAnimationData(64, 64, 10, 1, 0.1f, "Graphics/", GraphicsEnum.Celebrate)},
                     {GraphicsEnum.Player, GetAnimationData(64, 64, 10, 1, 0.1f, "Graphics/", GraphicsEnum.Player)},
-                    {GraphicsEnum.IdleAnimation, GetAnimationData(260, 360, 4, 1, 0.2f, "Graphics/", GraphicsEnum.IdleAnimation)},
-                    {GraphicsEnum.EatingAnim, GetAnimationData(260, 360, 4, 1, 0.06f, "Graphics/", GraphicsEnum.EatingAnim)}
+                    {GraphicsEnum.IdleAnimation, GetAnimationData(325, 293, 5, 4, 0.02f, "Graphics/", GraphicsEnum.IdleAnim)},
+                    {GraphicsEnum.EatingAnim, GetAnimationData(325, 294, 5, 3, 0.06f, "Graphics/", GraphicsEnum.EatingAnim)}
                 };
 
             _staticImageData = new Dictionary<GraphicsEnum, StaticImageData>

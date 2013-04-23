@@ -158,6 +158,9 @@
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Game1.cs" />
+    <Compile Include="ParticleEmitter\Particle.cs" />
+    <Compile Include="ParticleEmitter\ParticleSystem.cs" />
+    <Compile Include="ParticleEmitter\ParticleSystemSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\GameObjectService.cs" />
     <Compile Include="Services\SayTextService.cs" />
@@ -183,9 +186,11 @@
     <Content Include="Assets\iconsSetTamag_30.png" />
     <Content Include="Assets\iconsSetTamag_31.png" />
     <Content Include="Assets\WideLogo.png" />
+    <Content Include="Content\Graphics\Bubble.jpg" />
     <Content Include="Content\Graphics\Celebrate.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Graphics\idleanim.png" />
     <Content Include="Content\Graphics\idleAnimation.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -216,12 +221,13 @@
     <Content Include="Content\Graphics\bgGradientNight.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Graphics\eatinganim.xnb">
+    <Content Include="Content\Graphics\eatinganim2.xnb">
     </Content>
     <Content Include="Content\Graphics\comicBubble.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Content\Graphics\player.xnb" />
+    <Content Include="Content\Graphics\EatingAnim.png" />
     <Content Include="Content\Graphics\player.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -237,6 +243,7 @@
     <Content Include="Content\Graphics\Stars\star2.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Graphics\ParticleStar.xnb" />
     <None Include="MetroTama_TemporaryKey.pfx" />
     <None Include="packages.config" />
   </ItemGroup>

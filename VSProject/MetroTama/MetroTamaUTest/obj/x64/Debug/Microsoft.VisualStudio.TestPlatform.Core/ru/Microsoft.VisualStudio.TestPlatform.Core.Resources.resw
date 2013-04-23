@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MissingOperand" xml:space="preserve">
+    <value>Ошибка: отсутствует операнд</value>
+  </data>
+  <data name="CannotAcceptTestResultWhenTestIsCanceled" xml:space="preserve">
+    <value>Невозможно принять результат теста, поскольку выполнение теста было отменено.</value>
+  </data>
+  <data name="ServiceSecurityUserNotAllowed" xml:space="preserve">
+    <value>Нет прав на выполнение этой операции.</value>
+  </data>
+  <data name="DuplicateExtensionUri" xml:space="preserve">
+    <value>Повторяющийся код URI расширения теста "{0}".  Повторяющееся расширение пропускается.</value>
+  </data>
+  <data name="EmptyParenthsis" xml:space="preserve">
+    <value>Ошибка: пустые скобки ( )</value>
+  </data>
+  <data name="DuplicateSettingsName" xml:space="preserve">
+    <value>Повторяющийся поставщик параметров с именем "{0}".  Повторяющийся поставщик пропускается.</value>
+  </data>
+  <data name="RunSettingsAlreadyLoaded" xml:space="preserve">
+    <value>Параметры запуска уже загружены.</value>
+  </data>
+  <data name="LoggerNotFound" xml:space="preserve">
+    <value>Не удалось найти средство ведения журнала с URI или понятным именем "{0}".</value>
+  </data>
+  <data name="DiscovererInstantiationException" xml:space="preserve">
+    <value>При создании экземпляра средства обнаружения произошло исключение: {0}</value>
+  </data>
+  <data name="ErrorHandlerEventMessage" xml:space="preserve">
+    <value>Исключение обработчика ошибок: {0} \r\n {1}</value>
+  </data>
+  <data name="DuplicateSource" xml:space="preserve">
+    <value>Указанный повторяющийся источник {0} игнорируется.</value>
+  </data>
+  <data name="TestRunFailed_NoTestsAreAvailableInTheSources" xml:space="preserve">
+    <value>В {0} нет доступных тестов. Проверьте правильность параметров установленного средства обнаружения и выполнения тестов, а также платформы и версии платформы, и повторите попытку.</value>
+  </data>
+  <data name="LoggerInitializationError" xml:space="preserve">
+    <value>При инициализации средства ведения журнала с URI "{0}" произошло исключение.  Средство ведения журнала не будет использоваться.  Исключение: {1}</value>
+  </data>
+  <data name="NumberOfTestCasesCannotBeLessThanOne" xml:space="preserve">
+    <value>Должен быть хотя бы один тест для извлечения.</value>
+  </data>
+  <data name="ExceptionFromRunTests" xml:space="preserve">
+    <value>При вызове исполнителя "{0}" произошло исключение: {1}</value>
+  </data>
+  <data name="EnableShutdownAfterTestRunWhenKeepAliveIsFalse" xml:space="preserve">
+    <value>EnableShutdownAfterTestRun нельзя включить, если параметр KeepAlive имеет значение false.</value>
+  </data>
+  <data name="DuplicateSettingsProvided" xml:space="preserve">
+    <value>Обнаружен повторяющийся раздел параметров запуска с именем "{0}".  Повторяющиеся параметры пропускаются.</value>
+  </data>
+  <data name="DataCollectionMessageFormat" xml:space="preserve">
+    <value>Сообщение адаптера диагностических данных: {0}</value>
+  </data>
+  <data name="QueueAlreadyDisposed" xml:space="preserve">
+    <value>Очередь {0} уже удалена.</value>
+  </data>
+  <data name="WeakEventsOnlyInstanceMethodsSupportedExceptionText" xml:space="preserve">
+    <value>Метод теста должен быть методом экземпляра.</value>
+  </data>
+  <data name="AppxManifestReadError" xml:space="preserve">
+    <value>Не удалось прочитать файл манифеста из-за следующей ошибки: {0}</value>
+  </data>
+  <data name="MissingCloseParenthesis" xml:space="preserve">
+    <value>Ошибка: отсутствует ")"</value>
+  </data>
+  <data name="DataCollectorMessageFormat" xml:space="preserve">
+    <value>Сообщение адаптера диагностических данных ("{0}"): {1}.</value>
+  </data>
+  <data name="StringSeperator" xml:space="preserve">
+    <value>, </value>
+  </data>
+  <data name="EnableShutdownAfterTestRunBeingSetToFalse" xml:space="preserve">
+    <value>EnableShutdownAfterTestRun нельзя отключить в ходе тестового запуска. Следующий тестовый запуск начнется с отключенным состоянием.</value>
+  </data>
+  <data name="UnsupportedPropertiesInTestCaseFilter" xml:space="preserve">
+    <value>Нет удовлетворяющих фильтру тестов, поскольку фильтр содержит одно или несколько недопустимых свойств ({0}). Укажите выражение фильтра, содержащее допустимые свойства ({1}), и повторите попытку.</value>
+  </data>
+  <data name="InvalidExtensionUriFormat" xml:space="preserve">
+    <value>Недопустимый URI "{0}" расширения теста: {1}</value>
+  </data>
+  <data name="InvalidOperator" xml:space="preserve">
+    <value>Ошибка: недопустимый оператор "{0}"</value>
+  </data>
+  <data name="MissingOpenParenthesis" xml:space="preserve">
+    <value>Ошибка: отсутствует "("</value>
+  </data>
+  <data name="LaunchDebugProcessNotAllowedForANonDebugRun" xml:space="preserve">
+    <value>Эта операция не допускается в контексте неотладочного запуска.</value>
+  </data>
+  <data name="ExceptionFromJobProcessor" xml:space="preserve">
+    <value>При обработке задания из очереди "{0}" произошло необработанное исключение: {1}</value>
+  </data>
+  <data name="IgnoringExecutorAsNoDefaultExecutorUriAttribute" xml:space="preserve">
+    <value>Исполнитель теста, соответствующий средству обнаружения тестов {0}, пропускается, поскольку у средства обнаружения нет атрибута DefaultExecutorUri. Возможно, необходимо переустановить надстройку адаптера тестирования.</value>
+  </data>
+  <data name="FailedToFindInstalledUnitTestExtensions" xml:space="preserve">
+    <value>Не удалось найти список установленных расширений модульных тестов. Причина: {0}</value>
+  </data>
+  <data name="DiscoveryAbortNotSupportedInProc" xml:space="preserve">
+    <value>Запрос на обнаружение теста можно прервать только при выполнении с параметром /InIsolation.</value>
+  </data>
+  <data name="StartIndexShouldBeNonNegative" xml:space="preserve">
+    <value>Индекс, с которого начинается извлечение тестовых случаев, не может быть отрицательным.</value>
+  </data>
+  <data name="SettingsNodeInvalidName" xml:space="preserve">
+    <value>Указан недопустимый узел параметров. Свойство имени узла параметров не должно быть пустым.</value>
+  </data>
+  <data name="SettingsProviderInitializationError" xml:space="preserve">
+    <value>При инициализации поставщика параметров с именем "{0}" произошла ошибка. Ошибка: {1}</value>
+  </data>
+  <data name="TestCaseFilterFormatException" xml:space="preserve">
+    <value>Неверный формат фильтра TestCaseFilter {0}. Задайте правильный формат и повторите попытку. Обратите внимание, что использование неверного формата может привести к тому, что ни один из тестов не будет выполнен.</value>
+  </data>
+  <data name="NoDiscovererRegistered" xml:space="preserve">
+    <value>Отсутствует зарегистрированное средство обнаружения тестов для обнаружения тестовых случаев. Зарегистрируйте средство обнаружения тестов и повторите попытку.</value>
+  </data>
+  <data name="InvalidCondition" xml:space="preserve">
+    <value>Ошибка: недопустимое условие "{0}"</value>
+  </data>
+  <data name="AppxRegistrationFailure" xml:space="preserve">
+    <value>Не удалось запустить процесс исполнителя тестов "{0}".  Сбой регистрации пакета {1} с кодом ошибки: 0x{2:X} и сообщением об ошибке:{3}.\nДополнительные сведения см. в Просмотре событий, расположенных в папке "Журналы приложений и служб -&gt; Microsoft -&gt; Windows -&gt; AppXDeployment-Server -&gt; Microsoft-Windows-AppXDeploymentServer/Operational".</value>
+  </data>
+  <data name="RunSettingsParseError" xml:space="preserve">
+    <value>Ошибка при загрузке параметров запуска.  Ошибка: {0}</value>
+  </data>
+  <data name="QueuePausedDisposeError" xml:space="preserve">
+    <value>Нельзя удалить приостановленную очередь {0}.</value>
+  </data>
+  <data name="MissingOperator" xml:space="preserve">
+    <value>Отсутствует оператор "|" или "&amp;"</value>
+  </data>
+  <data name="NoMatchingExecutor" xml:space="preserve">
+    <value>Не удалось найти исполнитель тестов с URI "{0}". Проверьте, что исполнитель тестов установлен и поддерживает версию среды выполнения .NET {1}.</value>
+  </data>
+  <data name="TestLoggerQueueName" xml:space="preserve">
+    <value>Средство ведения журнала тестирования</value>
+  </data>
+  <data name="CollectionEmpty" xml:space="preserve">
+    <value>В следующей коллекции должна находиться хотя бы одна запись: {0}</value>
+  </data>
+  <data name="NoDiscoveryRequest" xml:space="preserve">
+    <value>Не удалось найти тесты из-за отсутствия запроса на обнаружение. Выполните запрос на обнаружение и повторите попытку.</value>
+  </data>
+  <data name="AnotherDiscoveryRequestInProgress" xml:space="preserve">
+    <value>Запрос на обнаружение уже выполняется. Поддерживается только один активный запрос на обнаружение.</value>
+  </data>
+  <data name="NoValidSourceFoundForDiscovery" xml:space="preserve">
+    <value>Ни один из указанных источников "{0}" не допустим. Исправьте эти ошибки/предупреждения и повторите попытку. </value>
+  </data>
+  <data name="ExceptionFromLoadTests" xml:space="preserve">
+    <value>При загрузке тестов средством обнаружения тестов "{0}" произошло исключение. Исключение: {1}</value>
+  </data>
+  <data name="SettingsProviderNotFound" xml:space="preserve">
+    <value>Поставщик параметров с именем "{0}" не найден.  Загрузка параметров невозможна.</value>
+  </data>
+  <data name="InvalidRunSettingsRootNode" xml:space="preserve">
+    <value>Корневой узел параметров запуска должен иметь имя "RunSettings".</value>
+  </data>
+  <data name="NoDiscovererRegisteredForTestSource" xml:space="preserve">
+    <value>Отсутствует зарегистрированное средство обнаружения тестов для обнаружения типа источника теста "{0}". Зарегистрируйте средство обнаружения тестов для данного типа источников и повторите попытку.</value>
+  </data>
+  <data name="NoTestsFoundInContainer" xml:space="preserve">
+    <value>В контейнере "{0}" тесты не обнаружены.</value>
+  </data>
+</root>

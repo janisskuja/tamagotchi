@@ -1,3 +1,4 @@
+using MetroTama.ParticleEmitter;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MetroTama.Domain.Repository;
@@ -31,7 +32,7 @@ namespace MetroTama
         public GamePage GamePage;
         ContentRepository _contentRepo;
         GameObjectService _gameObjectService;
-        private GraphicsEnum _graphicsEnum;
+        private GraphicsEnum _graphicsEnum = GraphicsEnum.IdleAnimation;
         Color _bgColor;
         private double _mult = 3;
         private double _sunRingRotation;
@@ -39,12 +40,14 @@ namespace MetroTama
         Dictionary<int, float> _stars1;
         Dictionary<int, float> _stars2;
 
+        ParticleSystem emitter = null;
+
         // the elapsed amount of time the frame has been shown for
         float _time;
         // duration of time to show each frame
         // an index of the current frame being shown
         int _frameIndexX;
-        int _frameIndexY = 0;
+        int _frameIndexY;
 
         public Game1()
         {
@@ -68,7 +71,19 @@ namespace MetroTama
             // TODO: Add your initialization logic here
             _gameObjectService = new GameObjectService();
             _bgColor = new Color(134, 185, 288);
-            
+
+            ParticleSystemSettings settings = new ParticleSystemSettings();
+            settings.ParticleTextureFileName = "Graphics/Bubble";
+            settings.IsBurst = false;
+            settings.SetLifeTimes(1.0f, 1.5f);
+            settings.SetScales(0.001f, 0.04f);
+            settings.ParticlesPerSecond = 100.0f;
+            settings.InitialParticleCount = (int)(settings.ParticlesPerSecond * settings.MaximumLifeTime);
+            settings.SetDirectionAngles(0, 360);
+
+            emitter = new ParticleSystem(this, settings);
+            Components.Add(emitter);
+
             base.Initialize();
             
         }
@@ -83,25 +98,29 @@ namespace MetroTama
             // Create a new SpriteBatch, which can be used to draw textures.
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             _font = Content.Load<SpriteFont>("gameFont");
-
-
-            _graphicsEnum = GraphicsEnum.IdleAnimation;
-
-            int previousX = 0;
-            _stars1 = new Dictionary<int, float>();
-            _stars2 = new Dictionary<int, float>();
-            for(var i = 1; i < 11; i++) {
-                lock (SyncLock)
-                { // synchronize
-                    previousX = Random.Next(100) * i + previousX;
-                }
-                _stars1.Add(previousX, (float)GetRandomNumber(10, 400));
-                _stars2.Add(20 * i, (float)GetRandomNumber(10, 400));
-            }
-            
+            GenerateStars();
         }
 
-        private double GetRandomNumber(double minimum, double maximum)
+        private void GenerateStars()
+        {
+            IsMouseVisible = true;
+            emitter.OriginPosition = new Vector2(200, 200);
+            var previousX = 0;
+            _stars1 = new Dictionary<int, float>();
+            _stars2 = new Dictionary<int, float>();
+            for (var i = 1; i < 11; i++)
+            {
+                lock (SyncLock)
+                {
+                    // synchronize
+                    previousX = Random.Next(100)*i + previousX;
+                }
+                _stars1.Add(previousX, (float) GetRandomNumber(10, 400));
+                _stars2.Add(20*i, (float) GetRandomNumber(10, 400));
+            }
+        }
+
+        private static double GetRandomNumber(double minimum, double maximum)
         {
             lock (SyncLock)
             { // synchronize
@@ -134,6 +153,19 @@ namespace MetroTama
                _showMessage = false;
                _lastMessageUpdate = gameTime.TotalGameTime;
            }
+
+           if (Mouse.GetState().LeftButton == ButtonState.Pressed)
+           {
+               emitter.Settings.EndBurst = false;
+           }
+
+           if (Mouse.GetState().RightButton == ButtonState.Pressed)
+           {
+               emitter.Settings.IsBurst = !emitter.Settings.IsBurst;
+           }
+
+           emitter.OriginPosition = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
+
            base.Update(gameTime);
         }
 
@@ -176,17 +208,13 @@ namespace MetroTama
             //if (Pet.IsSleeping)
             //{
                 foreach (KeyValuePair<int, float> item in _stars1)
-                {
                     _spriteBatch.Draw(star1.SpriteSheet, new Vector2(item.Key, item.Value), star1.GetSourceRectangle(), Color.White, (float)_sunRingRotation, star1.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-                }
 
                 foreach (KeyValuePair<int, float> item in _stars2)
-                {
                     _spriteBatch.Draw(star2.SpriteSheet, new Vector2(item.Key, item.Value), star2.GetSourceRectangle(), Color.White, (float)_sunRingRotation, star2.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-                }
             //}
 
-            const int sunRad = 700;
+            var sunRad = this.Window.ClientBounds.Height * 0.9;
             Vector2 positionInCircleRadius = GetCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, _mult, sunRad);
             Vector2 moonPositionInCircleRadius = GetCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, _mult + Math.PI, sunRad);
             _spriteBatch.Draw(sunCore.SpriteSheet, positionInCircleRadius, sunCore.GetSourceRectangle(), Color.White, 0.0f, sunCore.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
@@ -282,7 +310,7 @@ namespace MetroTama
             _graphicsEnum = GraphicsEnum.IdleAnimation;
         }
 
-        public Vector2 GetCirclePosition(float cx, float cy, double mult, int rad) {
+        public Vector2 GetCirclePosition(float cx, float cy, double mult, double rad) {
             var x = cx + Math.Sin(mult)*rad;
             var y = cy + Math.Cos(mult)*rad;
             return new Vector2((float)x, (float)y);

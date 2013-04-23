@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TestResultPropertyErrorColumnNumberLabel" xml:space="preserve">
+    <value>Номер столбца ошибки</value>
+  </data>
+  <data name="TestOutcomeFailed" xml:space="preserve">
+    <value>Не пройден</value>
+  </data>
+  <data name="TestOutcomeSkipped" xml:space="preserve">
+    <value>Пропущено</value>
+  </data>
+  <data name="TestFailureStackTraceFormat" xml:space="preserve">
+    <value>  StackTrace:
+{0}</value>
+  </data>
+  <data name="TestResultTextMessagesFormat" xml:space="preserve">
+    <value>  Сообщения теста:
+{0}</value>
+  </data>
+  <data name="NotificationTimeoutIsZero" xml:space="preserve">
+    <value>Время ожидания уведомления должно быть больше нуля.</value>
+  </data>
+  <data name="InvalidSettingsXmlElement" xml:space="preserve">
+    <value>Недопустимые параметры "{0}". Недопустимый элемент XmlElement: "{1}".</value>
+  </data>
+  <data name="Exception_RegisteredTestPropertyHasDifferentValueType" xml:space="preserve">
+    <value>Не удалось зарегистрировать свойство "{0}" как значение типа "{1}", поскольку оно уже зарегистрировано как "{2}".</value>
+  </data>
+  <data name="InvalidSettingsXmlAttribute" xml:space="preserve">
+    <value>Недопустимые параметры "{0}". Непредвиденный атрибут XmlAttribute: "{1}".</value>
+  </data>
+  <data name="TestResultPropertyComputerNameLabel" xml:space="preserve">
+    <value>Имя компьютера</value>
+  </data>
+  <data name="TestCasePropertyNameLabel" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="TestCasePropertyExecutorUriLabel" xml:space="preserve">
+    <value>URI исполнителя</value>
+  </data>
+  <data name="TestOutcomeNotFound" xml:space="preserve">
+    <value>Не найден</value>
+  </data>
+  <data name="ConverterNotSupported" xml:space="preserve">
+    <value>Не удалось найти преобразователь TypeConverter для типа {0}.</value>
+  </data>
+  <data name="TestResultPropertyDisplayNameLabel" xml:space="preserve">
+    <value>Отображаемое имя результата теста</value>
+  </data>
+  <data name="NullString" xml:space="preserve">
+    <value>(NULL)</value>
+  </data>
+  <data name="MissingDataCollectorAttributes" xml:space="preserve">
+    <value>Недопустимые параметры сборщика данных. Отсутствует ожидаемый атрибут "{0}".  Типичный параметр сборщика данных обычно выглядит следующим образом: &lt;DataCollector uri="dataCollector://Samples/SampleCollector/1.0" assemblyQualifiedName="Samples.SampleCollector.SampleDataCollector, SampleCollectors, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1111111111111111" friendlyName="sampleCollector"&gt;.</value>
+  </data>
+  <data name="TestResultPropertyErrorMessageLabel" xml:space="preserve">
+    <value>Сообщение об ошибке</value>
+  </data>
+  <data name="TestCasePropertyFilePathLabel" xml:space="preserve">
+    <value>Путь к файлу</value>
+  </data>
+  <data name="TestFailureMessageFormat" xml:space="preserve">
+    <value>  Сообщение: {0}</value>
+  </data>
+  <data name="TestResultPropertyOutcomeLabel" xml:space="preserve">
+    <value>Результат</value>
+  </data>
+  <data name="TestResultMessageFormat" xml:space="preserve">
+    <value>  {0}:
+{1}</value>
+  </data>
+  <data name="TestCasePropertyFullyQualifiedNameLabel" xml:space="preserve">
+    <value>FullyQualifiedName</value>
+  </data>
+  <data name="NoTestCaseFilterForSpecificTests" xml:space="preserve">
+    <value>Не удалось указать фильтр TestCaseFilter для конкретного тестового запуска. Условия фильтра FilterCriteria предназначены только для выполнения с использованием источников.</value>
+  </data>
+  <data name="TestResultPropertyErrorStackTraceLabel" xml:space="preserve">
+    <value>Трассировка стека ошибок</value>
+  </data>
+  <data name="BasicTestResultFormat" xml:space="preserve">
+    <value>{0,-10}  {1}</value>
+  </data>
+  <data name="TestResultPropertyStartTimeLabel" xml:space="preserve">
+    <value>Время начала</value>
+  </data>
+  <data name="TestResultPropertyDurationLabel" xml:space="preserve">
+    <value>Длительность</value>
+  </data>
+  <data name="TestCasePropertyIdLabel" xml:space="preserve">
+    <value>Идентификатор</value>
+  </data>
+  <data name="TestCasePropertySourceLabel" xml:space="preserve">
+    <value>Источник</value>
+  </data>
+  <data name="NotificationFrequencyIsNotPositive" xml:space="preserve">
+    <value>Частота уведомлений должна быть положительным значением.</value>
+  </data>
+  <data name="CouldNotFindXmlNode" xml:space="preserve">
+    <value>Не удалось найти узел "{0}"</value>
+  </data>
+  <data name="TestCasePropertyLineNumberLabel" xml:space="preserve">
+    <value>Номер строки</value>
+  </data>
+  <data name="TestCasePropertyColumnNumberLabel" xml:space="preserve">
+    <value>Номер столбца</value>
+  </data>
+  <data name="UnexpectedTypeOfProperty" xml:space="preserve">
+    <value>Тип свойства теста "{0}" для свойства "{1}" не поддерживается. Используйте один из поддерживаемых типов свойств (типы-примитивы, URI, string, string[]) и повторите попытку. </value>
+  </data>
+  <data name="TestOutcomePassed" xml:space="preserve">
+    <value>Пройден</value>
+  </data>
+  <data name="InvalidRunSettingsRootNode" xml:space="preserve">
+    <value>Корневой узел параметров запуска должен иметь имя "RunSettings".</value>
+  </data>
+  <data name="TestResultPropertyEndTimeLabel" xml:space="preserve">
+    <value>Время окончания</value>
+  </data>
+  <data name="TestOutcomeNone" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="InvalidSettingsIncorrectValue" xml:space="preserve">
+    <value>Недопустимые параметры "{0}".  Недопустимое значение "{1}" указано для "{2}".</value>
+  </data>
+</root>

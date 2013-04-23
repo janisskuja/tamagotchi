@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>LAPTOP</Machine>
+    <WindowsUser>dmitr_000</WindowsUser>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <RegisteredManifestChecksum>A0A1E43E78608B56BA1849AF6C6A40362A29C2F1FCF41A6E7BE1B36EE8F6EBE2</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>09c7d6af-2ea9-4573-9023-abd840f4dfa9_1.0.0.0_neutral__6fec9jvghf364</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>09c7d6af-2ea9-4573-9023-abd840f4dfa9_6fec9jvghf364!vstest.executionengine.App</RegisteredUserModeAppID>
+    <RegisteredPackageID>09c7d6af-2ea9-4573-9023-abd840f4dfa9</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=dmitr_000</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\dmitr_000\Dropbox\Programmesana\C#\WPF\tamagotchi\VSProject\MetroTama\MetroTamaUTest\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-04-20T11:16:07.984</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\dmitr_000\Dropbox\Programmesana\C#\WPF\tamagotchi\VSProject\MetroTama\MetroTamaUTest\bin\Debug\MetroTamaUTest.dll">
+      <PackagePath>MetroTamaUTest.dll</PackagePath>
+      <Modified>2013-04-20T11:16:02.261</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\dmitr_000\Dropbox\Programmesana\C#\WPF\tamagotchi\VSProject\MetroTama\MetroTamaUTest\bin\Debug\MetroTamaUTest.pdb">
+      <PackagePath>MetroTamaUTest.pdb</PackagePath>
+      <Modified>2013-04-20T11:16:02.183</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\MSTestFramework\11.0\References\CommonConfiguration\neutral\Microsoft.VisualStudio.TestPlatform.UnitTestFramework.dll">
+      <PackagePath>Microsoft.VisualStudio.TestPlatform.UnitTestFramework.dll</PackagePath>
+      <Modified>2012-07-26T17:41:24.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\TestPlatform\11.0\Redist\CommonConfiguration\neutral\Microsoft.VisualStudio.TestPlatform.Core.dll">
+      <PackagePath>Microsoft.VisualStudio.TestPlatform.Core.dll</PackagePath>
+      <Modified>2012-07-26T17:41:24.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\TestPlatform\11.0\Redist\CommonConfiguration\neutral\ru\Microsoft.VisualStudio.TestPlatform.Core.resources.dll">
+      <PackagePath>ru\Microsoft.VisualStudio.TestPlatform.Core.resources.dll</PackagePath>
+      <Modified>2012-07-26T18:47:18.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\MSTestFramework\11.0\Redist\CommonConfiguration\neutral\Microsoft.VisualStudio.TestPlatform.Extensions.MSAppContainerAdapter.dll">
+      <PackagePath>Microsoft.VisualStudio.TestPlatform.Extensions.MSAppContainerAdapter.dll</PackagePath>
+      <Modified>2012-07-26T17:41:24.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\MSTestFramework\11.0\Redist\CommonConfiguration\neutral\ru\Microsoft.VisualStudio.TestPlatform.Extensions.MSAppContainerAdapter.resources.dll">
+      <PackagePath>ru\Microsoft.VisualStudio.TestPlatform.Extensions.MSAppContainerAdapter.resources.dll</PackagePath>
+      <Modified>2012-07-26T18:47:18.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\TestPlatform\11.0\Redist\CommonConfiguration\neutral\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll">
+      <PackagePath>Microsoft.VisualStudio.TestPlatform.ObjectModel.dll</PackagePath>
+      <Modified>2012-07-26T17:41:24.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\TestPlatform\11.0\Redist\CommonConfiguration\neutral\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll">
+      <PackagePath>ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll</PackagePath>
+      <Modified>2012-07-26T18:47:18.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\TestPlatform\11.0\Redist\CommonConfiguration\neutral\Microsoft.VisualStudio.TestPlatform.TestExecutor.Core.dll">
+      <PackagePath>Microsoft.VisualStudio.TestPlatform.TestExecutor.Core.dll</PackagePath>
+      <Modified>2012-07-26T17:41:24.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\TestPlatform\11.0\Redist\CommonConfiguration\neutral\ru\Microsoft.VisualStudio.TestPlatform.TestExecutor.Core.resources.dll">
+      <PackagePath>ru\Microsoft.VisualStudio.TestPlatform.TestExecutor.Core.resources.dll</PackagePath>
+      <Modified>2012-07-26T18:47:18.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\MSTestFramework\11.0\Redist\CommonConfiguration\neutral\ru\Microsoft.VisualStudio.TestPlatform.UnitTestFramework.resources.dll">
+      <PackagePath>ru\Microsoft.VisualStudio.TestPlatform.UnitTestFramework.resources.dll</PackagePath>
+      <Modified>2012-07-26T18:47:18.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\TestPlatform\11.0\Redist\CommonConfiguration\neutral\Microsoft.VisualStudio.TestPlatform.Utilities.dll">
+      <PackagePath>Microsoft.VisualStudio.TestPlatform.Utilities.dll</PackagePath>
+      <Modified>2012-07-26T17:41:24.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\TestPlatform\11.0\Redist\CommonConfiguration\neutral\ru\Microsoft.VisualStudio.TestPlatform.Utilities.resources.dll">
+      <PackagePath>ru\Microsoft.VisualStudio.TestPlatform.Utilities.resources.dll</PackagePath>
+      <Modified>2012-07-26T18:47:18.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\TestPlatform\11.0\Redist\CommonConfiguration\neutral\vstest.executionengine.appcontainer.exe">
+      <PackagePath>vstest.executionengine.appcontainer.exe</PackagePath>
+      <Modified>2012-07-26T17:08:06.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\TestPlatform\11.0\Redist\CommonConfiguration\neutral\vstest.executionengine.appcontainer.x86.exe">
+      <PackagePath>vstest.executionengine.appcontainer.x86.exe</PackagePath>
+      <Modified>2012-07-26T17:08:06.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\dmitr_000\Dropbox\Programmesana\C#\WPF\tamagotchi\VSProject\MetroTama\MetroTamaUTest\Images\UnitTestLogo.png">
+      <PackagePath>Images\UnitTestLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2011-12-12T11:52:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\dmitr_000\Dropbox\Programmesana\C#\WPF\tamagotchi\VSProject\MetroTama\MetroTamaUTest\Images\UnitTestSmallLogo.png">
+      <PackagePath>Images\UnitTestSmallLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2011-12-12T11:52:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\dmitr_000\Dropbox\Programmesana\C#\WPF\tamagotchi\VSProject\MetroTama\MetroTamaUTest\Images\UnitTestSplashScreen.png">
+      <PackagePath>Images\UnitTestSplashScreen.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2011-12-12T11:52:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\dmitr_000\Dropbox\Programmesana\C#\WPF\tamagotchi\VSProject\MetroTama\MetroTamaUTest\Images\UnitTestStoreLogo.png">
+      <PackagePath>Images\UnitTestStoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2011-12-12T11:52:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\dmitr_000\Dropbox\Programmesana\C#\WPF\tamagotchi\VSProject\MetroTama\MetroTamaUTest\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2013-04-20T11:16:05.022</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

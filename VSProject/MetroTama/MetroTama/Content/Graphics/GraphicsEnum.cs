@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MetroTama.Content.Graphics
+﻿namespace MetroTama.Content.Graphics
 {
     public enum GraphicsEnum
     {
@@ -23,6 +17,7 @@ namespace MetroTama.Content.Graphics
         EatingAnim,
         ComicBubble,
         Star1,
-        Star2
+        Star2,
+        IdleAnim
     }
 }
