@@ -29,8 +29,36 @@ namespace MetroTama.Services
 
             _petRepository.UpdateAllPet(_pet);
 
-            game._graphicsEnum = Content.Graphics.GraphicsEnum.EatingAnim;
-
+            switch (gameObjectEnum)
+            {
+                case GameObjectEnum.Apple:
+                    game._graphicsEnum = Content.Graphics.GraphicsEnum.EatingAnim;
+                    break;
+                case GameObjectEnum.Ball:
+                    game._graphicsEnum = Content.Graphics.GraphicsEnum.Player;
+                    break;
+                case GameObjectEnum.Book:
+                    //game._graphicsEnum = Content.Graphics.GraphicsEnum.Read;
+                    break;
+                case GameObjectEnum.Burger:
+                    game._graphicsEnum = Content.Graphics.GraphicsEnum.EatingAnim;
+                    break;
+                case GameObjectEnum.Light:
+                    //game._graphicsEnum = Content.Graphics.GraphicsEnum.LightSwitch;
+                    break;
+                case GameObjectEnum.Medkit:
+                    //game._graphicsEnum = Content.Graphics.GraphicsEnum.Heal;
+                    break;
+                case GameObjectEnum.Soap:
+                    //game._graphicsEnum = Content.Graphics.GraphicsEnum.Wash;
+                    break;
+                case GameObjectEnum.Watter:
+                    //game._graphicsEnum = Content.Graphics.GraphicsEnum.Drink;
+                    break;
+                default:
+                    game._graphicsEnum = Content.Graphics.GraphicsEnum.IdleAnim;
+                    break;
+            }
         }
     }
 }
