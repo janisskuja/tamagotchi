@@ -18,6 +18,7 @@
         ComicBubble,
         Star1,
         Star2,
-        IdleAnim
+        IdleAnim,
+        ReadAnim
     }
 }
