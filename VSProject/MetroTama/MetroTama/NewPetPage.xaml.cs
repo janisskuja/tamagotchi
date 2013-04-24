@@ -1,20 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using MetroTama.Common;
-using MetroTama.Domain.Entities;
-using MetroTama.Domain.Repository;
 using MetroTama.Services;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using TamaDomain.Domain.Entities;
+using TamaDomain.Domain.Repository;
+using Windows.ApplicationModel.Background;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
@@ -29,12 +21,36 @@ namespace MetroTama
         readonly PetRepository _petRepository = new PetRepository();
         private Pet newPet;
         private GamePage _gamePage;
+        private const string TASK_NAME = "TileUpdater";
+        private const string TASK_ENTRY = "BackgroundTasks.TileUpdater";
 
         public NewPetPage(GamePage gamePage)
         {
             this.InitializeComponent();
             newPet = _petService.GeneratePet();
             _gamePage = gamePage;
+        }
+
+
+
+        private async void RegisterBacgroundTask()
+        {
+            var result = await BackgroundExecutionManager.RequestAccessAsync();
+            if (result == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity ||
+                result == BackgroundAccessStatus.AllowedWithAlwaysOnRealTimeConnectivity)
+            {
+                foreach (var task in BackgroundTaskRegistration.AllTasks)
+                {
+                    if (task.Value.Name == TASK_NAME)
+                        task.Value.Unregister(true);
+                }
+
+                BackgroundTaskBuilder builder = new BackgroundTaskBuilder();
+                builder.Name = TASK_NAME;
+                builder.TaskEntryPoint = TASK_ENTRY;
+                builder.SetTrigger(new TimeTrigger(15, false));
+                var registration = builder.Register();
+            }
         }
 
         /// <summary>
@@ -65,6 +81,7 @@ namespace MetroTama
             newPet.Name = TbPetName.Text;
             _petRepository.AddPet(newPet);
             _gamePage._game.IsGameStarted = true;
+            RegisterBacgroundTask();
             Window.Current.Content = _gamePage;
             Window.Current.Activate();
         }

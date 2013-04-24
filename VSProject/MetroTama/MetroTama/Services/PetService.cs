@@ -1,7 +1,7 @@
 ﻿using System;
-using MetroTama.Domain.Entities;
-using MetroTama.Domain.Enumerator;
-using MetroTama.Domain.Repository;
+using TamaDomain.Domain.Entities;
+using TamaDomain.Domain.Repository;
+using TamaDomain.Domain.Enumerator;
 
 namespace MetroTama.Services
 {

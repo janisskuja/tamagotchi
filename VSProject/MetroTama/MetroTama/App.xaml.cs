@@ -1,8 +1,10 @@
-﻿using System.IO;
-using MetroTama.Domain.Repository;
+﻿using System;
+using System.IO;
+using Microsoft.VisualBasic;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
+using TamaDomain.Domain.Repository;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
@@ -13,8 +15,7 @@ namespace MetroTama
     /// </summary>
     sealed partial class App : Application
     {
-        public static string DBPath = string.Empty;
-        private DbInitRepository DbInitRepository = new DbInitRepository();
+        private readonly DbInitRepository DbInitRepository = new DbInitRepository();
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -35,7 +36,6 @@ namespace MetroTama
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
             var gamePage = Window.Current.Content as GamePage;
-
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
             if (gamePage == null)
@@ -47,9 +47,7 @@ namespace MetroTama
                 {
                     // TODO: Load state from previously suspended application
                 }
-                // Get a reference to the SQLite database
-                DBPath = Path.Combine(
-                    Windows.Storage.ApplicationData.Current.LocalFolder.Path, "metrotama.db");
+
                 // Initialize the database if necessary
                 DbInitRepository.InitTablesAndData();
                 // Place the GamePage in the current Window

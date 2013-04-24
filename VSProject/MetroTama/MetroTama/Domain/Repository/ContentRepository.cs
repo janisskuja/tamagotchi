@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MetroTama.Content.Graphics;
 using MetroTama.Domain.Entities;
 using Microsoft.Xna.Framework.Graphics;

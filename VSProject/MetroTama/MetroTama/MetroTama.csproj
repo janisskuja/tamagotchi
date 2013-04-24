@@ -105,33 +105,11 @@
     <Reference Include="MonoGame.Framework">
       <HintPath>Windows8\MonoGame.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDX">
-      <HintPath>Windows8\SharpDX.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Direct2D1">
-      <HintPath>Windows8\SharpDX.Direct2D1.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Direct3D11">
-      <HintPath>Windows8\SharpDX.Direct3D11.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.DXGI">
-      <HintPath>Windows8\SharpDX.DXGI.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.MediaFoundation">
-      <HintPath>Windows8\SharpDX.MediaFoundation.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.XAudio2">
-      <HintPath>Windows8\SharpDX.XAudio2.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.XInput">
-      <HintPath>Windows8\SharpDX.XInput.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BackgroundTask.cs" />
     <Compile Include="Common\BindableBase.cs" />
     <Compile Include="Common\BooleanNegationConverter.cs" />
     <Compile Include="Common\BooleanToVisibilityConverter.cs" />
@@ -141,22 +119,9 @@
     <Compile Include="Content\Graphics\GraphicsEnum.cs" />
     <Compile Include="Dictionary.cs" />
     <Compile Include="Domain\Entities\AnimationData.cs" />
-    <Compile Include="Domain\Entities\GameObject.cs" />
-    <Compile Include="Domain\Entities\GraveYard.cs" />
-    <Compile Include="Domain\Entities\Pet.cs" />
-    <Compile Include="Domain\Entities\SayText.cs" />
-    <Compile Include="Domain\Entities\Stage.cs" />
     <Compile Include="Domain\Entities\StaticImageData.cs" />
-    <Compile Include="Domain\Enumerator\StageEnum.cs" />
-    <Compile Include="Domain\Enumerator\ParameterEnum.cs" />
-    <Compile Include="Domain\Enumerator\GenderEnum.cs" />
-    <Compile Include="Domain\Enumerator\GameObjectEnum.cs" />
     <Compile Include="Domain\Enumerator\UiSubcategoryEnum.cs" />
     <Compile Include="Domain\Repository\ContentRepository.cs" />
-    <Compile Include="Domain\Repository\DbInitRepository.cs" />
-    <Compile Include="Domain\Repository\GameObjectRepository.cs" />
-    <Compile Include="Domain\Repository\PetRepository.cs" />
-    <Compile Include="Domain\Repository\SayTextRepository.cs" />
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
@@ -173,7 +138,6 @@
     <Compile Include="Services\SayTextService.cs" />
     <Compile Include="SQLite.cs" />
     <Compile Include="SQLiteAsync.cs" />
-    <Compile Include="TamaBackgroundTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -290,9 +254,16 @@
     <SDKReference Include="Microsoft.VCLibs, version=11.0">
       <Name>Microsoft Visual C++ Runtime Package</Name>
     </SDKReference>
-    <SDKReference Include="SQLite.WinRT, Version=3.7.16.2">
-      <Name>SQLite for Windows Runtime</Name>
-    </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BackgroundTasks\BackgroundTasks.csproj">
+      <Project>{181773bd-e35e-4000-a5bb-f526c5e65e17}</Project>
+      <Name>BackgroundTasks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TamaDomain\TamaDomain.csproj">
+      <Project>{f0f40c1f-24aa-481f-a23c-77e247b2eaff}</Project>
+      <Name>TamaDomain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>

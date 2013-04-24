@@ -25,9 +25,8 @@
         </InitialRotationPreference>
       </VisualElements>
       <Extensions>
-        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.TamaBackgroundTask">
+        <Extension Category="windows.backgroundTasks" EntryPoint="BackgroundTasks.TileUpdater">
           <BackgroundTasks>
-            <Task Type="systemEvent" />
             <Task Type="timer" />
           </BackgroundTasks>
         </Extension>
