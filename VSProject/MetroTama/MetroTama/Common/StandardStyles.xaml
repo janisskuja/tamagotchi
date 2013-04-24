@@ -407,7 +407,7 @@
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <Path Width="20" Height="20" 
+                    <Path Width="25" Height="25" HorizontalAlignment="Center"
                        Stretch="Uniform" 
                        Fill="{Binding Path=Foreground, RelativeSource={RelativeSource Mode=TemplatedParent}}" 
                        Data="{Binding Path=Content, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
@@ -1977,7 +1977,7 @@
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Width" Value="100"/>
-        <Setter Property="Height" Value="40"/>
+        <Setter Property="Height" Value="60"/>
     </Style>
 
     <Style x:Key="TamaTextBoxStyle" TargetType="TextBlock">

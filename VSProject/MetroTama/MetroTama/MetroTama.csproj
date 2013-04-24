@@ -239,6 +239,7 @@
     <Content Include="Content\Graphics\player.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Graphics\readanim.png" />
     <Content Include="Content\Graphics\sunCore.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

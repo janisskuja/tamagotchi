@@ -1,4 +1,5 @@
 ﻿using MetroTama.Common;
+using MetroTama.Domain.Entities;
 using MetroTama.Domain.Enumerator;
 using MetroTama.Domain.Repository;
 using MetroTama.Services;
@@ -6,6 +7,7 @@ using Windows.UI.Xaml;
 using MonoGame.Framework;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Media;
 
 
 namespace MetroTama
@@ -23,22 +25,22 @@ namespace MetroTama
         public GamePage(string launchArguments)
         {
             InitializeComponent();
-            if (_petRepository.GetPet() != null)
-            {
-                // Create the game.
-                _game = XamlGame<Game1>.Create(launchArguments, Window.Current.CoreWindow, DxSwapChainPanel);
-                _game.SetXamlPage(this);
-            }
+            InitializeGame(launchArguments);
             Window.Current.SizeChanged += Current_SizeChanged;
             Window.Current.Activated += Current_Activated;
         }
 
         private void Current_Activated(object sender, Windows.UI.Core.WindowActivatedEventArgs e)
         {
-            // See if pet exists, if not create one
-            if (_petRepository.GetPet() == null)
+      /*      using (var db = new SQLite.SQLiteConnection(App.DBPath))
             {
-                Window.Current.Content = new NewPetPage();
+                db.DeleteAll<Pet>();
+            }*/
+            
+            // See if pet exists, if not create one
+            if(_petRepository.GetPet() == null)
+            {
+                Window.Current.Content = new NewPetPage(this);
                 Window.Current.Activate();
             }
         }
@@ -76,10 +78,14 @@ namespace MetroTama
             switch (viewState)
             {
                 case "Snapped":
-                    Grid.SetRow(BtmRightAppBarPanel,1);
+                    Grid.SetRow(BtmRightAppBarPanel, 1);
+                    TopRightAppBarPanel.Visibility = Visibility.Collapsed;
+                    TopLeftAppBarPanel.HorizontalAlignment = HorizontalAlignment.Center;
                     break;
                 default:
                     Grid.SetRow(BtmRightAppBarPanel, 0);
+                    TopRightAppBarPanel.Visibility = Visibility.Visible;
+                    TopLeftAppBarPanel.HorizontalAlignment = HorizontalAlignment.Left;
                     break;
             }
         }
@@ -123,7 +129,7 @@ namespace MetroTama
 
         private void Top_AppBar_Unloaded(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void Food_Click(object sender, RoutedEventArgs e)
@@ -175,6 +181,37 @@ namespace MetroTama
         private void Read_Click(object sender, RoutedEventArgs e)
         {
             _gameObjectService.UseObject(_game, GameObjectEnum.Book);
+        }
+
+        internal void InitializeGame(string launchArguments)
+        {
+            _game = XamlGame<Game1>.Create(launchArguments, Window.Current.CoreWindow, DxSwapChainPanel);
+            _game.SetXamlPage(this);
+        }
+
+        public void UpdateStatusUI()
+        {
+            Pet pet = _petRepository.GetPet();
+            if (pet != null)
+            {
+                HealthProgressBar.Value = pet.Health;
+                EnergyProgressBar.Value = pet.Energy;
+                HungerProgressBar.Value = pet.Hunger;
+                MoodProgressBar.Value = pet.Hunger;
+                HygeneProgressBar.Value = pet.Hygene;
+                DisciplineProgressBar.Value = pet.Discipline;
+                PetName.Text = pet.Name;
+                if (pet.Gender == (int) GenderEnum.Female)
+                {
+                    MalePath.Visibility = Visibility.Collapsed;
+                    FemalePath.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    MalePath.Visibility = Visibility.Visible;
+                    FemalePath.Visibility = Visibility.Collapsed;
+                }
+            }
         }
     }
 }

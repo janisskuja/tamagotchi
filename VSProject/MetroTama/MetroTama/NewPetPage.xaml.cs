@@ -28,10 +28,13 @@ namespace MetroTama
         readonly PetService _petService = new PetService();
         readonly PetRepository _petRepository = new PetRepository();
         private Pet newPet;
-        public NewPetPage()
+        private GamePage _gamePage;
+
+        public NewPetPage(GamePage gamePage)
         {
             this.InitializeComponent();
             newPet = _petService.GeneratePet();
+            _gamePage = gamePage;
         }
 
         /// <summary>
@@ -60,7 +63,9 @@ namespace MetroTama
         private void Star_Click(object sender, RoutedEventArgs e)
         {
             newPet.Name = TbPetName.Text;
-            
+            _petRepository.AddPet(newPet);
+            Window.Current.Content = _gamePage;
+            Window.Current.Activate();
         }
     }
 }

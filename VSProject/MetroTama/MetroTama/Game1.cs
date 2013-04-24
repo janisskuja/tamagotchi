@@ -157,7 +157,8 @@ namespace MetroTama
         protected override void Update(GameTime gameTime)
         {
            // TODO: Add your update logic here
-        
+           
+           this.GamePage.UpdateStatusUI();
            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
            if (gameTime.TotalGameTime.Subtract(_lastMessageUpdate) > MessageShowTime)
