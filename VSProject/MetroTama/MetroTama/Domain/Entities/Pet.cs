@@ -3,7 +3,7 @@ using SQLite;
 
 namespace MetroTama.Domain.Entities
 {
-    class Pet
+    public class Pet
     {
         [PrimaryKey, AutoIncrement]
         public int PetId { get; set; }

@@ -18,6 +18,7 @@ namespace MetroTama
     public sealed partial class GamePage : LayoutAwarePage
     {
         public Game1 _game;
+        public Pet _pet;
         private GameObjectService _gameObjectService = new GameObjectService();
         readonly PetRepository _petRepository = new PetRepository();
 
@@ -191,17 +192,17 @@ namespace MetroTama
 
         public void UpdateStatusUI()
         {
-            Pet pet = _petRepository.GetPet();
-            if (pet != null)
+            _pet = _petRepository.GetPet();
+            if (_pet != null)
             {
-                HealthProgressBar.Value = pet.Health;
-                EnergyProgressBar.Value = pet.Energy;
-                HungerProgressBar.Value = pet.Hunger;
-                MoodProgressBar.Value = pet.Hunger;
-                HygeneProgressBar.Value = pet.Hygene;
-                DisciplineProgressBar.Value = pet.Discipline;
-                PetName.Text = pet.Name;
-                if (pet.Gender == (int) GenderEnum.Female)
+                HealthProgressBar.Value = _pet.Health;
+                EnergyProgressBar.Value = _pet.Energy;
+                HungerProgressBar.Value = _pet.Hunger;
+                MoodProgressBar.Value = _pet.Hunger;
+                HygeneProgressBar.Value = _pet.Hygene;
+                DisciplineProgressBar.Value = _pet.Discipline;
+                PetName.Text = _pet.Name;
+                if (_pet.Gender == (int)GenderEnum.Female)
                 {
                     MalePath.Visibility = Visibility.Collapsed;
                     FemalePath.Visibility = Visibility.Visible;

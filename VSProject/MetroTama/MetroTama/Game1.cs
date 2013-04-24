@@ -25,7 +25,7 @@ namespace MetroTama
         private static readonly TimeSpan MessageShowTime = new TimeSpan(0, 0, 0, 3, 0);
         private static readonly Random Random = new Random();
         private static readonly object SyncLock = new object();
-
+        public bool IsGameStarted = false;
         SpriteBatch _spriteBatch;
         
 
@@ -188,8 +188,15 @@ namespace MetroTama
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+
             GraphicsDevice.Clear(_bgColor);
-            
+            if (!IsGameStarted)
+            {
+                GraphicsDevice.Clear(Color.Black);
+                base.Draw(gameTime);
+                return;
+            }
+
             var animation = _contentRepo.GetAnimationData(_graphicsEnum);
 
             var sunCore = _contentRepo.GetStaticImage(GraphicsEnum.SunCore);

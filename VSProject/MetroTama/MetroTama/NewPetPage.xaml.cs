@@ -64,6 +64,7 @@ namespace MetroTama
         {
             newPet.Name = TbPetName.Text;
             _petRepository.AddPet(newPet);
+            _gamePage._game.IsGameStarted = true;
             Window.Current.Content = _gamePage;
             Window.Current.Activate();
         }
