@@ -32,10 +32,10 @@ namespace MetroTama
 
         private void Current_Activated(object sender, Windows.UI.Core.WindowActivatedEventArgs e)
         {
-      /*      using (var db = new SQLite.SQLiteConnection(App.DBPath))
-            {
-                db.DeleteAll<Pet>();
-            }*/
+            //using (var db = new SQLite.SQLiteConnection(App.DBPath))
+            //{
+            //    db.DeleteAll<Pet>();
+            //}
             
             // See if pet exists, if not create one
             if(_petRepository.GetPet() == null)

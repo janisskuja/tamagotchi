@@ -102,6 +102,18 @@ namespace MetroTama.Domain.Repository
                 MoodEffect = 3,
                 EnergyEffect = 5,
             });
+            db.InsertOrReplace(new GameObject()
+            {
+                GameObjectId = (int)GameObjectEnum.Medkit,
+                ObjectName = "Healing object",
+                Description = "heal your pet",
+                HealthEffect = 5,
+                HungerEffect = 0,
+                HygeneEffect = 0,
+                DisciplineEffect = 1,
+                MoodEffect = 3,
+                EnergyEffect = 0,
+            });
         }
 
         private static void InsertStages(SQLiteConnection db)
