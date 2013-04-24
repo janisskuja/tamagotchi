@@ -39,10 +39,14 @@ namespace MetroTama
             //}
             
             // See if pet exists, if not create one
-            if(_petRepository.GetPet() == null)
+            if (_petRepository.GetPet() == null)
             {
                 Window.Current.Content = new NewPetPage(this);
                 Window.Current.Activate();
+            }
+            else
+            {
+                _game.IsGameStarted = true;
             }
         }
 
