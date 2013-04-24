@@ -27,6 +27,7 @@ namespace MetroTama
         private static readonly Random Random = new Random();
         private static readonly object SyncLock = new object();
         public bool IsGameStarted = false;
+        public bool IsCleaning = false;
         SpriteBatch _spriteBatch;
         
 
@@ -77,7 +78,7 @@ namespace MetroTama
             ParticleSystemSettings settings = new ParticleSystemSettings();
             position = new Vector2(this.Window.ClientBounds.Width/2, this.Window.ClientBounds.Height);
             settings.ParticleTextureFileName = "Graphics/Bubble";
-            settings.IsBurst = false;
+            settings.IsBurst = true;
             settings.SetLifeTimes(1.0f, 1.5f);
             settings.SetScales(0.001f, 0.04f);
             settings.ParticlesPerSecond = 100.0f;
@@ -158,30 +159,32 @@ namespace MetroTama
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-           // TODO: Add your update logic here
+            // TODO: Add your update logic here
            
-           this.GamePage.UpdateStatusUI();
-           if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            this.GamePage.UpdateStatusUI();
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-           if (gameTime.TotalGameTime.Subtract(_lastMessageUpdate) > MessageShowTime)
-           {
-               _showMessage = false;
-               _lastMessageUpdate = gameTime.TotalGameTime;
-           }
+            if (gameTime.TotalGameTime.Subtract(_lastMessageUpdate) > MessageShowTime)
+            {
+                _showMessage = false;
+                _lastMessageUpdate = gameTime.TotalGameTime;
+            }
 
-           if (Mouse.GetState().LeftButton == ButtonState.Pressed)
-           {
-               emitter.Settings.EndBurst = false;
-           }
+            if (!IsCleaning && Mouse.GetState().LeftButton == ButtonState.Pressed)
+            {
+                //emitter.Settings.EndBurst = false;
+                IsCleaning = true;
+                emitter.Settings.IsBurst = !emitter.Settings.IsBurst;
+            }
+            if (IsCleaning && Mouse.GetState().LeftButton != ButtonState.Pressed)
+            {
+                IsCleaning = false;
+                emitter.Settings.IsBurst = !emitter.Settings.IsBurst;
+            }
 
-           if (Mouse.GetState().RightButton == ButtonState.Pressed)
-           {
-               emitter.Settings.IsBurst = !emitter.Settings.IsBurst;
-           }
+            emitter.OriginPosition = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
 
-           emitter.OriginPosition = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
-
-           base.Update(gameTime);
+            base.Update(gameTime);
         }
 
         /// <summary>
