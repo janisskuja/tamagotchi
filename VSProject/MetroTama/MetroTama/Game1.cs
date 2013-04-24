@@ -39,7 +39,7 @@ namespace MetroTama
         Color _bgColor;
         private double _mult = 3;
         private double _sunRingRotation;
-        private const double _sunDestRotationPos = 2.5;
+        private static double _sunDestRotationPos = 2.5;
         Dictionary<int, float> _stars1;
         Dictionary<int, float> _stars2;
 
@@ -240,6 +240,7 @@ namespace MetroTama
 
             if (IsSleeping)
             {
+                _sunDestRotationPos = Math.PI/4;
                 _bgColor = new Color(0, 24, 28);
                 foreach (KeyValuePair<int, float> item in _stars1)
                     _spriteBatch.Draw(star1.SpriteSheet, new Vector2(item.Key, item.Value), star1.GetSourceRectangle(),
@@ -253,6 +254,7 @@ namespace MetroTama
             }
             else
             {
+                _sunDestRotationPos = 2.5;
                 _bgColor = new Color(134, 185, 288);
             }
 
