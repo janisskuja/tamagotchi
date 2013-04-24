@@ -23,6 +23,7 @@ namespace MetroTama
         private static string _sayText;
         private static TimeSpan _lastMessageUpdate;
         private static readonly TimeSpan MessageShowTime = new TimeSpan(0, 0, 0, 3, 0);
+        private Vector2 position;
         private static readonly Random Random = new Random();
         private static readonly object SyncLock = new object();
         public bool IsGameStarted = false;
@@ -74,6 +75,7 @@ namespace MetroTama
             _bgColor = new Color(134, 185, 288);
 
             ParticleSystemSettings settings = new ParticleSystemSettings();
+            position = new Vector2(this.Window.ClientBounds.Width/2, this.Window.ClientBounds.Height);
             settings.ParticleTextureFileName = "Graphics/Bubble";
             settings.IsBurst = false;
             settings.SetLifeTimes(1.0f, 1.5f);
@@ -276,7 +278,7 @@ namespace MetroTama
 
         private void DrawTamogochiAnimation(AnimationData animation)
         {
-            var position = new Vector2(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height);
+            
             var origin = new Vector2(animation.FrameWidth / 2.0f, animation.FrameHeight+ 128);
             _spriteBatch.Draw(animation.SpriteSheet, position, animation.GetSourceRectangle(_frameIndexX, _frameIndexY), Color.White, 0.0f, origin, 1.0f, SpriteEffects.None, 0.0f);
         }
