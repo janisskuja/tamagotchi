@@ -152,6 +152,7 @@ namespace MetroTama
         private void Clean_Click(object sender, RoutedEventArgs e)
         {
             _gameObjectService.UseObject(_game, GameObjectEnum.Soap);
+            _game.IsCleaning = true;
             // Kaut kas jādomā ar mazgāšanos
         }
 
@@ -201,6 +202,7 @@ namespace MetroTama
 
         public void UpdateStatusUI()
         {
+           
             _pet = _petRepository.GetPet();
             if (_pet != null)
             {

@@ -20,6 +20,7 @@ namespace TamaDomain.Domain.Entities
         public int Gender { get; set; }
         public int Age { get; set; }
         public bool Sleeping { get; set; }
+        public bool Dead { get; set; }
         public bool Current { get; set; }
         public DateTime BirthDate { get; set; }
         public DateTime LastUpdated { get; set; }

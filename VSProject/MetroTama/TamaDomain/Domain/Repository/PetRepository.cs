@@ -8,6 +8,7 @@ namespace TamaDomain.Domain.Repository
     public class PetRepository
     {
         StageRepository _stageRepo = new StageRepository();
+        SayTextRepository _sayTextRepository = new SayTextRepository();
         public int AddPet(Pet _pet)
         {
             //returns new ID
@@ -31,13 +32,14 @@ namespace TamaDomain.Domain.Repository
                     Sleeping = _pet.Sleeping,
                     Current = _pet.Current,
                     BirthDate = _pet.BirthDate,
-                    LastUpdated = _pet.LastUpdated
+                    LastUpdated = _pet.LastUpdated,
+                    Dead = false
                 });
 
             }
             return success;
         }
-        
+
         public bool SetPetToSleep()
         {
             Pet pet = GetPet();
@@ -69,12 +71,12 @@ namespace TamaDomain.Domain.Repository
         }
 
 
-        public void UpdatePetFromBackground()
+        public String UpdatePetFromBackground()
         {
             Pet pet = GetPet();
             if (pet == null)
             {
-                return;
+                return "Your lovely pet is missing :(";
             }
 
             Stage petStage = _stageRepo.GetPetStage(pet.PetStageId);
@@ -88,9 +90,61 @@ namespace TamaDomain.Domain.Repository
                     pet.PetStageId = newStage.StageId;
                 }
             }
-          //  pet.Health = CalculateHealth()
+            if (pet.Sleeping)
+            {
 
+                pet.Energy += pet.Energy < 100 ? 25 : 0;
+                pet.Health += pet.Health < 100 ? 15 : 0;
+                pet.Hunger -= pet.Hunger > 0 ? 15 : 0;
+                pet.Mood -= pet.Mood > 0 ? 25 : 0;
+            }
+            else
+            {
+                pet.Health -= CalculateHealth(pet, petStage) >= 0 ? CalculateHealth(pet, petStage) : 5;
+                pet.Hunger -= CalculateHunger(pet, petStage) >= 0 ? CalculateHunger(pet, petStage) : 5;
+                pet.Hygene -= CalculateHygene(pet, petStage) >= 0 ? CalculateHygene(pet, petStage) : 5;
+                pet.Energy -= CalculateEnergy(pet, petStage) >= 0 ? CalculateEnergy(pet, petStage) : 5;
+                pet.Mood -= CalculateMood(pet, petStage) >= 0 ? CalculateMood(pet, petStage) : 5;
+                pet.Discipline -= CalculateDiscipline(pet, petStage) >= 0 ? CalculateDiscipline(pet, petStage) : 5;
+            }
+            if (pet.Health <= 0)
+            {
+                pet.Current = false;
+                pet.Dead = true;
+            }
+            UpdateAllPet(pet);
+            int parameter = new Random().Next(1, 6);
+            return _sayTextRepository.getText(pet, parameter);
+        }
 
+        private static int CalculateDiscipline(Pet pet, Stage petStage)
+        {
+            return pet.Discipline > 0 ? (GetMinutesFromLastUpdated(pet.LastUpdated) - petStage.DisciplineInterval) * petStage.DisciplineCoeff : 0;
+        }
+
+        private static int CalculateMood(Pet pet, Stage petStage)
+        {
+            return pet.Mood > 0 ? (GetMinutesFromLastUpdated(pet.LastUpdated) - petStage.MoodInterval) * petStage.MoodCoeff : 0;
+        }
+
+        private static int CalculateEnergy(Pet pet, Stage petStage)
+        {
+            return pet.Energy > 0 ? (GetMinutesFromLastUpdated(pet.LastUpdated) - petStage.EnergyInterval) * petStage.EnergyCoeff : 0;
+        }
+
+        private static int CalculateHygene(Pet pet, Stage petStage)
+        {
+            return pet.Hygene > 0 ? (GetMinutesFromLastUpdated(pet.LastUpdated) - petStage.HygeneInterval) * petStage.HygeneCoeff : 0;
+        }
+
+        private static int CalculateHunger(Pet pet, Stage petStage)
+        {
+            return pet.Hunger > 0 ? (GetMinutesFromLastUpdated(pet.LastUpdated) - petStage.HungerInterval) * petStage.HungerCoeff : 0;
+        }
+
+        private static int CalculateHealth(Pet pet, Stage petStage)
+        {
+            return pet.Health > 0 ? (GetMinutesFromLastUpdated(pet.LastUpdated) - petStage.HealthInterval) * petStage.HealthCoeff : 0;
         }
 
         public static int GetAge(Pet pet)
@@ -114,9 +168,19 @@ namespace TamaDomain.Domain.Repository
             return age;
         }
 
+        private static int GetMinutesFromLastUpdated(DateTime lastUpdated)
+        {
+            TimeSpan elapsed = DateTime.Now.Subtract(lastUpdated);
+            double minutesAgo = elapsed.TotalMinutes;
+            int minutes = Convert.ToInt32(minutesAgo);
+            return minutes;
+        }
+
+
         public int UpdateAllPet(Pet t_Pet)
         {
             int success;
+            t_Pet.LastUpdated = DateTime.Now;
             using (var db = new SQLite.SQLiteConnection(Constants.DbPath))
             {
                 success = db.Update(t_Pet);

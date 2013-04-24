@@ -20,8 +20,187 @@ namespace TamaDomain.Domain.Repository
                 InsertFood(db);
                 InsertObjects(db);
                 InsertStages(db);
+                InsertText(db);
             }
           
+        }
+
+        private void InsertText(SQLiteConnection db)
+        {
+
+            db.InsertOrReplace(new SayText()
+            {
+                From = 0,
+                To = 25,
+                Parametter = (int) ParameterEnum.Health,
+                Text = "I'm feeling very very sick! :("
+            });
+            db.InsertOrReplace(new SayText()
+            {
+                From = 25,
+                To = 50,
+                Parametter = (int)ParameterEnum.Health,
+                Text = "Please take me to doctor!"
+            });
+            db.InsertOrReplace(new SayText()
+            {
+                From = 50,
+                To = 75,
+                Parametter = (int)ParameterEnum.Health,
+                Text = "An apple or watter would be nice!"
+            });
+            db.InsertOrReplace(new SayText()
+            {
+                From = 75,
+                To = 100,
+                Parametter = (int)ParameterEnum.Health,
+                Text = "I've feel very healthy! :) Thank you!"
+            });
+
+            db.InsertOrReplace(new SayText()
+            {
+                From = 0,
+                To = 25,
+                Parametter = (int)ParameterEnum.Hunger,
+                Text = "I could eat a horse! PLEASE FEED ME!"
+            });
+            db.InsertOrReplace(new SayText()
+            {
+                From = 25,
+                To = 50,
+                Parametter = (int)ParameterEnum.Hunger,
+                Text = "I want a burger!! NOW!"
+            });
+            db.InsertOrReplace(new SayText()
+            {
+                From = 50,
+                To = 75,
+                Parametter = (int)ParameterEnum.Hunger,
+                Text = "I would like something to eat, Please! ;)"
+            });
+            db.InsertOrReplace(new SayText()
+            {
+                From = 75,
+                To = 100,
+                Parametter = (int)ParameterEnum.Hunger,
+                Text = "Thank you for feeding me, I Love YOU! :)"
+            });
+
+            db.InsertOrReplace(new SayText()
+            {
+                From = 0,
+                To = 25,
+                Parametter = (int)ParameterEnum.Discipline,
+                Text = "A. B.. bebe boom baam!!!"
+            });
+            db.InsertOrReplace(new SayText()
+            {
+                From = 25,
+                To = 50,
+                Parametter = (int)ParameterEnum.Discipline,
+                Text = "Read me a story, PLEASE!"
+            });
+            db.InsertOrReplace(new SayText()
+            {
+                From = 50,
+                To = 75,
+                Parametter = (int)ParameterEnum.Discipline,
+                Text = "I'm smart! :)"
+            });
+            db.InsertOrReplace(new SayText()
+            {
+                From = 75,
+                To = 100,
+                Parametter = (int)ParameterEnum.Discipline,
+                Text = "In future I will be a rocket scientist!"
+            });
+
+            db.InsertOrReplace(new SayText()
+            {
+                From = 0,
+                To = 25,
+                Parametter = (int)ParameterEnum.Energy,
+                Text = "No.. more.. energy.."
+            });
+            db.InsertOrReplace(new SayText()
+            {
+                From = 25,
+                To = 50,
+                Parametter = (int)ParameterEnum.Energy,
+                Text = "Sleep, I feel so sleepy!"
+            });
+            db.InsertOrReplace(new SayText()
+            {
+                From = 50,
+                To = 75,
+                Parametter = (int)ParameterEnum.Energy,
+                Text = "Let's play, let's do something!!"
+            });
+            db.InsertOrReplace(new SayText()
+            {
+                From = 75,
+                To = 100,
+                Parametter = (int)ParameterEnum.Energy,
+                Text = "WOOHOO!!! PARTY!! - I'm full of energy!"
+            });
+
+            db.InsertOrReplace(new SayText()
+            {
+                From = 0,
+                To = 25,
+                Parametter = (int)ParameterEnum.Hygene,
+                Text = "Ogh, whats that smell? Oh, it's me. CLEAN ME!!"
+            });
+            db.InsertOrReplace(new SayText()
+            {
+                From = 25,
+                To = 50,
+                Parametter = (int)ParameterEnum.Hygene,
+                Text = "I need a bath..."
+            });
+            db.InsertOrReplace(new SayText()
+            {
+                From = 50,
+                To = 75,
+                Parametter = (int)ParameterEnum.Hygene,
+                Text = "Hygene is very important, and I know it!"
+            });
+            db.InsertOrReplace(new SayText()
+            {
+                From = 75,
+                To = 100,
+                Parametter = (int)ParameterEnum.Hygene,
+                Text = "I feel clean like a unicorn! ^^"
+            });
+
+            db.InsertOrReplace(new SayText()
+            {
+                From = 0,
+                To = 25,
+                Parametter = (int)ParameterEnum.Mood,
+                Text = "I feel so lonely... I have nobody.. ;("
+            });
+            db.InsertOrReplace(new SayText()
+            {
+                From = 25,
+                To = 50,
+                Parametter = (int)ParameterEnum.Mood,
+                Text = "Wanna be fiends? Let's play!"
+            });
+            db.InsertOrReplace(new SayText()
+            {
+                From = 50,
+                To = 75,
+                Parametter = (int)ParameterEnum.Mood,
+                Text = "This is fun!! I feel good! :D"
+            });
+            db.InsertOrReplace(new SayText()
+            {
+                From = 75,
+                To = 100,
+                Parametter = (int)ParameterEnum.Mood,
+                Text = "Today is a great day! Sun is shining ..and me to!"
+            });
         }
 
         private static void InsertFood(SQLiteConnection db)
@@ -43,7 +222,7 @@ namespace TamaDomain.Domain.Repository
                 GameObjectId = (int)GameObjectEnum.Burger,
                 ObjectName = "Burger",
                 Description = "Lotsofcaloriesburger, with cheese and stuff!",
-                HealthEffect = -2,
+                HealthEffect = -5,
                 HungerEffect = 10,
                 HygeneEffect = -2,
                 DisciplineEffect = 0,
@@ -60,7 +239,7 @@ namespace TamaDomain.Domain.Repository
                 HygeneEffect = 0,
                 DisciplineEffect = 0,
                 MoodEffect = 3,
-                EnergyEffect = 5,
+                EnergyEffect = 10,
             });
         }
         private static void InsertObjects(SQLiteConnection db)
@@ -70,12 +249,12 @@ namespace TamaDomain.Domain.Repository
                 GameObjectId = (int)GameObjectEnum.Soap,
                 ObjectName = "Soap",
                 Description = "Take the soap and clean your pet",
-                HealthEffect = 5,
-                HungerEffect = 5,
-                HygeneEffect = 0,
+                HealthEffect = 0,
+                HungerEffect = 0,
+                HygeneEffect = 15,
                 DisciplineEffect = 0,
-                MoodEffect = 5,
-                EnergyEffect = 3,
+                MoodEffect = 0,
+                EnergyEffect = 0,
             });
             db.InsertOrReplace(new GameObject()
             {
@@ -85,8 +264,8 @@ namespace TamaDomain.Domain.Repository
                 HealthEffect = -1,
                 HungerEffect = -1,
                 HygeneEffect = -2,
-                DisciplineEffect = 10,
-                MoodEffect = 5,
+                DisciplineEffect = 20,
+                MoodEffect = -20,
                 EnergyEffect = -6,
             });
             db.InsertOrReplace(new GameObject()
@@ -94,23 +273,23 @@ namespace TamaDomain.Domain.Repository
                 GameObjectId = (int)GameObjectEnum.Light,
                 ObjectName = "Day and night",
                 Description = "Put your pet to sleep or wake him up",
-                HealthEffect = 1,
-                HungerEffect = 2,
+                HealthEffect = 5,
+                HungerEffect = -5,
                 HygeneEffect = 0,
                 DisciplineEffect = 0,
-                MoodEffect = 3,
-                EnergyEffect = 5,
+                MoodEffect = -10,
+                EnergyEffect = 10,
             });
             db.InsertOrReplace(new GameObject()
             {
                 GameObjectId = (int)GameObjectEnum.Medkit,
                 ObjectName = "Healing object",
                 Description = "heal your pet",
-                HealthEffect = 5,
-                HungerEffect = 0,
-                HygeneEffect = 0,
-                DisciplineEffect = 1,
-                MoodEffect = 3,
+                HealthEffect = 25,
+                HungerEffect = -10,
+                HygeneEffect = -10,
+                DisciplineEffect = 0,
+                MoodEffect = 10,
                 EnergyEffect = 0,
             });
         }
