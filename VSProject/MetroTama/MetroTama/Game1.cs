@@ -28,6 +28,7 @@ namespace MetroTama
         private static readonly object SyncLock = new object();
         public bool IsGameStarted = false;
         public bool IsCleaning = false;
+        public bool IsSleeping = false;
         SpriteBatch _spriteBatch;
         
 
@@ -237,14 +238,23 @@ namespace MetroTama
 
             _spriteBatch.Begin();
 
-            //if (Pet.IsSleeping)
-            //{
+            if (IsSleeping)
+            {
+                _bgColor = new Color(0, 24, 28);
                 foreach (KeyValuePair<int, float> item in _stars1)
-                    _spriteBatch.Draw(star1.SpriteSheet, new Vector2(item.Key, item.Value), star1.GetSourceRectangle(), Color.White, (float)_sunRingRotation, star1.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
+                    _spriteBatch.Draw(star1.SpriteSheet, new Vector2(item.Key, item.Value), star1.GetSourceRectangle(),
+                                      Color.White, (float) _sunRingRotation, star1.GetOriginVectorCenter(), 1.0f,
+                                      SpriteEffects.None, 0.0f);
 
                 foreach (KeyValuePair<int, float> item in _stars2)
-                    _spriteBatch.Draw(star2.SpriteSheet, new Vector2(item.Key, item.Value), star2.GetSourceRectangle(), Color.White, (float)_sunRingRotation, star2.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
-            //}
+                    _spriteBatch.Draw(star2.SpriteSheet, new Vector2(item.Key, item.Value), star2.GetSourceRectangle(),
+                                      Color.White, (float) _sunRingRotation, star2.GetOriginVectorCenter(), 1.0f,
+                                      SpriteEffects.None, 0.0f);
+            }
+            else
+            {
+                _bgColor = new Color(134, 185, 288);
+            }
 
             var sunRad = this.Window.ClientBounds.Height * 0.9;
             Vector2 positionInCircleRadius = GetCirclePosition(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height, _mult, sunRad);
@@ -254,7 +264,7 @@ namespace MetroTama
             _spriteBatch.Draw(moon.SpriteSheet, moonPositionInCircleRadius, moon.GetSourceRectangle(), Color.White, 0.0f, moon.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
             DrawBackgroundDetail(bgDetail, bgGradientNight, bgGradient);
             
-            DrawClouds(cloudOne, cloudTwo, cloudThree, star1, star2);
+            DrawClouds(cloudOne, cloudTwo, cloudThree);
             DrawTamogochiAnimation(animation);
 
             if (_showMessage)
@@ -287,7 +297,7 @@ namespace MetroTama
         private void DrawTamogochiAnimation(AnimationData animation)
         {
             
-            var origin = new Vector2(animation.FrameWidth / 2.0f, animation.FrameHeight+ 128);
+            var origin = new Vector2(animation.FrameWidth / 2.0f, animation.FrameHeight + 128);
             _spriteBatch.Draw(animation.SpriteSheet, position, animation.GetSourceRectangle(_frameIndexX, _frameIndexY), Color.White, 0.0f, origin, 1.0f, SpriteEffects.None, 0.0f);
         }
 
@@ -295,14 +305,14 @@ namespace MetroTama
         {
             for (int i = 0; i <= this.Window.ClientBounds.Width; i++)
             {
-               // if (Pet.IsSleeping)
-               // {
+               if (IsSleeping)
+               {
                     _spriteBatch.Draw(bgGradientNight.SpriteSheet, new Vector2(i, 0), bgGradientNight.GetSourceRectangle(), Color.White, 0.0f, bgGradientNight.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
-               // }
-               // else
-               // {
+               }
+               else
+               {
                     _spriteBatch.Draw(bgGradient.SpriteSheet, new Vector2(i, 0), bgGradient.GetSourceRectangle(), Color.White, 0.0f, bgGradient.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
-               // }
+               }
             }
             _spriteBatch.Draw(bgDetail.SpriteSheet, new Vector2(0, this.Window.ClientBounds.Height), bgDetail.GetSourceRectangle(), Color.White, 0.0f, bgDetail.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.Draw(bgDetail.SpriteSheet, new Vector2(bgDetail.Width, this.Window.ClientBounds.Height), bgDetail.GetSourceRectangle(), Color.White, 0.0f, bgDetail.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
@@ -310,14 +320,12 @@ namespace MetroTama
             _spriteBatch.Draw(bgDetail.SpriteSheet, new Vector2(bgDetail.Width * 3, this.Window.ClientBounds.Height), bgDetail.GetSourceRectangle(), Color.White, 0.0f, bgDetail.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
         }
 
-        private void DrawClouds(StaticImageData cloudOne, StaticImageData cloudTwo, StaticImageData cloudThree, StaticImageData star1, StaticImageData star2)
+        private void DrawClouds(StaticImageData cloudOne, StaticImageData cloudTwo, StaticImageData cloudThree)
         {
             CalculateObjectPositionX(cloudOne);
             CalculateObjectPositionX(cloudTwo);
             CalculateObjectPositionX(cloudThree);
-          //  Color cloudColor = (Pet.IsSleeping) ? new Color(15, 24, 28) : Color.White;
-            Color cloudColor = Color.White;
-            var random = new Random();
+            Color cloudColor = (IsSleeping) ? new Color(15, 24, 28) : Color.White;
             _spriteBatch.Draw(cloudOne.SpriteSheet, GetCloudPosition(cloudOne), cloudOne.GetSourceRectangle(), cloudColor, 0.0f, cloudOne.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.Draw(cloudTwo.SpriteSheet, GetCloudPosition(cloudTwo), cloudTwo.GetSourceRectangle(), cloudColor, 0.0f, cloudTwo.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);
             _spriteBatch.Draw(cloudThree.SpriteSheet, GetCloudPosition(cloudThree), cloudThree.GetSourceRectangle(), cloudColor, 0.0f, cloudThree.GetOriginVectorCenter(), 1.0f, SpriteEffects.None, 0.0f);

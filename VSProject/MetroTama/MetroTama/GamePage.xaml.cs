@@ -163,7 +163,7 @@ namespace MetroTama
 
         private void Light_Click(object sender, RoutedEventArgs e)
         {
-            //Sleeping mode
+            _game.IsSleeping = !_game.IsSleeping;
         }
 
         private void Apple_Click(object sender, RoutedEventArgs e)
