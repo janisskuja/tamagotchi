@@ -163,7 +163,9 @@ namespace MetroTama
 
         private void Light_Click(object sender, RoutedEventArgs e)
         {
-            _game.IsSleeping = !_game.IsSleeping;
+            _game.IsSleeping = _petRepository.SetPetToSleep();
+            //Sleeping mode
+            
         }
 
         private void Apple_Click(object sender, RoutedEventArgs e)

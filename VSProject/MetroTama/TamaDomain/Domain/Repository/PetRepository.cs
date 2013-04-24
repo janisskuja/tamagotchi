@@ -97,7 +97,7 @@ namespace TamaDomain.Domain.Repository
         {
             // 1.
             // Parse the date and put in DateTime object.
-            DateTime startDate = pet.BirthDate
+            DateTime startDate = pet.BirthDate;
 
             // 2.
             // Get the current DateTime.
