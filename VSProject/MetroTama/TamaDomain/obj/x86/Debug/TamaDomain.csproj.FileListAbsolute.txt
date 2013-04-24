@@ -8,3 +8,13 @@ C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\TamaDomain\ob
 C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\TamaDomain\obj\x86\Debug\resources.resfiles
 C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\TamaDomain\obj\x86\Debug\pri.resfiles
 C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\TamaDomain\obj\x86\Debug\LanguageQualifiers.txt
+C:\Users\dmitr_000\Dropbox\Programmesana\C#\WPF\tamagotchi\VSProject\MetroTama\TamaDomain\bin\x86\Debug\TamaDomain.dll
+C:\Users\dmitr_000\Dropbox\Programmesana\C#\WPF\tamagotchi\VSProject\MetroTama\TamaDomain\bin\x86\Debug\TamaDomain.pdb
+C:\Users\dmitr_000\Dropbox\Programmesana\C#\WPF\tamagotchi\VSProject\MetroTama\TamaDomain\bin\x86\Debug\TamaDomain.pri
+C:\Users\dmitr_000\Dropbox\Programmesana\C#\WPF\tamagotchi\VSProject\MetroTama\TamaDomain\obj\x86\Debug\TamaDomain.dll
+C:\Users\dmitr_000\Dropbox\Programmesana\C#\WPF\tamagotchi\VSProject\MetroTama\TamaDomain\obj\x86\Debug\TamaDomain.pdb
+C:\Users\dmitr_000\Dropbox\Programmesana\C#\WPF\tamagotchi\VSProject\MetroTama\TamaDomain\obj\x86\Debug\priconfig.xml
+C:\Users\dmitr_000\Dropbox\Programmesana\C#\WPF\tamagotchi\VSProject\MetroTama\TamaDomain\obj\x86\Debug\layout.resfiles
+C:\Users\dmitr_000\Dropbox\Programmesana\C#\WPF\tamagotchi\VSProject\MetroTama\TamaDomain\obj\x86\Debug\resources.resfiles
+C:\Users\dmitr_000\Dropbox\Programmesana\C#\WPF\tamagotchi\VSProject\MetroTama\TamaDomain\obj\x86\Debug\pri.resfiles
+C:\Users\dmitr_000\Dropbox\Programmesana\C#\WPF\tamagotchi\VSProject\MetroTama\TamaDomain\obj\x86\Debug\LanguageQualifiers.txt

@@ -170,6 +170,13 @@ namespace MetroTama
                 _lastMessageUpdate = gameTime.TotalGameTime;
             }
 
+            CleaningBubbles();
+
+            base.Update(gameTime);
+        }
+
+        private void CleaningBubbles()
+        {
             if (!IsCleaning && Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
                 //emitter.Settings.EndBurst = false;
@@ -183,8 +190,6 @@ namespace MetroTama
             }
 
             emitter.OriginPosition = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
-
-            base.Update(gameTime);
         }
 
         /// <summary>
