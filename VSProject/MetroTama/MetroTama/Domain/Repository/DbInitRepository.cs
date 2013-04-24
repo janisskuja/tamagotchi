@@ -83,12 +83,12 @@ namespace MetroTama.Domain.Repository
                 GameObjectId = (int)GameObjectEnum.Book,
                 ObjectName = "Book",
                 Description = "Contains good education",
-                HealthEffect = -2,
-                HungerEffect = 10,
+                HealthEffect = -1,
+                HungerEffect = -1,
                 HygeneEffect = -2,
-                DisciplineEffect = 0,
+                DisciplineEffect = 10,
                 MoodEffect = 5,
-                EnergyEffect = 6,
+                EnergyEffect = -6,
             });
             db.InsertOrReplace(new GameObject()
             {
