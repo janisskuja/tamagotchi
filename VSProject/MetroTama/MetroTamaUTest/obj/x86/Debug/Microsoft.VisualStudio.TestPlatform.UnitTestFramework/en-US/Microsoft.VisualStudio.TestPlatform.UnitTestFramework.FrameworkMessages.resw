@@ -181,6 +181,9 @@
   <data name="NoExceptionThrown" xml:space="preserve">
     <value>No exception thrown. {1} exception was expected. {0}</value>
   </data>
+  <data name="NoDataRow" xml:space="preserve">
+    <value>No DataRowAttribute specified. Atleast one DataRowAttribute is required with DataTestMethodAttribute.</value>
+  </data>
   <data name="CollectionEqualReason" xml:space="preserve">
     <value>{0}({1})</value>
   </data>

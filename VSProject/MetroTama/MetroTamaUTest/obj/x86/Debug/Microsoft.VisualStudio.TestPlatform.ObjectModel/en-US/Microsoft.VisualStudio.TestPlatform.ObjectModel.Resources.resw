@@ -140,6 +140,9 @@
   <data name="InvalidSettingsXmlElement" xml:space="preserve">
     <value>Invalid settings '{0}'. Unexpected XmlElement: '{1}'.</value>
   </data>
+  <data name="SolutionDirectoryNotExists" xml:space="preserve">
+    <value>Solution directory '{0}' does not exists. Please make sure solution directory specified in runsettings exists and have read permissions for directory.</value>
+  </data>
   <data name="Exception_RegisteredTestPropertyHasDifferentValueType" xml:space="preserve">
     <value>Cannot register property '{0}' as value type '{1}' because it was already registered as '{2}'.</value>
   </data>
@@ -160,6 +163,9 @@
   </data>
   <data name="ConverterNotSupported" xml:space="preserve">
     <value>Cannot find TypeConverter for type {0}.</value>
+  </data>
+  <data name="TestCasePropertyTraitsLabel" xml:space="preserve">
+    <value>Traits</value>
   </data>
   <data name="TestResultPropertyDisplayNameLabel" xml:space="preserve">
     <value>TestResult Display Name</value>

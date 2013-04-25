@@ -171,6 +171,9 @@
   <data name="UTA_ClassInitMethodThrows" xml:space="preserve">
     <value>Class Initialization method {0}.{1} threw exception. {2}: {3}.</value>
   </data>
+  <data name="UTA_WrongThread" xml:space="preserve">
+    <value>{0}. If you are using UI objects in test consider using [UITestMethod] attribute instead of [TestMethod] to execute test in UI thread.</value>
+  </data>
   <data name="UTA_ExecuteThrewException" xml:space="preserve">
     <value>Exception thrown while executing test. If using extension of TestMethodAttribute then please contact vendor. Error message: {0}</value>
   </data>
@@ -224,7 +227,7 @@
     <value>The parameter must be greater than zero.</value>
   </data>
   <data name="ExecuteInClassicModeFails" xml:space="preserve">
-    <value>Unit tests for Windows Store apps cannot be run outside appcontainer. Create an app package and run tests in appcontainer mode.</value>
+    <value>Unit tests for Windows Store and Windows Phone apps cannot be run outside appcontainer. Create an app package and run tests in appcontainer mode.</value>
   </data>
   <data name="UTA_NoDefaultConstructor" xml:space="preserve">
     <value>Unable to get default constructor for class {0}.</value>

@@ -97,6 +97,7 @@ namespace TamaDomain.Domain.Repository
                 pet.Health += pet.Health < 100 ? 15 : 0;
                 pet.Hunger -= pet.Hunger > 0 ? 15 : 0;
                 pet.Mood -= pet.Mood > 0 ? 25 : 0;
+                pet.Discipline -= pet.Discipline > 0 ? 25 : 0;
             }
             else
             {
@@ -181,11 +182,29 @@ namespace TamaDomain.Domain.Repository
         {
             int success;
             t_Pet.LastUpdated = DateTime.Now;
+            NormalizeStats(t_Pet);
             using (var db = new SQLite.SQLiteConnection(Constants.DbPath))
             {
                 success = db.Update(t_Pet);
             }
             return success;
+        }
+
+        private static void NormalizeStats(Pet t_Pet)
+        {
+            t_Pet.Health = t_Pet.Health > 100 ? 100 : t_Pet.Health;
+            t_Pet.Hunger = t_Pet.Hunger > 100 ? 100 : t_Pet.Hunger;
+            t_Pet.Hygene = t_Pet.Hygene > 100 ? 100 : t_Pet.Hygene;
+            t_Pet.Energy = t_Pet.Energy > 100 ? 100 : t_Pet.Energy;
+            t_Pet.Mood = t_Pet.Mood > 100 ? 100 : t_Pet.Mood;
+            t_Pet.Discipline = t_Pet.Discipline > 100 ? 100 : t_Pet.Discipline;
+
+            t_Pet.Health = t_Pet.Health < 0 ? 0 : t_Pet.Health;
+            t_Pet.Hunger = t_Pet.Hunger < 0 ? 0 : t_Pet.Hunger;
+            t_Pet.Hygene = t_Pet.Hygene < 0 ? 0 : t_Pet.Hygene;
+            t_Pet.Energy = t_Pet.Energy < 0 ? 0 : t_Pet.Energy;
+            t_Pet.Mood = t_Pet.Mood < 0 ? 0 : t_Pet.Mood;
+            t_Pet.Discipline = t_Pet.Discipline < 0 ? 0 : t_Pet.Discipline;
         }
     }
 }

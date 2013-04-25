@@ -7,15 +7,15 @@ namespace TamaDomain.Domain.Repository
 {
     public class SayTextRepository
     {
-        public List<SayText> GetSayText(int t_Parametter, int value)
+        public SayText GetSayText(int t_Parametter, int value)
         {
             using (var db = new SQLite.SQLiteConnection(Constants.DbPath))
             {
-                List<SayText> retList = new List<SayText>();
+                SayText retList;
                 try
                 {
                     retList = (db.Table<SayText>().Where(
-                    s => s.Parametter == t_Parametter && s.From >= value && s.To <= value)).ToList<SayText>();
+                    s => s.Parametter == t_Parametter && s.From <= value && s.To >= value)).SingleOrDefault();
                 }
                 catch
                 {
@@ -25,7 +25,7 @@ namespace TamaDomain.Domain.Repository
             }
         }
 
-        internal string getText(Pet pet, int parameter)
+        public string getText(Pet pet, int parameter)
         {
             int value = 0;
             switch (parameter)
@@ -49,8 +49,8 @@ namespace TamaDomain.Domain.Repository
                     value = pet.Mood;
                     break;
             }
-            List<SayText> sayTexts = GetSayText(parameter, value);
-            return sayTexts != null && sayTexts.Any() ? sayTexts.FirstOrDefault().Text : "Your pet has nothing to say..";
+            SayText sayTexts = GetSayText(parameter, value);
+            return sayTexts != null ? sayTexts.Text : "...";
         }
     }
 }

@@ -117,95 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LUADisabledError" xml:space="preserve">
-    <value>Unit tests for Windows Store apps cannot be run with Limited User Account disabled. Enable it to run tests.</value>
+  <data name="InvalidSettingsXmlElement" xml:space="preserve">
+    <value>MSTestAdapter encountered an unexpected element '{0}' in its settings '{1}'. Remove this element and try again.</value>
   </data>
-  <data name="SourceInCompatibleNoFramework" xml:space="preserve">
-    <value>{0} is built for Platform {1}.</value>
+  <data name="TestCategory" xml:space="preserve">
+    <value>TestCategory</value>
   </data>
-  <data name="PrerequisiteValidDevLicense" xml:space="preserve">
-    <value>No valid developer license found for running unit tests for Windows Store apps. Please install/renew your developer license.</value>
+  <data name="TestContextMessageBanner" xml:space="preserve">
+    <value>TestContext Messages:</value>
   </data>
-  <data name="SourcesInCompatible" xml:space="preserve">
-    <value>{0} are built for Framework {1} and Platform {2}.</value>
+  <data name="IsAsync" xml:space="preserve">
+    <value>IsAsync</value>
   </data>
-  <data name="InvalidTargetDevice" xml:space="preserve">
-    <value>The selected target device is not valid.</value>
+  <data name="TestClassNameCategory" xml:space="preserve">
+    <value>ClassName</value>
   </data>
-  <data name="UIThreadNotFound" xml:space="preserve">
-    <value>UI thread is not found for executing unit test for the Windows Store app.</value>
+  <data name="Priority" xml:space="preserve">
+    <value>Priority</value>
   </data>
-  <data name="FailedToActivateWindowsStoreAppExecutor" xml:space="preserve">
-    <value>Failed to activate Windows Store app unit test executor. Error: {0}.</value>
+  <data name="DebugTraceBanner" xml:space="preserve">
+    <value>Debug Trace:</value>
   </data>
-  <data name="MissingRunSettingsNode" xml:space="preserve">
-    <value>Could not find 'RunSettings' node.</value>
+  <data name="AttachmentSetDisplayName" xml:space="preserve">
+    <value>MSTestAdapter</value>
   </data>
-  <data name="BuiltInAdministratorError" xml:space="preserve">
-    <value>Unit tests for Windows Store apps cannot be run from BUILTIN\administrator or {0} user accounts. Please run tests using a user account from which process with medium and low privileges can be launched.</value>
-  </data>
-  <data name="AppxManifestReadError" xml:space="preserve">
-    <value>Failed to read manifest file with Error: {0}</value>
-  </data>
-  <data name="AppContainerActivationFailureWithoutErrorCode" xml:space="preserve">
-    <value>An internal error occurred while launching the test executor for a Windows Store app.</value>
-  </data>
-  <data name="AppContainerActivationFailure" xml:space="preserve">
-    <value>Failed to launch test executor for the Windows Store app with error code {0}.</value>
-  </data>
-  <data name="SourceIncompatible" xml:space="preserve">
-    <value>{0} is built for Framework {1} and Platform {2}.</value>
-  </data>
-  <data name="PhoneAppPackageInstallationFailure" xml:space="preserve">
-    <value>Installation of package '{1}' failed with Error: (0x{2:X}) {3}.</value>
-  </data>
-  <data name="SystemArchitectureIncompatibleWithTargetPlatform" xml:space="preserve">
-    <value>Incompatible Target platform settings '{0}' with system architecture '{1}'.</value>
-  </data>
-  <data name="PackageInstallationTimeout" xml:space="preserve">
-    <value>Operation timed out. Unable to install Windows app package in {0} sec.</value>
-  </data>
-  <data name="PrerequisiteInteractiveSession" xml:space="preserve">
-    <value>Unit tests for Windows Store apps cannot be run from a service or non interactive process. Please run unit tests from an interactive process.</value>
-  </data>
-  <data name="AppContainerActivationFromElevatedProcessError" xml:space="preserve">
-    <value>Unit tests for Windows Store apps cannot be run from a process that has Administrator privileges. Please run unit tests for Windows Store apps from a non-administrator process.</value>
-  </data>
-  <data name="AppVersionGreaterThanDeviceVersion" xml:space="preserve">
-    <value>The target version of the app is not compatible with the OS version of the selected device.</value>
-  </data>
-  <data name="RunSettingsParseError" xml:space="preserve">
-    <value>An error occurred while loading the settings.  Error: {0}.</value>
-  </data>
-  <data name="InvalidRunSettingsXml" xml:space="preserve">
-    <value>Run settings XML does not contain "RunSettings" node.</value>
-  </data>
-  <data name="InvalidExecutorPath" xml:space="preserve">
-    <value>Could not find file {0}. Consider reinstalling the Visual Studio Add-In.</value>
-  </data>
-  <data name="FailToStartProcess" xml:space="preserve">
-    <value>Failed to launch test executor process {0}.</value>
-  </data>
-  <data name="PrerequisiteWin8OrHigher" xml:space="preserve">
-    <value>Need Windows 8 or higher to run unit tests for Windows Store apps.</value>
-  </data>
-  <data name="UnableToFindTestPlatformCoreAssembly" xml:space="preserve">
-    <value>Could not find the installed extensions because the required testPlatform assemblies ({0}) are not available at '{1}'</value>
-  </data>
-  <data name="SourceSeperator" xml:space="preserve">
-    <value>, </value>
-  </data>
-  <data name="AppContainerUtilitiesNotFound" xml:space="preserve">
-    <value>Microsoft.VisualStudio.TestPlatform.Utilities.AppContainer.dll is required to run unit tests for Windows Store apps. Please make sure it exists at the appropriate place.</value>
-  </data>
-  <data name="PrerequisiteWinPhone8OrHigher" xml:space="preserve">
-    <value>To run unit tests for a Windows Phone app, the app must target Windows Phone 8 or higher.</value>
-  </data>
-  <data name="InvalidSettingsIncorrectValue" xml:space="preserve">
-    <value>Invalid setting '{0}'. Invalid value '{1}' specified for '{2}'.</value>
-  </data>
-  <data name="PackageInstallationFailure" xml:space="preserve">
-    <value>Installation of package '{1}' failed with Error: (0x{2:X}) {3}.
-For more details look into Event Viewer under Applications and Services Logs -&gt; Microsoft -&gt; Windows -&gt; AppXDeployment-Server -&gt; Microsoft-Windows-AppXDeploymentServer/Operational.</value>
+  <data name="IsTestEnabledCategory" xml:space="preserve">
+    <value>IsEnabled</value>
   </data>
 </root>

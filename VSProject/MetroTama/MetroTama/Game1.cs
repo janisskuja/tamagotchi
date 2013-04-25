@@ -18,9 +18,9 @@ namespace MetroTama
     {
         // Maximum stat value (ex., Health)
         private const int MaxStat = 100;
-        private static bool _showMessage;
+        public bool _showMessage;
         private static SpriteFont _font;
-        private static string _sayText;
+        public string _sayText;
         private static TimeSpan _lastMessageUpdate;
         private static readonly TimeSpan MessageShowTime = new TimeSpan(0, 0, 0, 3, 0);
         private Vector2 position;
@@ -161,7 +161,7 @@ namespace MetroTama
         protected override void Update(GameTime gameTime)
         {
             // TODO: Add your update logic here
-           
+            position = new Vector2(this.Window.ClientBounds.Width / 2, this.Window.ClientBounds.Height);
             this.GamePage.UpdateStatusUI();
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
@@ -271,8 +271,8 @@ namespace MetroTama
 
             if (_showMessage)
             {
-                _spriteBatch.Draw(comicBubble.SpriteSheet, new Vector2(this.Window.ClientBounds.Width / 2 + 130, this.Window.ClientBounds.Height / 2 + 10), comicBubble.GetSourceRectangle(), Color.White, 0.0f, comicBubble.GetOriginVectorLeftBottom(), 1.0f, SpriteEffects.None, 0.0f);
-                _spriteBatch.DrawString(_font, _sayText, new Vector2(this.Window.ClientBounds.Width / 2 + 190, this.Window.ClientBounds.Height / 2 - 145), Color.Black);
+              //  _spriteBatch.Draw(comicBubble.SpriteSheet, new Vector2(this.Window.ClientBounds.Width / 2 + 130, this.Window.ClientBounds.Height / 2 + 10), comicBubble.GetSourceRectangle(), Color.White, 0.0f, comicBubble.GetOriginVectorLeftBottom(), 1.3f, SpriteEffects.None, 0.0f);
+                _spriteBatch.DrawString(_font, _sayText, new Vector2(this.Window.ClientBounds.Width / 2 + 170, this.Window.ClientBounds.Height / 2 - 160), Color.Black);
             }
 
             _spriteBatch.End();

@@ -1,1 +1,1 @@
-C:\Users\dmitr_000\Dropbox\Programmesana\C#\WPF\tamagotchi\VSProject\MetroTama\MetroTamaUTest\MetroTamaUTest.csproj;x86
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\MetroTamaUTest\MetroTamaUTest.csproj;x86

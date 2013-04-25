@@ -27,14 +27,14 @@ namespace MetroTama.Services
                     Current = true,
                     Discipline = 0,
                     DislikeGameObjectId = randomDislikeObject,
-                    Energy = 100,
+                    Energy = 50,
                     FavoriteGameObjectId = randomLikeObject,
                     Gender = randomGender,
                     Health = 100,
                     Hygene = 100,
-                    Hunger = 100,
+                    Hunger = 50,
                     LastUpdated = DateTime.Now,
-                    Mood = 100,
+                    Mood = 50,
                     PetStageId = (int) StageEnum.Baby,
                     Sleeping = false
                 };

@@ -177,6 +177,9 @@
   <data name="WeakEventsOnlyInstanceMethodsSupportedExceptionText" xml:space="preserve">
     <value>A test method must be an instance method.</value>
   </data>
+  <data name="DuplicateAdaptersFound" xml:space="preserve">
+    <value>Multiple test adapters with the same uri '{0}' were found. Ignoring adapter '{1}'. Please uninstall the conflicting adapter(s) to avoid this warning.</value>
+  </data>
   <data name="AppxManifestReadError" xml:space="preserve">
     <value>Failed to read manifest file with Error: {0}</value>
   </data>

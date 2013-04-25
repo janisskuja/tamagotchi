@@ -50,6 +50,7 @@ namespace MetroTama
             else
             {
                 _game.IsGameStarted = true;
+                _game.IsSleeping = _pet.Sleeping;
             }
         }
 
@@ -209,7 +210,7 @@ namespace MetroTama
                 HealthProgressBar.Value = _pet.Health;
                 EnergyProgressBar.Value = _pet.Energy;
                 HungerProgressBar.Value = _pet.Hunger;
-                MoodProgressBar.Value = _pet.Hunger;
+                MoodProgressBar.Value = _pet.Mood;
                 HygeneProgressBar.Value = _pet.Hygene;
                 DisciplineProgressBar.Value = _pet.Discipline;
                 PetName.Text = _pet.Name;
