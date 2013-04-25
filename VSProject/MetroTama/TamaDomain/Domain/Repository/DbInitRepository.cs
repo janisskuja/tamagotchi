@@ -7,7 +7,18 @@ namespace TamaDomain.Domain.Repository
 {
     public sealed class DbInitRepository
     {
-        public void InitTablesAndData()
+        public static void InitData()
+        {
+            using (var db = new SQLite.SQLiteConnection(Constants.DbPath))
+            {
+                InsertFood(db);
+                InsertObjects(db);
+                InsertStages(db);
+                InsertText(db);
+            }
+
+        }
+        public static void InitTables()
         {
             using (var db = new SQLite.SQLiteConnection(Constants.DbPath))
             {
@@ -16,17 +27,11 @@ namespace TamaDomain.Domain.Repository
                 db.CreateTable<SayText>();
                 db.CreateTable<GraveYard>();
                 db.CreateTable<GameObject>();
-                db.DeleteAll<GameObject>();
-
-                InsertFood(db);
-                InsertObjects(db);
-                InsertStages(db);
-                InsertText(db);
             }
 
         }
 
-        private void InsertText(SQLiteConnection db)
+        private static void InsertText(SQLiteConnection db)
         {
             db.DeleteAll<SayText>();
             db.InsertOrReplace(new SayText()
