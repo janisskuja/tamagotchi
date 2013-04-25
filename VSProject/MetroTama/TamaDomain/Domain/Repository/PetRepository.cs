@@ -1,5 +1,4 @@
 ﻿using System;
-using MetroTama.Domain.Entities;
 using System.Linq;
 using TamaDomain.Domain.Entities;
 
@@ -114,7 +113,7 @@ namespace TamaDomain.Domain.Repository
                 pet.Dead = true;
             }
             UpdateAllPet(pet);
-            int parameter = new Random().Next(1, 6);
+            int parameter = new Random().Next(1, 7);
             return _sayTextRepository.getText(pet, parameter);
         }
 

@@ -1,7 +1,5 @@
 ﻿using MetroTama.Common;
-using MetroTama.Domain.Entities;
 using MetroTama.Domain.Enumerator;
-using MetroTama.Domain.Repository;
 using MetroTama.Services;
 using TamaDomain.Domain.Entities;
 using TamaDomain.Domain.Enumerator;
@@ -10,7 +8,6 @@ using Windows.UI.Xaml;
 using MonoGame.Framework;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Media;
 
 
 namespace MetroTama
@@ -180,7 +177,7 @@ namespace MetroTama
             _gameObjectService.UseObject(_game, GameObjectEnum.Burger);
         }
 
-        private void Watter_Click(object sender, RoutedEventArgs e)
+        private void Water_Click(object sender, RoutedEventArgs e)
         {
             _gameObjectService.UseObject(_game, GameObjectEnum.Watter);
         }

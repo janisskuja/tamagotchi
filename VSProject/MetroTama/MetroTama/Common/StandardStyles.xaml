@@ -428,7 +428,7 @@
     </Style>
     <Style x:Key="WatterAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource PathBasedAppBarButtonStyle}">
         <Setter Property="AutomationProperties.AutomationId" Value="WatterAppBarButton"/>
-        <Setter Property="AutomationProperties.Name" Value="Watter"/>
+        <Setter Property="AutomationProperties.Name" Value="Water"/>
         <Setter Property="Content" Value="F1 M 33.2695,29.299L 24.6628,15.9376L 44.8372,2.93896C 44.8372,2.93896 28.0879,-3.78638 15.3438,3.00656L 12.3105,1.68695L 12.2584,4.99484C 0.803986,13.7885 0,31.823 0,31.823L 20.1784,18.8256L 26.9239,29.2976L 14.2839,29.2976L 28.3372,133.303L 62.3333,133.303L 76.3867,29.299L 33.2695,29.299 Z M 21.8268,45.299L 20.3854,34.6323L 30.3587,34.6323L 37.2304,45.299L 21.8268,45.299 Z M 43.5742,45.299L 36.7051,34.6323L 70.2864,34.6323L 68.8451,45.299L 43.5742,45.299 Z "/>
     </Style>
     <Style x:Key="BallAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource PathBasedAppBarButtonStyle}">

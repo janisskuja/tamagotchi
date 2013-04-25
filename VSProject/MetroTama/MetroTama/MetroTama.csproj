@@ -12,8 +12,10 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>MetroTama_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <PackageCertificateKeyFile>MetroTama_StoreKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <PackageCertificateThumbprint>FA45CC038AA054D411B4818C09D5CE581FDBEEE5</PackageCertificateThumbprint>
+    <AppxPackageDir>C:\Users\janis_000\Desktop\MTAppPkgsz\</AppxPackageDir>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -162,6 +164,8 @@
     <Content Include="Content\gameFont.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="MetroTama_StoreKey.pfx" />
+    <None Include="Package.StoreAssociation.xml" />
     <None Include="Content\gameFont.spritefont" />
     <None Include="Content\Graphics\bgDetail.xnb" />
     <Content Include="Content\Graphics\cloudOne.xnb">

@@ -11,14 +11,14 @@ namespace MetroTama.Services
 
         public Pet GeneratePet()
         {
-            int randomDislikeObject = new Random().Next(1,3);
-            int randomLikeObject = new Random().Next(1, 3);
+            int randomDislikeObject = new Random().Next(1, 4);
+            int randomLikeObject = new Random().Next(1, 4);
             while (randomLikeObject == randomDislikeObject)
             {
-                randomLikeObject = new Random().Next(1, 3);
+                randomLikeObject = new Random().Next(1, 4);
             }
-            
-            int randomGender = new Random().Next(1, 2);
+
+            int randomGender = new Random().Next(1, 3);
 
             Pet pet = new Pet()
                 {
@@ -35,7 +35,7 @@ namespace MetroTama.Services
                     Hunger = 50,
                     LastUpdated = DateTime.Now,
                     Mood = 50,
-                    PetStageId = (int) StageEnum.Baby,
+                    PetStageId = (int)StageEnum.Baby,
                     Sleeping = false
                 };
 

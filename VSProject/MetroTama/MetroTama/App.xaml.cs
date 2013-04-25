@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-using Microsoft.VisualBasic;
-using Windows.ApplicationModel;
+﻿using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using TamaDomain.Domain.Repository;
@@ -24,7 +21,7 @@ namespace MetroTama
         {
             InitializeComponent();
             Suspending += OnSuspending;
-
+            DbInitRepository.InitTables();
         }
 
         /// <summary>
@@ -48,8 +45,6 @@ namespace MetroTama
                     // TODO: Load state from previously suspended application
                 }
 
-                // Initialize the database if necessary
-                DbInitRepository.InitTablesAndData();
                 // Place the GamePage in the current Window
                 Window.Current.Content = gamePage;
             }

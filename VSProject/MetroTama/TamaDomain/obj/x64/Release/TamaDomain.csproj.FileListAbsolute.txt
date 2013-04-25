@@ -1,0 +1,10 @@
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\TamaDomain\bin\x64\Release\TamaDomain.dll
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\TamaDomain\bin\x64\Release\TamaDomain.pdb
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\TamaDomain\bin\x64\Release\TamaDomain.pri
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\TamaDomain\obj\x64\Release\TamaDomain.dll
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\TamaDomain\obj\x64\Release\TamaDomain.pdb
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\TamaDomain\obj\x64\Release\priconfig.xml
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\TamaDomain\obj\x64\Release\layout.resfiles
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\TamaDomain\obj\x64\Release\resources.resfiles
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\TamaDomain\obj\x64\Release\pri.resfiles
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\TamaDomain\obj\x64\Release\LanguageQualifiers.txt

@@ -5,6 +5,7 @@ using MetroTama.Services;
 using TamaDomain.Domain.Entities;
 using TamaDomain.Domain.Repository;
 using Windows.ApplicationModel.Background;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -29,8 +30,15 @@ namespace MetroTama
             this.InitializeComponent();
             newPet = _petService.GeneratePet();
             _gamePage = gamePage;
+            Window.Current.Activated += Current_Activated;
+            
         }
 
+        private void Current_Activated(object sender, WindowActivatedEventArgs e)
+        {
+            // Initialize the database if necessary
+            DbInitRepository.InitData();
+        }
 
 
         private async void RegisterBacgroundTask()

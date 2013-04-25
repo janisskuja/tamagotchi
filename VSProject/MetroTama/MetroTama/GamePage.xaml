@@ -26,7 +26,7 @@
                     <StackPanel x:Name="BtmLeftFoodSubPanel" Orientation="Horizontal" Visibility="Collapsed">
                         <Button Style="{StaticResource AppleAppBarButtonStyle}" Click="Apple_Click"/>
                         <Button Style="{StaticResource BurgerAppBarButtonStyle}" Click="Burger_Click"/>
-                        <Button Style="{StaticResource WatterAppBarButtonStyle}" Click="Watter_Click"/>
+                        <Button Style="{StaticResource WatterAppBarButtonStyle}" Click="Water_Click"/>
 
                     </StackPanel>
                     <StackPanel x:Name="BtmLeftActionSubPanel" Orientation="Horizontal" Visibility="Collapsed">

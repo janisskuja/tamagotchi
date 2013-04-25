@@ -1,0 +1,16 @@
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\BackgroundTasks\bin\x86\Release\BackgroundTasks.winmd
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\BackgroundTasks\bin\x86\Release\BackgroundTasks.pdb
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\BackgroundTasks\bin\x86\Release\BackgroundTasks.pri
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\BackgroundTasks\bin\x86\Release\TamaDomain.dll
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\BackgroundTasks\bin\x86\Release\TamaDomain.pdb
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\BackgroundTasks\bin\x86\Release\TamaDomain.pri
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\BackgroundTasks\obj\x86\Release\BackgroundTasks.csprojResolveAssemblyReference.cache
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\BackgroundTasks\obj\x86\Release\BackgroundTasks.winmd
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\BackgroundTasks\obj\x86\Release\BackgroundTasks.pdb
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\BackgroundTasks\obj\x86\Release\BackgroundTasks.winmdobj
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\BackgroundTasks\obj\x86\Release\BackgroundTasks.compile.pdb
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\BackgroundTasks\obj\x86\Release\priconfig.xml
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\BackgroundTasks\obj\x86\Release\layout.resfiles
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\BackgroundTasks\obj\x86\Release\resources.resfiles
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\BackgroundTasks\obj\x86\Release\pri.resfiles
+C:\Users\janis_000\Documents\GitHub\tamagotchi\VSProject\MetroTama\BackgroundTasks\obj\x86\Release\LanguageQualifiers.txt

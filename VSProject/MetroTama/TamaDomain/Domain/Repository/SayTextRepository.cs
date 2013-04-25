@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using TamaDomain.Domain.Entities;
 using TamaDomain.Domain.Enumerator;
 
